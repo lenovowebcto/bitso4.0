@@ -16,7 +16,9 @@ class user extends CI_Controller {
 	}
 	// add/update user
 	function adduser() {
-		$data ['uid'] = $uid = isset ( $_GET ['uid'] ) ? $_GET ['uid'] : '';
+		$user = Auth::getUser();
+		$data['group'] = $group = $user['group'];
+		$data ['uid'] = $uid = isset ($_GET ['uid']) ? $_GET ['uid'] : '';
 		$data ['gro'] = $this->UserModel->commongroup ();
 		if ($uid > 0) {
 			$data ['user'] = $this->UserModel->selectuserbyid ( $uid );
@@ -29,6 +31,8 @@ class user extends CI_Controller {
 		$uid = $_POST ['uid'];
 		$user = $_POST ['user'];
 		$psw = $user ['UPWD'];
+		$group = $_POST['group'];
+		$user['group'] = $group;
 		$user ['UPWD'] = md5 ( $user ['UPWD'] );
 		
 		if ($uid > 0) {

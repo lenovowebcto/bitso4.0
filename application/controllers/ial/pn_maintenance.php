@@ -9,15 +9,27 @@ class pn_maintenance extends CI_Controller{
 	}
 	
 	function index(){
+		$user = Auth::getUser();
+		if($user['type']==2){
+			$data['list'] = $this->pn->selectAllpns($user['username']);
+		}elseif($user['type']==1){
+			$data['list'] = $this->pn->selectAllpns('');
+		}
 		
-		$data['list'] = $this->pn->selectAllpns();
 		$this->load->view('ial/pn/pn_list',$data);
 	}
 	
 	function edit(){
+		$user = Auth::getUser();
+		$group = $user['group'];
+		$data['username'] = $user['username'];
 		$data['id'] = $id = isset($_GET['id'])?$_GET['id']:0;
 		$data['w'] = 'www';
-		if($id>0)$data['pn'] = $this->pn->selectbyid($id);
+		if($id>0){
+			$data['pn'] = $this->pn->selectbyid($id);
+			$data['username'] = $data['pn']['User'];
+		}
+		$data['user'] = $this->icm->selectuserbynow($group);
 		if($id>0){
 			$pen = $data['pen'] = $this->icm->selectAllIalPen($id,'pn');
 			$data['hist'] = $this->icm->selectAllIALhistory($id,'pn');

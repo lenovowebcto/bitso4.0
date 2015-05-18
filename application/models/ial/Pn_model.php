@@ -4,7 +4,10 @@ class Pn_model extends CI_model{
 		parent::__construct();
 	}
 	
-	function selectAllpns(){
+	function selectAllpns($username){
+		if($username!=''){
+			$this->db->where('User',$username);
+		}
 		return $this->db->get('ial_pn_main')->result_array();
 	}
 	

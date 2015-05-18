@@ -8,13 +8,27 @@ class ial_bpl extends CI_Controller{
 	}
 	
 	function index(){
-		$data['list'] = $this->ial_bpl->selectAlllist();
+		$user = Auth::getUser();
+		if($user['type']==2){
+			$data['list'] = $this->ial_bpl->selectAlllist($user['username']);
+		}elseif($user['type']==1){
+			$data['list'] = $this->ial_bpl->selectAlllist('');
+		}
+		
 		$this->load->view('ial/ial_bpl/ial_bpl_list',$data);
 	}
 	
 	function edit(){
+		$user = Auth::getUser();
+		$group = $user['group'];
+		$data['username'] = $user['username'];
 		$data['id'] = $id = isset($_GET['id'])?$_GET['id']:0;
-		if($id>0)$data['ial'] = $this->ial_bpl->selectbyid($id);
+		if($id>0){
+			$data['ial'] = $this->ial_bpl->selectbyid($id);
+			$data['username'] = $data['ial']['User'];
+		}
+		$data['user'] = $this->icm->selectuserbynow($group);
+		
 		//common
 		$data['w'] = 'www';
 		if($id>0){

@@ -77,9 +77,9 @@ function check(){
 							    <input   type="radio" name="user[active]" value="1"  checked />active
 				                <input   type="radio" name="user[active]" value="0" />inactive
 				           </div><br>
-				           
-				           
-				           <div  class="input-append date">
+				           <input  type="hidden" name="group" value="<?php echo $group; ?>"/>
+				           <?php if($group == "LOIS"){?>
+				          <!--   <div  class="input-append date">
 							   <label>group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 								 <select name="user[group]">
 								         <?php if(count($gro)>0){
@@ -91,7 +91,7 @@ function check(){
 								         } ?>
 						         </select>
 							</div><br>
-							
+							-->
 							  <div  class="input-append date">
 							   <label>project&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 								 <select name="user[project]">
@@ -101,7 +101,7 @@ function check(){
 								         <option    value="LOIS Element" >LOIS Element</option>
 						         </select>
 							</div><br>
-							
+							<?php }?>
 							<div  class="input-append date">
 							   <label>local&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 							   <input type="text" name="user[local]"  value=""/>

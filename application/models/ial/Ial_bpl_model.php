@@ -4,7 +4,10 @@ class Ial_bpl_model extends CI_Model{
 		parent::__construct();
 	}
 	
-	function selectAlllist(){
+	function selectAlllist($username){
+		if($username!=''){
+			$this->db->where('User',$username);
+		}
 		return $this->db->get('ial_bpl_list')->result_array();
 	}
 	
@@ -74,8 +77,13 @@ class Ial_bpl_model extends CI_Model{
 		$this->db->insert('ial_history',$ch);
 		return $this->db->trans_complete();
 	}
-	function search_pn($pn){
-		$arr = $this->db->query("select * from ial_bpl_list where US_part_NO like '%$pn%'")->result_array();
+
+	function searchIalNum($ial){
+		$arr = $this->db->query("select * from ial_bpl_list where IAL_NO='$ial'")->result_array();
+		return $arr;
+	}
+	function searchBplNum($bpl){
+		$arr = $this->db->query("select * from ial_bpl_list where BPL_NO='$bpl'")->result_array();
 		return $arr;
 	}
 }

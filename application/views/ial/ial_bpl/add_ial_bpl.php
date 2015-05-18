@@ -137,6 +137,14 @@
 								    <option value="NO" <?php if(isset($ial['MTM']) && $ial['MTM']=='NO'){echo 'selected';}?> >NO</option> 
 								</select>
 							</div>
+							<div class="col-lg-3" style="z-index: 0">
+								<label>Curr_User:</label>
+								<select name="ial[User]" class="form-control">
+								<?php  foreach($user as $key){ ?>
+								    <option value="<?php echo isset($key['username'])?$key['username']:''?>" <?php if(isset($key['username']) && $key['username']==$username){echo 'selected';}?> ><?php echo isset($key['username'])?$key['username']:''; ?></option> 
+								<?php }?>
+								</select>
+							</div>
 							<div class="col-lg-12" style="z-index: 0">
 								<label>Fru_Part_NO:</label>
 								<textarea name="ial[Fru_Part_NO]" class="form-control" ><?php echo isset($ial['Fru_Part_NO'])?$ial['Fru_Part_NO']:''?></textarea>

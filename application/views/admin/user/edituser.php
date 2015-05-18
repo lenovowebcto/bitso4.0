@@ -63,7 +63,7 @@ function check(){
 							  </div><br>
 						<?php 
 							     if(isset($uid) && $uid>0){
-							    ?>
+							    ?>   
 							   <div  class="input-append date">
 							     <label>RePassword</label>
 							     <input type="password" name="repsw" id="repsw" value=""/>
@@ -88,7 +88,7 @@ function check(){
 							    <input   type="radio" name="user[active]" value="1" <?php if(isset($user['active']) && $user['active'] == 1){ ?>checked='checked' <?php }?> checked />active
 				                <input   type="radio" name="user[active]" value="0" <?php if(isset($user['active']) && $user['active'] == 0){ ?>checked='checked' <?php }?> />inactive
 				           </div><br>
-				           
+				           <!--  
 				           <div  class="input-append date">
 							   <label>group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 								 <select name="user[group]">
@@ -101,7 +101,9 @@ function check(){
 								         } ?>
 						         </select>
 							</div><br>
-							
+							-->
+							<input  type="hidden" name="group" value="<?php echo $group; ?>"/>
+							 <?php if($group == "LOIS"){?>
 							  <div  class="input-append date">
 							   <label>project&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 								 <select name="user[project]">
@@ -111,7 +113,7 @@ function check(){
 								         <option  <?php if(isset($user['project']) && $user['project']=="LOIS Element"){echo 'selected';} ?>  value="LOIS Element" >LOIS Element</option>
 						         </select>
 							</div><br>
-							
+							<?php }?>
 							<div  class="input-append date">
 							   <label>local&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 							   <input type="text" name="user[local]"  value="<?php echo isset($user['local'])?$user['local']:'';?>"/>
