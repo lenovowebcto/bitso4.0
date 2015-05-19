@@ -43,78 +43,75 @@ function check(){
             <!-- /.row -->
 			<div class="panel-body">
 				<div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Detail info as below
+                        </div>
                        <form action="<?php echo site_url('admin/user/toadduser') ?>" method="post" onSubmit="return check()">
-                       <table>
+                       <div class="panel-body">
 							 <input name="uid"  value="0" type="hidden"/>
 							 
-							 <div  class="input-append date">
+							 <div  class="col-lg-3">
 							   <label>Username</label>
-							   <input type="text" name="user[Username]"  value=""/>
-							</div><br>
+							   <input class="form-control" type="text" name="user[Username]"  value="" />
+							</div>
 							
-							 <div  class="input-append date">
+							 <div  class="col-lg-3">
 							   <label>Password</label>
-							   <input type="password" name="user[UPWD]" id="password" value=""/>
-							 </div><br>
+							   <input class="form-control"  type="password" name="user[UPWD]" id="password" value=""/>
+							 </div>
 						
-     	                    <div  class="input-append date">
-							   <label>email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-							   <input type="text" name="user[email]" id="email" value=""/>
-							</div><br>
+     	                    <div  class="col-lg-3">
+							   <label>email </label>
+							   <input class="form-control"  type="text" name="user[email]" id="email" value=""/>
+							</div>
 							
-							<div  class="input-append date">
-							   <label>title &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-							   <input type="text" name="user[title]"  value=""/>
-							</div><br>
-							 <div  class="input-append date">
-							   <label>Role&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-							    <input   type="radio" name="user[type]" value="1"  checked />admin
-				                <input   type="radio" name="user[type]" value="2" />user
-				           </div><br>
-						   <div  class="input-append date">
-							   <label>active&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-							    <input   type="radio" name="user[active]" value="1"  checked />active
-				                <input   type="radio" name="user[active]" value="0" />inactive
-				           </div><br>
+							<div  class="col-lg-3">
+							   <label>title </label>
+							   <input class="form-control"  type="text" name="user[title]"  value=""/>
+							</div>
+							<div  class="col-lg-3">
+							   <label>local</label>
+							   <input class="form-control"  type="text" name="user[local]"  value=""/>
+							</div>
+							 <div  class="col-lg-3">
+							   <label>Role</label>
+							   <select name="user[type]" class="form-control"> 
+								    <option value="1" >admin</option> 
+								    <option value="2" >user</option> 
+								</select>
+				           </div>
+						   <div  class="col-lg-3">
+							   <label>Active</label>
+							   <select name="user[active]" class="form-control"> 
+								    <option value="1" >active</option> 
+								    <option value="0" >inactive</option> 
+								</select>
+				           </div>
+				           
 				           <input  type="hidden" name="group" value="<?php echo $group; ?>"/>
 				           <?php if($group == "LOIS"){?>
-				          <!--   <div  class="input-append date">
-							   <label>group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-								 <select name="user[group]">
-								         <?php if(count($gro)>0){
-								         	foreach ($gro as $key){
-								         		?>
-								         		 <option  <?php if(isset($user['group']) && $user['group']==$key['gname']){echo 'selected';} ?>  value=<?php echo isset($key['gname'])?$key['gname']:''; ?>><?php echo isset($key['gname'])?$key['gname']:''; ?></option>
-								         		<?php 
-								         	}
-								         } ?>
-						         </select>
-							</div><br>
-							-->
-							  <div  class="input-append date">
-							   <label>project&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-								 <select name="user[project]">
+				          
+							  <div  class="col-lg-3">
+							   <label>project</label>
+								 <select name="user[project]" class="form-control">
 								         <option    value="" ></option>
 								         <option    value="LOIS TBG/IPG" >LOIS TBG/IPG</option>
 								         <option    value="LOIS OPT/SVC" >LOIS OPT/SVC</option>
 								         <option    value="LOIS Element" >LOIS Element</option>
 						         </select>
-							</div><br>
+							</div>
 							<?php }?>
-							<div  class="input-append date">
-							   <label>local&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-							   <input type="text" name="user[local]"  value=""/>
-							</div><br>
 							
-							<div  class="input-append date">
-							   <label></label>
-							    <input type="SUBMIT" value="SUBMIT"/>
-							  </div>
-							  </table>
+							</div>
+							<div  style="text-align:center;" >
+							    <input type="submit"  class="btn btn-success" value="SUBMIT"/></p>
+							</div>
+							  
 						</form>
 					</div>
-			</div>
+			</div></div>
 			<!-- /.row -->
         </div>
         <!-- /#page-wrapper -->

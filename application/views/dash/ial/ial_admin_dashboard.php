@@ -23,6 +23,7 @@
                     <h1 class="page-header">IAL Dashboard</h1>
                 </div>
             </div>
+            
              <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
@@ -48,27 +49,37 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-green">
+                    <a href="<?php echo site_url('dashboard/ial_dashboard/ial_new_task_dashboard')?>?di=new">
+                               
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
                                     <i class="fa fa-plus-square-o fa-5x"></i>
                                 </div>
-                                <div class="col-xs-9 text-right">
+                                 <div class="col-xs-9 text-right">
                                     <div class="huge"><?php echo isset($n2)?$n2:0;?></div>
-                                    <div>New Tasks</div>
+                                     <div>New Tasks</div>
                                 </div>
+                              
                             </div>
-                        </div>
-                        <a href="<?php echo site_url('dashboard/ial_dashboard/ial_new_task_dashboard')?>?di=new">
+                        </div>  </a>
+                        <a href="<?php echo site_url('dashboard/ial_dashboard/one_new_task_dashboard')?>?di=pn">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">PN_Main View Details(<?php echo $num3?>)</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
                         </a>
-                        <a href="<?php echo site_url('dashboard/ial_dashboard/ial_new_task_dashboard')?>?di=open">
+                        <a href="<?php echo site_url('dashboard/ial_dashboard/one_new_task_dashboard')?>?di=ial">
                             <div class="panel-footer">
-                                <span class="pull-left"> Daily tacker</span>
+                                <span class="pull-left">IAL&BPL View Details(<?php echo $num2?>)</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                         <a href="<?php echo site_url('dashboard/ial_dashboard/one_new_task_dashboard')?>?di=task">
+                            <div class="panel-footer">
+                                <span class="pull-left">IAL_Task View Details(<?php echo $num1?>)</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -97,32 +108,14 @@
                         </a>
                     </div>
                 </div>
-               <!-- 
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-support fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php echo isset($n4)?$n4:0;?></div>
-                                    <div>Overdue Tickets!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="<?php echo site_url('dashboard/dashboard/task_overdue_dashboard');?>?di=over">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-               
-                -->
             </div>
+            <div <?php if (!isset($imagename) | $imagename =='') echo 'style="display:none"';?>class="row">
+				<div class="col-lg-12">
+					<img src="<?php  echo base_url();?>uploads/dashboard/<?php  echo $imagename;?>"
+						width="100%" />
+				</div>
+			</div>
+            </br>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">

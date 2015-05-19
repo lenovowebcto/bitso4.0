@@ -27,7 +27,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			}
 			
 			$this->session->set_userdata($admin);
-			redirect('dashboard/dashboard/admin_dashboard');
+			if($user['group']=='LOIS'){
+				redirect('dashboard/dashboard/admin_dashboard');
+			}else{
+				redirect('dashboard/ial_dashboard/admin_dashboard');
+			}
+			
 		}
  	}
  	

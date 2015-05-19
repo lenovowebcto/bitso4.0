@@ -90,7 +90,7 @@
 								<label>brand:</label>
 								<select name="ial[brand]" class="form-control">
 								<?php  foreach($brand as $key){ ?>
-								    <option value="<?php echo isset($key['brand'])?$key['brand']:''?>" <?php if(isset($ial['brand']) && $ial['brand']==$key['brand']){echo 'selected';}?> ><?php echo isset($key['brand'])?$key['brand']:''; ?></option> 
+								    <option value="<?php echo isset($key['bname'])?$key['bname']:''?>" <?php if(isset($ial['brand']) && $ial['brand']==$key['bname']){echo 'selected';}?> ><?php echo isset($key['bname'])?$key['bname']:''; ?></option> 
 								<?php }?>
 								</select>
 								

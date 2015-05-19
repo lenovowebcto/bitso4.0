@@ -265,7 +265,7 @@
                 <div class="sidebar-nav navbar-collapse">
                  <ul class="nav" id="side-menu">
                   <li>
-                     <a href="<?php echo site_url('dashboard/ial_dashboard/admin_dashboard/admin_dashboard')?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                     <a href="<?php echo site_url('dashboard/ial_dashboard/admin_dashboard')?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                   </li>
                  <?php 
                   if($user['type']==1){ ?>
@@ -281,6 +281,7 @@
                                 <li><a href="<?php echo site_url('Ial_admin/IAL_status');?>">IAL Status Management</a></li>
                                 <li><a href="<?php echo site_url('Ial_admin/IAL_brand');?>">IAL Brand Management</a></li>
                                 <li><a href="<?php echo site_url('Ial_admin/IAL_sub_series');?>">IAL Sub Series Management</a></li>
+                                <li><a href="<?php echo site_url('Ial_admin/UploadImage');?>">IAL Image Upload</a></li>
                                 
                                </ul>
                             <!-- /.nav-second-level -->
