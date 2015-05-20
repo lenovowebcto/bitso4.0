@@ -25,14 +25,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				$admintask = $this->model->getClosedtask();
 				$admin = array('user'=>array('username'=>$username,'UPWD'=>md5($psw),'type'=>$user['type']),'user_admintask'=>$admintask);
 			}
-			
-			$this->session->set_userdata($admin);
+            $session = new CI_Session();
+			$session->set_userdata($admin);
+           // var_dump($session->userdata('user'));exit;
 			redirect('dashboard/dashboard/admin_dashboard');
 		}
  	}
  	
  	function logout(){
- 		$this->session->unset_userdata('user');
+        $session = new CI_Session();
+        $session->unset_userdata('user');
  		redirect('login');
  	}
  }

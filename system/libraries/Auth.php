@@ -1,24 +1,32 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Auth{
 
-   function getUser(){
- 		$user = $this->session->userdata('user');
- 		return $user;
- 	}
+    function __construct(){
 
- 	function setLoginUser($user){
- 		$this->session->set_userdata($user);
+    }
+   public static  function getUser(){
+        $session = new CI_Session();
+
+        $user = $session->userdata('user');
+        return $user;
+    }
+
+ 	public static function setLoginUser($user){
+        $session = new CI_Session();
+ 		$session->set_userdata($user);
  		
  	}
-   function getpro(){
-    	$pro = $this->session->userdata('project');
+  public static  function getpro(){
+       $session = new CI_Session();
+    	$pro = $session->userdata('project');
     	return $pro;
    }
-   function getTask(){
-   	$pro = $this->session->userdata('user_admintask');
+   public static function getTask(){
+       $session = new CI_Session();
+   	$pro = $session->userdata('user_admintask');
    	return $pro;
    }
- 	function execute_auth(){
+ 	public static function execute_auth(){
  		$usert = self :: getUser();
  		if(isset($usert['username'])){ 
  			$usert = self :: getUdmin($usert['username'],$usert['UPWD']);
@@ -33,7 +41,7 @@ class Auth{
  		redirect('login');
  		return ;
  	}
- 	function getUdmin($name,$password){
+ 	public static function getUdmin($name,$password){
  		$sql = "SELECT * FROM common_user WHERE username='$name' AND UPWD='${password}' AND active=1"; 
  		$obj = mysql_query($sql);
  		$row = mysql_fetch_array($obj);
