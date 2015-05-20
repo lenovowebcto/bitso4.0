@@ -50,4 +50,22 @@ class IAL_common_model extends CI_Model{
 	function select_ial_sub_series(){
 		return $this->db->get('ial_common_subseries')->result_array();
 	}
+	
+	function selectuserbynow($group){
+		$this->db->where('group',$group);
+		return $this->db->select('username')->get('common_user')->result_array();
+	}
+	function selectAllIAL_Fields($tn){
+		$sql = "select * from $tn";
+		$result = mysql_query($sql);
+		for ($i=0;$i<mysql_num_fields($result);$i++){
+			$key[] = mysql_field_name($result,$i).'';
+		}
+		return $key;
+	}
+	function relationIal_tasklist($tn){
+		$this->db->select('*');
+		$arr = $this->db->get($tn);
+		return $arr->result_array();
+	}
 }

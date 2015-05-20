@@ -148,6 +148,15 @@
 								</select>
 									</div>
 									
+									<div class="col-lg-3" style="z-index: 0">
+								<label>Curr_User:</label>
+								<select name="task[User]" class="form-control">
+								<?php  foreach($user as $key){ ?>
+								    <option value="<?php echo isset($key['username'])?$key['username']:''?>" <?php if(isset($key['username']) && $key['username']==$username){echo 'selected';}?> ><?php echo isset($key['username'])?$key['username']:''; ?></option> 
+								<?php }?>
+								</select>
+							</div>
+									
 									<div class="col-lg-12">
 										<div >
 											<label>Comment:</label> 

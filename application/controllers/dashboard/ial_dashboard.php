@@ -4,23 +4,36 @@ class ial_dashboard extends CI_Controller{
 		parent::__construct();
 		$this->load->model('ial/IAL_DashModel','ial_dash');
 		Auth::execute_auth();
-		
 	}
 	
 	function admin_dashboard(){
 		
 		$user = Auth::getUser();
+		$type=$user['type'];
+		if($type==2){
+			$uname = $user['username'];
+		}else{
+			$uname ='';
+		}
 		// will overdue task
-		$data['pns'] = $this->ial_dash->getwillpn_maintenance();
-		$data['ts'] = $this->ial_dash->getwilliala_task();
-		$data['rls'] = $this->ial_dash->getwillial_relay();
-		$data['bpls'] = $this->ial_dash->getwillial_bpl();
+		$data['pns'] = $this->ial_dash->getwillpn_maintenance($uname);
+		$data['ts'] = $this->ial_dash->getwilliala_task($uname);
+		$data['bpls'] = $this->ial_dash->getwillial_bpl($uname);
 		
-		$data['n1'] = $this->ial_dash->getAlltaskNO();//totle
-		$data['n2'] = $this->ial_dash->getAllnewtaskNO();//new task
-		$data['n3'] = $this->ial_dash->getAllwilloverduetaskNO();//will overdue task
-		$data['n4'] = $this->ial_dash->getAlloverduetaskNO();// overdue task
-		$this->load->view('dash/admin_dashboard',$data);
+		$data['n1'] = $this->ial_dash->getAlltaskNO($uname);//all's totle
+		
+		$data['n2'] = $this->ial_dash->getAllnewtaskNO($uname);//new task
+		$data['n3'] = $this->ial_dash->getAllwilloverduetaskNO($uname);//will overdue task
+		//count(pn,ial,task) in new
+		$data['num1'] = $this->ial_dash->gettasknewtaskNO($uname);
+		$data['num2'] = $this->ial_dash->getialnewtaskNO($uname);
+		$data['num3'] = $this->ial_dash->getpnnewtaskNO($uname);
+		if(get_filenames('uploads/dashboard/')){
+			$data['imagename'] = get_filenames('uploads/dashboard/')[0];
+		}else{
+			$data['imagename'] = '';
+		}
+		$this->load->view('dash/ial/ial_admin_dashboard',$data);
 	
 	}
 		
@@ -28,32 +41,51 @@ class ial_dashboard extends CI_Controller{
 	function ial_admin_dash_list(){
 		// All task
 		$data['dif'] = $_GET['di'];
-		
-		$data['pns'] = $this->ial_dash->getpns();
-		$data['bpls'] = $this->ial_dash->getbpls();
-		$data['ts'] = $this->ial_dash->gettasks();
-		$data['rls'] = $this->ial_dash->getrelays();
+		$user = Auth::getUser();
+		$type=$user['type'];
+		if($type==2){
+			$uname = $user['username'];
+		}else{
+			$uname ='';
+		}
+		$data['pns'] = $this->ial_dash->getpns($uname);
+		$data['bpls'] = $this->ial_dash->getbpls($uname);
+		$data['ts'] = $this->ial_dash->gettasks($uname);
 		
 		$this->load->view('dash/ial/ial_admin_dash_list',$data);
 		
 	}
-	function new_task_dashboard(){
+	function ial_new_task_dashboard(){
 		$data['dif'] = $_GET['di'];
-		$data['com'] = $this->ial_dash->getNewComByAdmin();
-		$data['ele'] = $this->ial_dash->getNewEleByAdmin();
-		$data['req'] = $this->ial_dash->getNewEp_reqByAdmin();
-		$data['opt'] = $this->ial_dash->getNewOptByAdmin();
-		
-		$this->load->view('dash/admin_dash_list',$data);
+		$user = Auth::getUser();
+		$type=$user['type'];
+		if($type==2){
+			$uname = $user['username'];
+		}else{
+			$uname ='';
+		}
+		$data['pns'] = $this->ial_dash->getNewpns($uname);
+		$data['bpls'] = $this->ial_dash->getNewbpls($uname);
+		$data['ts'] = $this->ial_dash->getNewtask($uname);
+	   $this->load->view('dash/ial/ial_new_dash_list',$data);
 	}
-	
-	function task_overdue_dashboard(){
-		$data['dif'] = $_GET['di'];
-		$data['com'] = $this->ial_dash->getOverdueComByAdmin();
-		$data['ele'] = $this->ial_dash->getOverdueEleByAdmin();
-		$data['req'] = $this->ial_dash->getOverdueEp_reqByAdmin();
-		$data['opt'] = $this->ial_dash->getOverdueOptByAdmin();
-		
-		$this->load->view('dash/admin_dash_list',$data);
+	function one_new_task_dashboard(){
+		$data['dif'] = $dif = $_GET['di'];
+		$user = Auth::getUser();
+		$type=$user['type'];
+		if($type==2){
+			$uname = $user['username'];
+		}else{
+			$uname ='';
+		}
+		//echo $dif;exit;
+		if($dif=='pn'){
+			$data['pns'] = $this->ial_dash->getNewpns($uname);
+		}elseif($dif=='ial'){
+			$data['bpls'] = $this->ial_dash->getNewbpls($uname);
+		}elseif($dif=='task'){
+			$data['ts'] = $this->ial_dash->getNewtask($uname);
+		}
+		$this->load->view('dash/ial/one_dash',$data);
 	}
 }

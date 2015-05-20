@@ -27,7 +27,7 @@
                         <div class="panel-heading">
                           PN_maintenance  DataTables Advanced Tables
                         </div>
-                       <input type="button" value="report" onclick='location.href="<?php echo site_url('taskreport/ial_report')?>?dec=pn"' />
+                       <input type="button" value="report" onclick='location.href="<?php echo site_url('taskreport/report')?>?t=tpg"' />
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="dataTable_wrapper">
@@ -82,7 +82,7 @@
                         <div class="panel-heading">
                           IAL&BPL  DataTables Advanced Tables
                         </div>
-                         <input type="button" value="report" onclick='location.href="<?php echo site_url('taskreport/ial_report')?>?dec=ial"' />
+                         <input type="button" value="report" onclick='location.href="<?php echo site_url('taskreport/report')?>?t=opt"' />
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="dataTable_wrapper">
@@ -146,7 +146,7 @@
                         <div class="panel-heading">
                           IAL_Task  DataTables Advanced Tables
                         </div>
-                         <input type="button" value="report" onclick='location.href="<?php echo site_url('taskreport/ial_report')?>?dec=5"' />
+                         <input type="button" value="report" onclick='location.href="<?php echo site_url('taskreport/report')?>?t=svc"' />
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="dataTable_wrapper">
@@ -208,6 +208,7 @@
         $('#dataTables-example3').DataTable({
             responsive: true
         });
+	    
     });
     </script>
 </body>

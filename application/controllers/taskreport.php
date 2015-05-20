@@ -3,9 +3,21 @@ class taskreport extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->model('TaskModel');
+		$this->load->model('ial/IAL_common_model','icm');
 		Auth::execute_auth();
 	}
 	
+	function ial_report(){
+		$dec = isset($_GET['dec'])?$_GET['dec']:"";
+		
+		if($dec=='pn')$tablename='ial_pn_main';
+		if($dec=='ial')$tablename = 'ial_bpl_list';
+		if($dec=='5')$tablename = 'ial_task';
+		
+		$fields = $this->icm->selectAllIAL_Fields($tablename);
+		$vals = $this->icm->relationIal_tasklist($tablename);
+		$this->excelReport($fields,$vals,$dec);
+	}
 	function report(){
 		
 		//一维数组fields 二维数组 valus

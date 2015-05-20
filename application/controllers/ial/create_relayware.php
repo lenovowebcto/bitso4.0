@@ -11,7 +11,13 @@ class create_relayware extends CI_Controller {
 	}
 	public function index() {
 		$data ['pr_id'] = $pr_id = isset ( $_GET ['pr_id'] ) ? $_GET ['pr_id'] : 0;
-		$data ['task'] = $this->ial_relayware_model->selectAllTask ();
+		$user = Auth::getUser();
+		if ($user['type'] =='1'){
+			$data['task'] = $this->ial_relayware_model->selectAllTask('');
+		}elseif($user['type'] == '2'){
+			$data['task'] = $this->ial_relayware_model->selectAllTask($user['username']);
+		}
+
 		$this->load->view ( 'ial/relayware/task_list', $data );
 	}
 	public function task() {
@@ -23,6 +29,11 @@ class create_relayware extends CI_Controller {
 		$data ['category2'] = $this->icm->ialcommoncategory2 ( $data ['category1'] [0] ['id'] );
 		$data ['Brand'] = $this->icm->select_ial_brand ();
 		$data ['Status'] = $this->icm->get_ial_status ();
+		$user = Auth::getUser();
+		$group = $user['group'];
+		$data['username'] = $user['username'];
+		$data['user'] = $this->icm->selectuserbynow($group);
+		
 		$pen = $data ['pen'] = $this->icm->selectAllIalPen ( $id, 'relayware' );
 		$data ['hist'] = $this->icm->selectAllIALhistory ( $id, 'relayware' );
 		$c1id = $this->icm->selectbyid ( $id, 'ial' );
@@ -30,6 +41,7 @@ class create_relayware extends CI_Controller {
 		$data ['pr_id'] = $pr_id = isset ( $_GET ['pr_id'] ) ? $_GET ['pr_id'] : 0;
 		$id = isset ( $_GET ['id'] ) ? $_GET ['id'] : 0;
 		$data ['task'] ['Upload_Date'] = date("Y/m/d");
+
 		if (isset ( $id ) && $id > 0) {
 			// ////////////
 			$c1id = $this->icm->selectbyid ( $id, 'relayware' );

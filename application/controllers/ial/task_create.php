@@ -7,8 +7,15 @@
 		Auth::execute_auth();
 	}
 	public function index() {
+		$user = Auth::getUser();
+		$data['task'] = $this->TaskModel->selectAllTask($user['username']);
 		$data['pr_id'] = $pr_id = isset($_GET['pr_id'])?$_GET['pr_id']:0;
-		$data['task'] = $this->TaskModel->selectAllTask();
+		$user = Auth::getUser();
+		if ($user['type'] =='1'){
+			$data['task'] = $this->TaskModel->selectAllTask('');
+		}elseif($user['type'] == '2'){
+			$data['task'] = $this->TaskModel->selectAllTask($user['username']);
+		}
 		$this->load->view('ial/task/task_list',$data);
 	}
 
@@ -25,6 +32,10 @@
 		$data['Family_name'] = $this->icm->select_ial_family();
 		$data['Sub_Series'] = $this->icm->select_ial_sub_series();
 		$data['Status'] = $this->icm->get_ial_status();
+		$user = Auth::getUser();
+		$group = $user['group'];
+		$data['username'] = $user['username'];
+		$data['user'] = $this->icm->selectuserbynow($group);
 		
 		$pen = $data['pen'] = $this->icm->selectAllIalPen($id,'5');
 		$data['hist'] = $this->icm->selectAllIALhistory($id,'5');

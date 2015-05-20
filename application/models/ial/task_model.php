@@ -5,10 +5,12 @@ class task_model extends CI_Model{
 	}
 	
 // select all tasks
-    function selectAllTask() {
-        $query = $this->db->query("select * from ial_task")->result_array();
-        return $query;
-    }
+	function selectAllTask($username){
+		if($username != ""){
+			$this->db->where('User',$username);
+		}
+		return $this->db->get('ial_task')->result_array();
+	}
 	
     //insert
     function inserttask($array,$user,$pending,$sta,$pr_id,$c1,$c2){
@@ -79,5 +81,13 @@ class task_model extends CI_Model{
 	function selectAllpeis($id,$pr_id){
 		$query = $this->db->select("*")->from('ial_issue')->where('ial_id',$id)->where('ial_decide',$pr_id)->get()->result_array();
 		return  $query;
+	}
+	function searchIalNum($ial){
+		$arr = $this->db->query("select * from ial_task where IAL_number='$ial'")->result_array();
+		return $arr;
+	}
+	function searchBplNum($bpl){
+		$arr = $this->db->query("select * from ial_task where BPL_Number='$bpl'")->result_array();
+		return $arr;
 	}
 }

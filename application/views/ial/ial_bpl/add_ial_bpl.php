@@ -90,7 +90,7 @@
 								<label>brand:</label>
 								<select name="ial[brand]" class="form-control">
 								<?php  foreach($brand as $key){ ?>
-								    <option value="<?php echo isset($key['brand'])?$key['brand']:''?>" <?php if(isset($ial['brand']) && $ial['brand']==$key['brand']){echo 'selected';}?> ><?php echo isset($key['brand'])?$key['brand']:''; ?></option> 
+								    <option value="<?php echo isset($key['bname'])?$key['bname']:''?>" <?php if(isset($ial['brand']) && $ial['brand']==$key['bname']){echo 'selected';}?> ><?php echo isset($key['bname'])?$key['bname']:''; ?></option> 
 								<?php }?>
 								</select>
 								
@@ -135,6 +135,14 @@
 								    <option value=" " <?php if(isset($ial['MTM']) && $ial['MTM']==''){echo 'selected';}?> ></option> 
 								    <option value="YES" <?php if(isset($ial['MTM']) && $ial['MTM']=='YES'){echo 'selected';}?> >YES</option> 
 								    <option value="NO" <?php if(isset($ial['MTM']) && $ial['MTM']=='NO'){echo 'selected';}?> >NO</option> 
+								</select>
+							</div>
+							<div class="col-lg-3" style="z-index: 0">
+								<label>Curr_User:</label>
+								<select name="ial[User]" class="form-control">
+								<?php  foreach($user as $key){ ?>
+								    <option value="<?php echo isset($key['username'])?$key['username']:''?>" <?php if(isset($key['username']) && $key['username']==$username){echo 'selected';}?> ><?php echo isset($key['username'])?$key['username']:''; ?></option> 
+								<?php }?>
 								</select>
 							</div>
 							<div class="col-lg-12" style="z-index: 0">

@@ -264,11 +264,11 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                  <ul class="nav" id="side-menu">
+                  <li>
+                     <a href="<?php echo site_url('dashboard/ial_dashboard/admin_dashboard')?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                  </li>
                  <?php 
                   if($user['type']==1){ ?>
-                        <li>
-                            <a href="<?php echo site_url('dashboard/ial_dashboard/admin_dashboard')?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Admin<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -281,10 +281,12 @@
                                 <li><a href="<?php echo site_url('Ial_admin/IAL_status');?>">IAL Status Management</a></li>
                                 <li><a href="<?php echo site_url('Ial_admin/IAL_brand');?>">IAL Brand Management</a></li>
                                 <li><a href="<?php echo site_url('Ial_admin/IAL_sub_series');?>">IAL Sub Series Management</a></li>
+                                <li><a href="<?php echo site_url('Ial_admin/UploadImage');?>">IAL Image Upload</a></li>
                                 
                                </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <?php }?>
                         <li> <!--TPG/IPG-->
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>PN Maintenance<span class="fa arrow"></span></a>
                                <ul class="nav nav-second-level">
@@ -296,7 +298,7 @@
 						<li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>IAL Task<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                          			<li><a href="<?php echo site_url('ial/task_create/index');?>?pr_id=5&archive=0">Task List</a></li>
+                          			<li><a href="<?php echo site_url('ial/task_create/index');?>?pr_id=5">Task List</a></li>
                           			<li><a href="<?php echo site_url('ial/task_create/task');?>?pr_id=5">Add Task</a></li>
                             </ul>
                         </li>
@@ -304,7 +306,7 @@
                         <li> <!--EP/ERQ-->
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>IAL Relayware<span class="fa arrow"></span></a>
                            <ul class="nav nav-second-level">
-                          			<li><a href="<?php echo site_url('ial/create_relayware/index');?>?pr_id=relayware&archive=0">Task List</a></li>
+                          			<li><a href="<?php echo site_url('ial/create_relayware/index');?>?pr_id=relayware">Task List</a></li>
                           			<li><a href="<?php echo site_url('ial/create_relayware/task');?>?pr_id=relayware">Add Task</a></li>
                             </ul>
                         </li>
@@ -315,55 +317,11 @@
                           			<li><a href="<?php echo site_url('ial/ial_bpl/edit');?>">Add IAL&BPL</a></li>
                             </ul>
                         </li>
-                       
-                    <?php    }else if($user['type']==2){ ?>
-                        <li class="sidebar-search">
-                            <!-- /input-group -->
-                        </li>
-                        <li>
-                            <a href="<?php echo site_url('dashboard/dashboard/admin_dashboard')?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                      <ul class="nav nav-second-level">
-                          			<li><a href="<?php echo site_url('ep_req/ep_req_create_task/index');?>?pr_id=5&archive=0">Task List</a></li>
-                          			<li><a href="<?php echo site_url('ep_req/ep_req_create_task/task');?>?pr_id=5">Add Task</a></li>
-                            </ul>
-                        </li>
-                    
-                          <li> <!--TPG/IPG-->
-                          	<a href="#"><i class="fa fa-wrench fa-fw"></i>PN Maintenance<span class="fa arrow"></span></a>
-                          <ul class="nav nav-second-level">
-                          			<li><a href="<?php echo site_url('ep_req/ep_req_create_task/index');?>?pr_id=5&archive=0">Task List</a></li>
-                          			<li><a href="<?php echo site_url('ep_req/ep_req_create_task/task');?>?pr_id=5">Add Task</a></li>
-                            </ul>
-                          </li>
-                          <li>
-			                  <a href="#"><i class="fa fa-wrench fa-fw"></i> IAL Task<span class="fa arrow"></span></a>
-			             <ul class="nav nav-second-level">
-                          			<li><a href="<?php echo site_url('ial/task_create/index');?>?pr_id=5&archive=0">Task List</a></li>
-                          			<li><a href="<?php echo site_url('ial/task_create/task');?>?pr_id=5">Add Task</a></li>
-                            </ul>
-			              </li>
-                       
-                         <li>
-	                          <a href="#"><i class="fa fa-wrench fa-fw"></i> IAL Relayware <span class="fa arrow"></span></a>
-                         <ul class="nav nav-second-level">
-                          			<li><a href="<?php echo site_url('ial/create_relayware/index');?>?pr_id=5&archive=0">Task List</a></li>
-                          			<li><a href="<?php echo site_url('ial/create_relayware/task');?>?pr_id=5">Add Task</a></li>
-                            </ul>
-                         </li>
-                         <li> <!--EP/ERQ-->
-                          	<a href="#"><i class="fa fa-wrench fa-fw"></i> IAL&BPL LIST<span class="fa arrow"></span></a>
-                         <ul class="nav nav-second-level">
-                          			<li><a href="<?php echo site_url('ep_req/ep_req_create_task/index');?>?pr_id=5&archive=0">Task List</a></li>
-                          			<li><a href="<?php echo site_url('ep_req/ep_req_create_task/task');?>?pr_id=5">Add Task</a></li>
-                            </ul>
-                         </li>
-					 <?php  } ?>
-                         
                         <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Common Function<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li><a href="<?php echo site_url('dashboard/dashboard/admin_dash_list');?>?di=list">Report</a></li>
-                                <li><a href="<?php echo site_url('ial/pn_search/pn_search');?>">Serach PN</a></li>
+                            <ul class="nav nav-second-level">   
+                                <li><a href="<?php echo site_url('dashboard/ial_dashboard/ial_admin_dash_list');?>?di=list">Report</a></li>
+                                <li><a href="<?php echo site_url('ial/pn_search/pn_search');?>">Serach</a></li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
