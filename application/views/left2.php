@@ -222,7 +222,7 @@
                             <ul class="nav nav-second-level">
                                 <li><a href="<?php echo site_url('admin/admin_task/add_admintask') ?>">Create Task</a></li>
                                 <li><a href="<?php echo site_url('admin/admin_task')?>">Task List</a></li>
-                                <li><a href="<?php echo site_url('dashboard/dashboard/admin_dash_list');?>?di=list">Report</a></li>
+                                <li><a href="<?php echo site_url('dashboard/dashboard/admin_dash_list');?>?di=list&archive=0">Report</a></li>
                                 <li><a href="<?php echo site_url('admin/archive/alltickets');?>">Archive</a></li>
                                 <li><a href="<?php echo site_url('admin/admin_task/showtask');?>">My Task</a></li>
                                 <li><a href="<?php echo site_url('pn_search/pn_search/pn_search');?>">Serach PN</a></li>

@@ -149,4 +149,35 @@ class IAL_DashModel extends CI_Model{
 		}
 		return $n2;
 	}
+	
+	 function gettaskovertasks($uname){
+		$today = date('Y-m-d',time());
+		$sev = date('Y-m-d',strtotime('+7 day'));
+		return  $this->db->query("select * from ial_task where AD>'$today' and AD<='$sev' and status!='Close'")->result_array();
+	}
+	function getialovertasks($uname){
+		$today = date('Y-m-d',time());
+		$sev = date('Y-m-d',strtotime('+7 day'));
+		return $this->db->query("select * from ial_bpl_list where AD>'$today' and AD<='$sev' and status!='Close'")->result_array();
+	}
+	function getpnovertasks($uname){
+		$today = date('Y-m-d',time());
+		$sev = date('Y-m-d',strtotime('+7 day'));
+		return $this->db->query("select * from ial_pn_main where close_date>'$today' and close_date<='$sev' and status!='Close'")->result_array();
+	} 
+	function gettaskovertaskNO($uname){
+		$today = date('Y-m-d',time());
+		$sev = date('Y-m-d',strtotime('+7 day'));
+		return  $this->db->query("select * from ial_task where AD>'$today' and AD<='$sev' and status!='Close'")->num_rows();
+	}
+	function getialovertaskNO($uname){
+		$today = date('Y-m-d',time());
+		$sev = date('Y-m-d',strtotime('+7 day'));
+		return $this->db->query("select * from ial_bpl_list where AD>'$today' and AD<='$sev' and status!='Close'")->num_rows();
+	}
+	function getpnovertaskNO($uname){
+		$today = date('Y-m-d',time());
+		$sev = date('Y-m-d',strtotime('+7 day'));
+		return $this->db->query("select * from ial_pn_main where close_date>'$today' and close_date<='$sev' and status!='Close'")->num_rows();
+	}
 }

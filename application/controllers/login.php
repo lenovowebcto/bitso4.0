@@ -20,10 +20,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 			$user = $this->model->getuser($username,md5($psw));
 			if($user['type']==2){
 				$admintask = $this->model->getadmintask($username);
-				$admin = array('user'=>array('username'=>$username,'UPWD'=>md5($psw),'type'=>$user['type']),'project'=>$user['project'],'user_admintask'=>$admintask);
+				$admin = array('user'=>array('username'=>$username,'UPWD'=>md5($psw),'type'=>$user['type'],'group'=>$user['group']),'project'=>$user['project'],'user_admintask'=>$admintask);
 			}else{
 				$admintask = $this->model->getClosedtask();
-				$admin = array('user'=>array('username'=>$username,'UPWD'=>md5($psw),'type'=>$user['type']),'user_admintask'=>$admintask);
+				$admin = array('user'=>array('username'=>$username,'UPWD'=>md5($psw),'type'=>$user['type'],'group'=>$user['group']),'user_admintask'=>$admintask);
 			}
             $session = new CI_Session();
 			$session->set_userdata($admin);

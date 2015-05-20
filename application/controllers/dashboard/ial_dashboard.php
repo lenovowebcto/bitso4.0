@@ -28,6 +28,10 @@ class ial_dashboard extends CI_Controller{
 		$data['num1'] = $this->ial_dash->gettasknewtaskNO($uname);
 		$data['num2'] = $this->ial_dash->getialnewtaskNO($uname);
 		$data['num3'] = $this->ial_dash->getpnnewtaskNO($uname);
+		//count(pn,ial,task) in will_overdue
+		$data['c1'] = $this->ial_dash->gettaskovertaskNO($uname);
+		$data['c2'] = $this->ial_dash->getialovertaskNO($uname);
+		$data['c3'] = $this->ial_dash->getpnovertaskNO($uname);
 		if(get_filenames('uploads/dashboard/')){
 			$data['imagename'] = get_filenames('uploads/dashboard/')[0];
 		}else{
@@ -87,5 +91,25 @@ class ial_dashboard extends CI_Controller{
 			$data['ts'] = $this->ial_dash->getNewtask($uname);
 		}
 		$this->load->view('dash/ial/one_dash',$data);
+	}
+	function one_willover_dashboard(){
+		$data['dif'] = $dif = $_GET['o'];
+		$user = Auth::getUser();
+		$type=$user['type'];
+		if($type==2){
+			$uname = $user['username'];
+		}else{
+			$uname ='';
+		}
+		//echo $dif;exit;
+		if($dif=='pn'){
+			$data['pns'] = $this->ial_dash->getpnovertasks($uname);
+		}elseif($dif=='ial'){
+			$data['bpls'] = $this->ial_dash->getialovertasks($uname);
+		}elseif($dif=='task'){
+			$data['ts'] = $this->ial_dash->gettaskovertasks($uname);
+		}
+		$this->load->view('dash/ial/willover_dash',$data);
+		
 	}
 }

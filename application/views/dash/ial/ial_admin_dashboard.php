@@ -99,9 +99,23 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="<?php echo site_url('dashboard/ial_dashboard/one_willover_dashboard')?>?o=pn">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">PN_WillOver</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                        <a href="<?php echo site_url('dashboard/ial_dashboard/one_willover_dashboard')?>?o=ial">
+                            <div class="panel-footer">
+                                <span class="pull-left">IAL&BPL WillOver</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                        <a href="<?php echo site_url('dashboard/ial_dashboard/one_willover_dashboard')?>?o=task">
+                            <div class="panel-footer">
+                                <span class="pull-left">IAL_Task WillOver</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
