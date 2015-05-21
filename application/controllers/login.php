@@ -25,10 +25,15 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 				$admintask = $this->model->getClosedtask();
 				$admin = array('user'=>array('username'=>$username,'UPWD'=>md5($psw),'type'=>$user['type'],'group'=>$user['group']),'user_admintask'=>$admintask);
 			}
-            $session = new CI_Session();
+         
+			$session = new CI_Session();
 			$session->set_userdata($admin);
-           // var_dump($session->userdata('user'));exit;
-			redirect('dashboard/dashboard/admin_dashboard');
+			if($user['group']=='LOIS'){
+				redirect('dashboard/dashboard/admin_dashboard');
+			}else{
+				redirect('dashboard/ial_dashboard/admin_dashboard');
+			}
+				
 
 		}
  	}
