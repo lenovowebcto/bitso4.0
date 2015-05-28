@@ -37,12 +37,15 @@ $this->load->view ( 'left2' );
 										<thead>
 											<tr>
 												<th>ID</th>
-												<th>Record_Date</th>
-												<th>IAL_number</th>
-												<th>Family_name</th>
-												<th>Sub_Series</th>
-												<th>Planner</th>
-												<th>Status</th>
+												<th>IAL number</th>
+                                                <th>Brand</th>
+                                                <th>Family name</th>
+                                                <th>sub series</th>
+                                                <th>AD </th>
+												<th>EOW date</th>
+												<th>RTM date</th>
+												<th>status </th>
+												<th>record date</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -59,18 +62,18 @@ $this->load->view ( 'left2' );
 									?>
 						    	<tr>
 									<td><a href="<?php echo site_url('ial/task_create/task') ?>?id=<?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?>&pr_id=<?php echo isset($pr_id)?$pr_id:0;?>"><?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?></a></td>
-									
-									<td><?php if(isset($task[$i]['Record_Date']) && $task[$i]['Record_Date']!='0000-00-00') { echo isset($task[$i]['Record_Date']) ?$task[$i]['Record_Date']:'';}?></td>
-										
-									<!--  <td><?php echo isset($task[$i]['Deadline']) ?$task[$i]['Deadline']:'';?></td>-->
-									<td><?php echo isset($task[$i]['IAL_number']) ?$task[$i]['IAL_number']:'';?></td>
-									<td><?php if(isset($task[$i]['Family_name']) && $task[$i]['Family_name']!='0000-00-00') { echo isset($task[$i]['Family_name']) ?$task[$i]['Family_name']:'';}?></td>
-										
-									<!--<td><?php echo isset($task[$i]['RequestDate']) ?$task[$i]['RequestDate']:'';?></td>-->
-									<td><?php echo isset($task[$i]['Sub_Series']) ?$task[$i]['Sub_Series']:'';?></td>
-									<td><?php echo isset($task[$i]['Planner']) ?$task[$i]['Planner']:'';?></td>
+
+									<td><a href="<?php echo site_url('ial/task_create/task') ?>?id=<?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?>&pr_id=<?php echo isset($pr_id)?$pr_id:0;?>"><?php echo isset($task[$i]['IAL_number']) ?$task[$i]['IAL_number']:'';?></a></td>
+                                    <td><?php echo isset($task[$i]['Brand']) ?$task[$i]['Brand']:'';?></td>
+                                    <td><?php if(isset($task[$i]['Family_name']) && $task[$i]['Family_name']!='0000-00-00') { echo isset($task[$i]['Family_name']) ?$task[$i]['Family_name']:'';}?></td>
+                                    <td><?php echo isset($task[$i]['Sub_Series']) ?$task[$i]['Sub_Series']:'';?></td>
+                                     <td><?php echo isset($task[$i]['AD']) ?$task[$i]['AD']:'';?></td>
+                                    <td><?php echo isset($task[$i]['EOW']) ?$task[$i]['EOW']:'';?></td>
+									<td><?php echo isset($task[$i]['RTM']) ?$task[$i]['RTM']:'';?></td>
 									<td><?php echo isset($task[$i]['Status']) ?$task[$i]['Status']:'';?></td>
-								</tr>
+                                    <td><?php if(isset($task[$i]['Record_Date']) && $task[$i]['Record_Date']!='0000-00-00') { echo isset($task[$i]['Record_Date']) ?$task[$i]['Record_Date']:'';}?></td>
+
+                                </tr>
 								<?php } ?>
 
                                     </tbody>

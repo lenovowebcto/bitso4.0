@@ -44,7 +44,7 @@
 												style="width: 200px" id="Record_Date" class="form-control"
 												data-beatpicker="true" name="task[Record_Date]"
 												value="<?php echo isset($task['Record_Date'])?$task['Record_Date']:'0000-00-00';?>" <?php if($type==2){?> disabled='disabled'<?php }?>/>
-										
+
 									</div>
 									<div class="col-lg-3">
 											<label>AD:</label>
@@ -80,10 +80,22 @@
 												value="<?php echo isset($task['IAL_number'])?$task['IAL_number']:'';?>" />
 										
 									</div>
-									
+                            <div class="col-lg-3">
+                                <label>Brand:</label>
+                                <select style="width: 200px" id="Brand" class="form-control" name="task[Brand]">
+                                    <option value="" <?php if(isset($task['Brand']) && $task['Brand']==''){echo 'selected';}?> ></option>
+                                    <?php  foreach($Brand as $key){
+                                        ?>
+                                        <option <?php if(isset($task['Brand']) && $task['Brand']==$key['bname']){echo 'selected';}?> >
+                                            <?php echo isset($key['bname'])?$key['bname']:$brand; ?></option>
+                                    <?php
+                                    }?>
+                                </select>
+                            </div>
 									<div class="col-lg-3">
 											<label>Family name:</label>
                                             <select style="width: 200px" id="BU" class="form-control selectpicker" data-live-search="true" name="task[Family_name]">
+                                                <option value="" <?php if(isset($task['Family_name']) && $task['Family_name']==''){echo 'selected';}?> >&nbsp;</option>
                                                 <?php  foreach($Family_name as $key){
                                                     ?>
                                                     <option <?php if(isset($task['Family_name']) && $task['Family_name']==$key['Family_name']){echo 'selected';}?> >
@@ -92,20 +104,11 @@
                                                 }?>
                                             </select>
 									</div>
-									<div class="col-lg-3">
-											<label>Brand:</label>
-                                            <select style="width: 200px" id="Brand" class="form-control" name="task[Brand]">
-                                                <?php  foreach($Brand as $key){
-                                                    ?>
-                                                    <option <?php if(isset($task['Brand']) && $task['Brand']==$key['bname']){echo 'selected';}?> >
-                                                        <?php echo isset($key['bname'])?$key['bname']:$brand; ?></option>
-                                                <?php
-                                                }?>
-                                            </select>
-									</div>
+
 									<div class="col-lg-3">
 											<label>Sub Series:</label>
                                             <select  id="Sub_Series" class="form-control selectpicker" data-live-search="true" name="task[Sub_Series]">
+                                                <option value="" <?php if(isset($task['Sub_Series']) && $task['Sub_Series']==''){echo 'selected';}?> >&nbsp;</option>
                                                 <?php  foreach($Sub_Series as $key){
                                                     ?>
                                                     <option <?php if(isset($task['Sub_Series']) && $task['Sub_Series']==$key['sub_series']){echo 'selected';}?> >
@@ -115,12 +118,15 @@
                                             </select>
 									</div>
                             
-									<div class="col-lg-3">
-											<label>Planner:</label>
-											 <input type="text" class="form-control" name="task[Planner]"
-												value="<?php echo isset($task['Planner'])?$task['Planner']:'';?>" />
-										</div>
-									
+
+                            <div class="col-lg-3" style="z-index: 0">
+                                <label>specialist:</label>
+                                <select name="task[User]" class="form-control">
+                                    <?php  foreach($user as $key){ ?>
+                                        <option value="<?php echo isset($key['username'])?$key['username']:''?>" <?php if(isset($key['username']) && $key['username']==$username){echo 'selected';}?> ><?php echo isset($key['username'])?$key['username']:''; ?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
 									<div class="col-lg-3">
 											<label>Status:</label> 
 											<select class="form-control" name="task[Status]">
@@ -138,31 +144,18 @@
 										
 									</div>
 
-									<div class="col-lg-3">
-											<label>BPL Relayware:</label> 
-											
-											<select name="task[BPL_Relayware]" class="form-control">
-								    <option value=" " <?php if(isset($task['BPL_Relayware']) && $task['BPL_Relayware']==''){echo 'selected';}?> ></option> 
-								    <option value="YES" <?php if(isset($task['BPL_Relayware']) && $task['BPL_Relayware']=='YES'){echo 'selected';}?> >YES</option> 
-								    <option value="NO" <?php if(isset($task['BPL_Relayware']) && $task['BPL_Relayware']=='NO'){echo 'selected';}?> >NO</option> 
-								</select>
-									</div>
-									
-									<div class="col-lg-3" style="z-index: 0">
-								<label>Curr_User:</label>
-								<select name="task[User]" class="form-control">
-								<?php  foreach($user as $key){ ?>
-								    <option value="<?php echo isset($key['username'])?$key['username']:''?>" <?php if(isset($key['username']) && $key['username']==$username){echo 'selected';}?> ><?php echo isset($key['username'])?$key['username']:''; ?></option> 
-								<?php }?>
-								</select>
-							</div>
-							<div class="col-lg-9">
-										<div >
-											<label>Family Options:</label> 
-											<input type="text" class="form-control" name="task[Options]"
-												value="<?php echo isset($task['Options'])?$task['Options']:'';?>" />
-											</div>
-									</div>
+                            <div class="col-lg-3">
+                                <label>Planner:</label>
+                                <input type="text" class="form-control" name="task[Planner]"
+                                       value="<?php echo isset($task['Planner'])?$task['Planner']:'';?>" />
+                            </div>
+<!--							<div class="col-lg-9">-->
+<!--										<div >-->
+<!--											<label>Family Options:</label> -->
+<!--											<input type="text" class="form-control" name="task[Options]"-->
+<!--												value="--><?php //echo isset($task['Options'])?$task['Options']:'';?><!--" />-->
+<!--											</div>-->
+<!--									</div>-->
 									
 									<div class="col-lg-12">
 										<div >

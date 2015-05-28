@@ -42,6 +42,7 @@
 								<label>Close_Date:</label>
 								   <input type="text" name="pn[close_date]"  value="<?php echo isset($pn['close_date'])?$pn['close_date']:'0000-00-00';?>" class="form-control" data-beatpicker="true" />
 							    </div>
+
 			
 							<div class="col-lg-3" style="z-index: 0">
 								<label>Requester</label>
@@ -75,18 +76,24 @@
 								</select>
 							</div>
 							 
-						   <div class="col-lg-3" style="z-index: 0">
-								<label>team:</label>
-								<select name="pn[team]" class="form-control">
-								<?php  foreach($team as $key){ ?>
-								    <option value="<?php echo isset($key['team'])?$key['team']:''?>" <?php if(isset($pn['team']) && $pn['team']==$key['team']){echo 'selected';}?> ><?php echo isset($key['team'])?$key['team']:''; ?></option> 
-								<?php }?>
-								</select>
-							</div>
+
 							<div class="col-lg-3" style="z-index: 0">
 								<label>summary:</label>
-								   <input type="text" name="pn[summary]" value="<?php echo isset($pn['summary'])?$pn['summary']:'';?>"    class="form-control" /> 
-								</div>
+<!--								   <input type="text" name="pn[summary]" value="--><?php //echo isset($pn['summary'])?$pn['summary']:'';?><!--"    class="form-control" />-->
+                                <select name="pn[team]" class="form-control">
+                                    <?php  foreach($summary as $key){ ?>
+                                        <option value="<?php echo isset($key['summary'])?$key['summary']:''?>" <?php if(isset($pn['summary']) && $pn['summary']==$key['summary']){echo 'selected';}?> ><?php echo isset($key['summary'])?$key['summary']:''; ?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
+                            <div class="col-lg-3" style="z-index: 0">
+                                <label>Owner:</label>
+                                <select name="pn[team]" class="form-control">
+                                    <?php  foreach($team as $key){ ?>
+                                        <option value="<?php echo isset($key['team'])?$key['team']:''?>" <?php if(isset($pn['team']) && $pn['team']==$key['team']){echo 'selected';}?> ><?php echo isset($key['team'])?$key['team']:''; ?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
 						    <div class="col-lg-3" style="z-index: 0">
 								<label>PN_quantity:</label>
 								   <input type="text" name="pn[PN_quantity]" value="<?php echo isset($pn['PN_quantity'])?$pn['PN_quantity']:'';?>"    class="form-control" /> 
@@ -112,7 +119,7 @@
 								  <textarea type="text" name="pn[Comments]" class="form-control"><?php echo isset($pn['Comments'])?$pn['Comments']:''?></textarea>
 							   </div>
 							</div>
-							
+
 						
 						<hr/>
 						<!--pending list-->
