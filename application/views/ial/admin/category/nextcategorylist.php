@@ -45,7 +45,9 @@
 									?>
 									<tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 									    <td><?php echo isset($list[$i]['nc_name']) ?$list[$i]['nc_name']:'';?></td>
-										<td><a href="<?php echo site_url('Ial_admin/IAL_category/add_nextcategory') ?>?id=<?php  echo isset($list[$i]['id']) ?$list[$i]['id']:'';?>&ic_id=<?php echo $ic_id;?>">edit</a></td>
+										<td><a href="<?php echo site_url('Ial_admin/IAL_category/add_nextcategory') ?>?id=<?php  echo isset($list[$i]['id']) ?$list[$i]['id']:'';?>&ic_id=<?php echo $ic_id;?>">Edit</a>
+										|| <a href="<?php echo site_url('Ial_admin/IAL_category/delete2') ?>?id=<?php  echo isset($list[$i]['id']) ?$list[$i]['id']:'';?>&ic_id=<?php echo $ic_id;?>">Delete</a>
+										</td>
 								    </tr>	
 								    <?php }?>
                                     </tbody>

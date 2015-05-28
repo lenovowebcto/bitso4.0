@@ -48,8 +48,8 @@
 									<tr>
 										<td><?php echo isset($brand[$i]['bname']) ?$brand[$i]['bname']:'';?></td>
 										<td>
-										<a href="<?php echo site_url('Ial_admin/IAL_brand/addbrand') ?>?bid=<?php  echo isset($brand[$i]['bid']) ?$brand[$i]['bid']:'';?>">edit</a>
-								     <!-- || <a href="<?php echo site_url('admin/brand/deletebrand') ?>?bid=<?php  echo isset($brand[$i]['bid']) ?$brand[$i]['bid']:'';?>">delete</a> -->
+										<a href="<?php echo site_url('Ial_admin/IAL_brand/addbrand') ?>?bid=<?php  echo isset($brand[$i]['bid']) ?$brand[$i]['bid']:'';?>">Edit</a>
+								      ||<a href="<?php echo site_url('Ial_admin/IAL_brand/delbrand') ?>?bid=<?php  echo isset($brand[$i]['bid']) ?$brand[$i]['bid']:'';?>">Delete</a>
 								     </td>
 										</tr>	
 								    <?php }?>

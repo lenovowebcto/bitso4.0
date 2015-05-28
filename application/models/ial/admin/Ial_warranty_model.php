@@ -21,4 +21,9 @@ class Ial_warranty_model extends CI_Model{
 		$this->db->where('id',$id);
 		return $this->db->update('ial_warranty',$arr);
 	}
+	
+	function delete($id){
+		$this->db->where('id',$id);
+		return $this->db->delete('ial_warranty');
+	}
 }

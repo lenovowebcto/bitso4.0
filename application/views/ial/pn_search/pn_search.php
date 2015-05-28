@@ -63,7 +63,7 @@
 									</thead>
 									<tbody>
 
-									<?php 
+									<?php if(isset($ial_pn)){
 									      for($i = 0; $i < count ($ial_pn ); $i ++) {
 									?>
 					                  <tr>
@@ -78,7 +78,7 @@
 											<td><?php echo isset($ial_pn[$i]['summary']) ?$ial_pn[$i]['summary']:'';?></td>
 											<td><?php echo isset($ial_pn[$i]['sales_org']) ?$ial_pn[$i]['sales_org']:'';?></td>
 										</tr>
-						<?php } ?>
+						<?php }} ?>
                                     </tbody>
 								</table>
 							</div>
@@ -119,6 +119,7 @@
 										<tbody>
                             
 								<?php
+								if(isset($ialtask)){
 								for($i = 0; $i < count ( $ialtask ); $i ++) {
 									?>
 						    	<tr>
@@ -135,7 +136,7 @@
 									<td><?php echo isset($ialtask[$i]['Planner']) ?$ialtask[$i]['Planner']:'';?></td>
 									<td><?php echo isset($ialtask[$i]['Status']) ?$ialtask[$i]['Status']:'';?></td>
 								</tr>
-								<?php } ?>
+								<?php }} ?>
 
                                     </tbody>
 									</table>
@@ -179,6 +180,7 @@
                             
 						 
 								<?php
+								if(isset($ial_relayware)){
 								for($i = 0; $i < count ( $ial_relayware ); $i ++) {
 									?>
 						    	<tr>
@@ -191,7 +193,7 @@
 									<td><?php echo isset($ial_relayware[$i]['Requester']) ?$ial_relayware[$i]['Requester']:'';?></td>
 									<td><?php echo isset($ial_relayware[$i]['Upload_Date']) ?$ial_relayware[$i]['Upload_Date']:'';?></td>
 								</tr>
-								<?php } ?>
+								<?php }} ?>
 
                                     </tbody>
 									</table>
@@ -236,6 +238,7 @@
 									<tbody>
                               
 									<?php
+									if(isset($ial_bpl)){
 									      for($i = 0; $i < count ($ial_bpl ); $i ++) {
 									?>
 					                  <tr>
@@ -265,7 +268,7 @@
 										    <?php }?>
 										    </td>
 										</tr>
-						<?php } ?>
+						<?php }} ?>
                                     </tbody>
 								</table>
 							</div>

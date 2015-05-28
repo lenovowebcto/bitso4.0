@@ -25,6 +25,7 @@
 		$id = isset ( $_GET ['id'] ) ? $_GET ['id'] : 0;
 
 		$data['category1'] = $this->icm->ialcommoncategory();
+		if($data['category1']!=array())
 		$data['category2'] = $this->icm->ialcommoncategory2($data['category1'][0]['id']);
 		$data['status'] = $this->icm->get_ial_status();
 		$data['type'] = $this->icm->select_ial_type();

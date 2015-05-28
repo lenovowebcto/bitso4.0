@@ -44,7 +44,9 @@
 									?>
 									<tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 									    <td><a href="<?php echo site_url('Ial_admin/IAL_category/next_category') ?>?id=<?php  echo isset($list[$i]['id']) ?$list[$i]['id']:'';?>"><?php echo isset($list[$i]['cate_name']) ?$list[$i]['cate_name']:'';?></a></td>
-										<td><a href="<?php echo site_url('Ial_admin/IAL_category/addcategory') ?>?id=<?php  echo isset($list[$i]['id']) ?$list[$i]['id']:'';?>">edit</a></td>
+										<td><a href="<?php echo site_url('Ial_admin/IAL_category/addcategory') ?>?id=<?php  echo isset($list[$i]['id']) ?$list[$i]['id']:'';?>">Edit</a>
+										|| <a href="<?php echo site_url('Ial_admin/IAL_category/delete1') ?>?id=<?php  echo isset($list[$i]['id']) ?$list[$i]['id']:'';?>">Delete</a>
+										</td>
 								    </tr>	
 								    <?php }?>
                                     </tbody>

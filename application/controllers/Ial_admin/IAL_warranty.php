@@ -32,4 +32,10 @@ class IAL_warranty extends CI_Controller{
 			}
 		}
 	}
+	
+	function delete(){
+		$data['id'] = $id = isset($_GET['id'])?$_GET['id']:0;
+		$this->ial_warranty->delete($id);
+		redirect('IAL_admin/IAL_warranty');
+	}
 }

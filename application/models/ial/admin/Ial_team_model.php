@@ -21,4 +21,8 @@ class Ial_team_model extends CI_Model{
 		$this->db->where('id',$id);
 		return $this->db->update('ial_team',$arr);
 	}
+	function delete($id){
+		$this->db->where('id',$id);
+		return $this->db->delete('ial_team');
+	}
 }

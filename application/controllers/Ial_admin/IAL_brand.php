@@ -37,9 +37,9 @@ class IAL_brand extends CI_Controller{
 		}
 	}
 	
-	function deletebrand(){
+	function delbrand(){
 		$data['bid'] = $bid = isset($_GET['bid'])?$_GET['bid']:0;
 		$this->BrandModel->deletebrand($bid);
-		redirect('Ial_admin/brand');
+		redirect('Ial_admin/IAL_brand/index');
 	}
 }

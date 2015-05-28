@@ -48,8 +48,8 @@
 									<tr>
 										<td><?php echo isset($sub_series[$i]['sub_series']) ?$sub_series[$i]['sub_series']:'';?></td>
 										<td>
-										<a href="<?php echo site_url('Ial_admin/IAL_sub_series/addsubseries') ?>?id=<?php  echo isset($sub_series[$i]['id']) ?$sub_series[$i]['id']:'';?>">edit</a>
-								     <!-- || <a href="<?php echo site_url('Ial_admin/IAL_sub_series/deletesubseries') ?>?id=<?php  echo isset($sub_series[$i]['id']) ?$sub_series[$i]['id']:'';?>">delete</a> -->
+										<a href="<?php echo site_url('Ial_admin/IAL_sub_series/addsubseries') ?>?id=<?php  echo isset($sub_series[$i]['id']) ?$sub_series[$i]['id']:'';?>">Edit</a>
+								      || <a href="<?php echo site_url('Ial_admin/IAL_sub_series/deletesubseries') ?>?id=<?php  echo isset($sub_series[$i]['id']) ?$sub_series[$i]['id']:'';?>">Delete</a> 
 								     </td>
 										</tr>	
 								    <?php }?>

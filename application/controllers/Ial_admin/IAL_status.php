@@ -36,9 +36,9 @@ class IAL_status extends CI_Controller{
 		}
 	}
 	
-	function deletestatus(){
+	function delete(){
 		$sid = $_GET['sid'];
 		$res = $this->StatusModel->deletestatus($sid);
-		redirect('admin/status');
+		redirect('Ial_admin/IAL_status');
 	}
 }

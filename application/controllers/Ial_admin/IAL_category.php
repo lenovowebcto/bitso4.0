@@ -41,6 +41,19 @@ class IAL_category extends CI_Controller{
 			
 		}
 	}
+	
+	function delete1(){
+		$data['id'] = $id = isset($_GET['id'])?$_GET['id']:0;
+		
+		$res = $this->ct_model->delete1($id);
+		if($res)redirect('IAL_admin/IAL_category');
+	}
+	function delete2(){
+		$data['id'] = $id = isset($_GET['id'])?$_GET['id']:0;
+		$ic_id = isset($_GET['ic_id'])?$_GET['ic_id']:0;
+		$res = $this->ct_model->delete2($id);
+		if($res)redirect('IAL_admin/IAL_category/next_category?id='.$ic_id);
+	}
 	//category2
 	function next_category(){
 		$data['ic_id'] = $id = $_GET['id'];

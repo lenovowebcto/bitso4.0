@@ -156,6 +156,13 @@
 								<?php }?>
 								</select>
 							</div>
+							<div class="col-lg-9">
+										<div >
+											<label>Family Options:</label> 
+											<input type="text" class="form-control" name="task[Options]"
+												value="<?php echo isset($task['Options'])?$task['Options']:'';?>" />
+											</div>
+									</div>
 									
 									<div class="col-lg-12">
 										<div >

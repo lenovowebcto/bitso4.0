@@ -21,7 +21,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                           <h2>IAL Family List</h2>
+                           <h2>IAL Warranty List</h2>
                         </div>
                         <div class="panel-heading">
                            <a href="<?php echo site_url('Ial_admin/IAL_warranty/edit');?>"><input type="button"  value="ADD Warranty"/></a>
@@ -48,7 +48,9 @@
 									<tr>
 										<td><?php echo isset($list[$i]['warranty_type']) ?$list[$i]['warranty_type']:'';?></td>
 										<td>
-										<a href="<?php echo site_url('Ial_admin/IAL_warranty/edit') ?>?id=<?php  echo isset($list[$i]['id']) ?$list[$i]['id']:'';?>">edit</a>
+										<a href="<?php echo site_url('Ial_admin/IAL_warranty/edit') ?>?id=<?php  echo isset($list[$i]['id']) ?$list[$i]['id']:'';?>">Edit</a>
+										||
+										<a href="<?php echo site_url('Ial_admin/IAL_warranty/delete') ?>?id=<?php  echo isset($list[$i]['id']) ?$list[$i]['id']:'';?>">Delete</a>
 								     </td>
 										</tr>	
 								    <?php }?>

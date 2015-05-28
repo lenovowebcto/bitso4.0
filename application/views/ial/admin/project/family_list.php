@@ -48,7 +48,9 @@
 									<tr>
 										<td><?php echo isset($list[$i]['Family_name']) ?$list[$i]['Family_name']:'';?></td>
 										<td>
-										<a href="<?php echo site_url('Ial_admin/IAL_family/edit') ?>?id=<?php  echo isset($list[$i]['id']) ?$list[$i]['id']:'';?>">edit</a>
+										<a href="<?php echo site_url('Ial_admin/IAL_family/edit') ?>?id=<?php  echo isset($list[$i]['id']) ?$list[$i]['id']:'';?>">Edit</a>
+								     || <a href="<?php echo site_url('Ial_admin/IAL_family/delete') ?>?id=<?php  echo isset($list[$i]['id']) ?$list[$i]['id']:'';?>">Delete</a>
+								    
 								     </td>
 										</tr>	
 								    <?php }?>

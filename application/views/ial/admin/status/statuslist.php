@@ -47,8 +47,8 @@
 									?>
 									<tr>
 									    <td><?php echo isset($status[$i]['stype']) ?$status[$i]['stype']:'';?></td>
-										<td><a href="<?php echo site_url('Ial_admin/IAL_status/addstatus') ?>?sid=<?php  echo isset($status[$i]['sid']) ?$status[$i]['sid']:'';?>">edit</a> 
-									<!--	||<a href="<?php echo site_url('admin/status/deletestatus') ?>?sid=<?php  echo isset($status[$i]['sid']) ?$status[$i]['sid']:'';?>">delete</a>  -->
+										<td><a href="<?php echo site_url('Ial_admin/IAL_status/addstatus') ?>?sid=<?php  echo isset($status[$i]['sid']) ?$status[$i]['sid']:'';?>">Edit</a> 
+									||<a href="<?php echo site_url('Ial_admin/IAL_status/delete') ?>?sid=<?php  echo isset($status[$i]['sid']) ?$status[$i]['sid']:'';?>">Delete</a>
 										
 										</td>
 								    </tr>	

@@ -32,4 +32,9 @@ class IAL_team extends CI_Controller{
 			}
 		}
 	}
+	function delete(){
+		$data['id'] = $id = isset($_GET['id'])?$_GET['id']:0;
+		$res = $this->ial_team->delete($id);
+		if($res)redirect('IAL_admin/IAL_team/index');
+	}
 }

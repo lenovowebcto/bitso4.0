@@ -45,5 +45,23 @@ class Ial_category_model extends CI_Model{
 		$arr = $this->db->from('ial_category2')->where('ic_id',$cc_id)->get()->result_array();
 		return $arr;
 	}
-	
+	function delete1($id){
+		$this->db->trans_start();
+		$this->db->where('id',$id);
+		$flag = $this->db->delete('ial_category1');
+		
+		if($flag){
+			$count = $this->db->query("select * from ial_category2 where ic_id='.$id'");
+			$num =  count($count);
+			if($num>0){
+				$this->db->where('ic_id',$id);
+				$this->db->delete('ial_category2');
+			}
+		}
+		return  $this->db->trans_complete();
+	}
+	function delete2($id){
+		$this->db->where('id',$id);
+		return $this->db->delete('ial_category2');
+	}
 }

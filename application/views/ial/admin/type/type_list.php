@@ -48,7 +48,8 @@
 									<tr>
 										<td><?php echo isset($list[$i]['ial_type']) ?$list[$i]['ial_type']:'';?></td>
 										<td>
-										<a href="<?php echo site_url('Ial_admin/IAL_type/edit') ?>?id=<?php  echo isset($list[$i]['id']) ?$list[$i]['id']:'';?>">edit</a>
+										<a href="<?php echo site_url('Ial_admin/IAL_type/edit') ?>?id=<?php  echo isset($list[$i]['id']) ?$list[$i]['id']:'';?>">Edit</a>
+								     || <a href="<?php echo site_url('Ial_admin/IAL_type/delete') ?>?id=<?php  echo isset($list[$i]['id']) ?$list[$i]['id']:'';?>">Delete</a>
 								     </td>
 										</tr>	
 								    <?php }?>

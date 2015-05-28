@@ -26,6 +26,7 @@ class create_relayware extends CI_Controller {
 		$data ['w'] = 'www';
 		$data ['status'] = $this->icm->get_ial_status ();
 		$data ['category1'] = $this->icm->ialcommoncategory ();
+		if($data['category1']!=array())
 		$data ['category2'] = $this->icm->ialcommoncategory2 ( $data ['category1'] [0] ['id'] );
 		$data ['Brand'] = $this->icm->select_ial_brand ();
 		$data ['Status'] = $this->icm->get_ial_status ();
