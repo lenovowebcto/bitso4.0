@@ -112,8 +112,8 @@
 								<?php }?>
 								</select>
 							</div>
-							<div class="">
-							<div class="col-lg-3" style="z-index: 0">
+							<div class="panel">
+							<div class="col-lg-3" style="z-index: 0 ;background-color:#dcdcdc;">
 								<label>relayware:</label>
 								<select name="ial[relayware]" class="form-control">
 								    <option value=" " <?php if(isset($ial['relayware']) && $ial['relayware']==''){echo 'selected';}?> ></option> 
@@ -121,15 +121,15 @@
 								    <option value="NO" <?php if(isset($ial['relayware']) && $ial['relayware']=='NO'){echo 'selected';}?> >NO</option> 
 								</select>
 							</div>
-						<div class="col-lg-3" style="z-index: 0">
+						<div class="col-lg-3" style="z-index: 0;background-color:#dcdcdc;">
 								<label>somo:</label>
-								<select name="ial[somo]" class="form-control">
+								<select name="ial[somo]" class="form-control" >
 								    <option value=" " <?php if(isset($ial['somo']) && $ial['somo']==''){echo 'selected';}?> ></option> 
 								    <option value="YES" <?php if(isset($ial['somo']) && $ial['somo']=='YES'){echo 'selected';}?> >YES</option> 
 								    <option value="NO" <?php if(isset($ial['somo']) && $ial['somo']=='NO'){echo 'selected';}?> >NO</option> 
 								</select>
 							</div>
-							<div class="col-lg-3" style="z-index: 0">
+							<div class="col-lg-3" style="z-index: 0;background-color:#dcdcdc;">
 								<label>MTM:</label>
 								<select name="ial[MTM]" class="form-control">
 								    <option value=" " <?php if(isset($ial['MTM']) && $ial['MTM']==''){echo 'selected';}?> ></option> 
@@ -137,7 +137,7 @@
 								    <option value="NO" <?php if(isset($ial['MTM']) && $ial['MTM']=='NO'){echo 'selected';}?> >NO</option> 
 								</select>
 							</div>
-							<div class="col-lg-3" style="z-index: 0">
+							<div class="col-lg-3" style="z-index: 0;background-color:#dcdcdc;">
 								<label>Curr_User:</label>
 								<select name="ial[User]" class="form-control">
 								<?php  foreach($user as $key){ ?>

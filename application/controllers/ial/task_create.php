@@ -16,6 +16,9 @@
 		}elseif($user['type'] == '2'){
 			$data['task'] = $this->TaskModel->selectAllTask($user['username']);
 		}
+        $data['Brand'] = $this->icm->select_ial_brand();
+        $data['Family_name'] = $this->icm->select_ial_family();
+        $data['Sub_Series'] = $this->icm->select_ial_sub_series();
 		$this->load->view('ial/task/task_list',$data);
 	}
 
