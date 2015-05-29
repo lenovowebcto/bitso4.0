@@ -17,7 +17,7 @@ class  Ial_Summary_model extends CI_Model{
         return $res;
     }
 
-    function updateSummary($bid,$arr){
+        function updateSummary($bid,$arr){
         $this->db->where('id',$bid);
         return  $this->db->update('ial_common_summary',$arr);
     }

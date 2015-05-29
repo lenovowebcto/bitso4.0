@@ -2,43 +2,43 @@
 class Ial_Summary extends CI_Controller{
     function __construct(){
         parent::__construct();
-        $this->load->model('StatusModel');
+        $this->load->model('ial/admin/Ial_Summary_model');
         Auth::execute_auth();
     }
 
     function index(){
-        $data['status'] = $this->StatusModel->selectAllStatus();
-        $this->load->view('admin/status/statuslist',$data);
+        $data['summary'] = $this->Ial_Summary_model->selectAllSummary();
+        $this->load->view('ial/admin/summary/summarylist',$data);
     }
-    function addstatus(){
-        $data['sid'] = $sid = isset($_GET['sid']) ? $_GET['sid'] : 0;
-        $data['status'] = $this->StatusModel->selectstatusbyid($sid);
-        $this->load->view('admin/status/addstatus',$data);
+    function addSummary(){
+        $data['id'] = $id = isset($_GET['id']) ? $_GET['id'] : 0;
+        $data['summary'] = $this->Ial_Summary_model->selectoneByid($id);
+        $this->load->view('ial/admin/summary/addsummary',$data);
     }
 
-    function toaddstatus(){
-        $sid = isset($_POST['sid'])?$_POST['sid']:0;
-        $stype = $_POST['stype'];
-        $arr['stype'] = $stype;
-        if($sid>0){
-            $res = $this->StatusModel->updatestatus($sid,$arr);
+    function toaddSummary(){
+        $id = isset($_POST['id'])?$_POST['id']:0;
+        $summary = $_POST['summary'];
+        $arr['summary'] = $summary;
+        if($id>0){
+            $res = $this->Ial_Summary_model->updateSummary($id,$arr);
         }else{
-            $res = $this->StatusModel->insertstatus($arr);
+            $res = $this->Ial_Summary_model->insertSummary($arr);
         }
         if($res){
-            redirect('admin/status');
+            redirect('ial_admin/ial_Summary');
         }else{
-            if($sid>0){
-                $this->load->view('status/addstatus?sid='.$sid);
+            if($id>0){
+                $this->load->view('ial/admin/summary/addsummary?id='.$id);
             }else{
-                $this->load->view('status/addstatus');
+                $this->load->view('ial/admin/summary/addsummary');
             }
         }
     }
 
     function deletestatus(){
-        $sid = $_GET['sid'];
-        $res = $this->StatusModel->deletestatus($sid);
-        redirect('admin/status');
+        $id = $_GET['id'];
+        $res = $this->Ial_Summary_model->insertSummary($id);
+        redirect('ial/admin/summary');
     }
 }

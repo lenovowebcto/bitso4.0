@@ -46,9 +46,10 @@ class pn_maintenance extends CI_Controller{
 		
 	    $data['category1'] = $this->icm->ialcommoncategory();
 	    if($data['category1']!=array())
-		$data['category2'] = $this->icm->ialcommoncategory2($data['category1'][0]['id']); 
-		$data['status'] = $this->icm->get_ial_status(); 
-		$data['team'] = $this->icm->select_ial_team();
+		$data['category2'] = $this->icm->ialcommoncategory2($data['category1'][0]['id']);
+        $data['status'] = $this->icm->get_ial_status();
+        $data['summary'] = $this->icm->selectAllSummary();
+        $data['team'] = $this->icm->select_ial_team();
 		$this->load->view('ial/pn/pn_edit',$data);
 	}
 	

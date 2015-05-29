@@ -80,7 +80,7 @@
 							<div class="col-lg-3" style="z-index: 0">
 								<label>summary:</label>
 <!--								   <input type="text" name="pn[summary]" value="--><?php //echo isset($pn['summary'])?$pn['summary']:'';?><!--"    class="form-control" />-->
-                                <select name="pn[team]" class="form-control">
+                                <select name="pn[summary]" class="form-control">
                                     <?php  foreach($summary as $key){ ?>
                                         <option value="<?php echo isset($key['summary'])?$key['summary']:''?>" <?php if(isset($pn['summary']) && $pn['summary']==$key['summary']){echo 'selected';}?> ><?php echo isset($key['summary'])?$key['summary']:''; ?></option>
                                     <?php }?>

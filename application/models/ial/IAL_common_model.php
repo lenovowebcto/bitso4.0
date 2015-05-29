@@ -68,4 +68,8 @@ class IAL_common_model extends CI_Model{
 		$arr = $this->db->get($tn);
 		return $arr->result_array();
 	}
+    function selectAllSummary(){
+        $res = $this->db->get('ial_common_summary')->result_array();
+        return $res;
+    }
 }
