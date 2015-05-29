@@ -284,6 +284,7 @@
                                 <li><a href="<?php echo site_url('Ial_admin/IAL_brand');?>">IAL Brand Management</a></li>
                                 <li><a href="<?php echo site_url('Ial_admin/IAL_sub_series');?>">IAL Sub Series Management</a></li>
                                 <li><a href="<?php echo site_url('Ial_admin/UploadImage');?>">IAL Image Upload</a></li>
+                                <li><a href="<?php echo site_url('Ial_admin/Ial_Summary');?>">IAL Summary</a></li>
                                 
                                </ul>
                             <!-- /.nav-second-level -->

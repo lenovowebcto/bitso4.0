@@ -112,7 +112,7 @@
 								<?php }?>
 								</select>
 							</div>
-							
+							<div class="">
 							<div class="col-lg-3" style="z-index: 0">
 								<label>relayware:</label>
 								<select name="ial[relayware]" class="form-control">
@@ -144,7 +144,11 @@
 								    <option value="<?php echo isset($key['username'])?$key['username']:''?>" <?php if(isset($key['username']) && $key['username']==$username){echo 'selected';}?> ><?php echo isset($key['username'])?$key['username']:''; ?></option> 
 								<?php }?>
 								</select>
-							</div>
+                            </div></div>
+                            <div class="col-lg-12" style="z-index: 0">
+                                <label>Comments:</label>
+                                <textarea  name="ial[comment]" class="form-control"><?php echo isset($ial['comment'])?$ial['comment']:''?></textarea>
+                            </div>
 							<div class="col-lg-12" style="z-index: 0">
 								<label>Fru_Part_NO:</label>
 								<textarea name="ial[Fru_Part_NO]" class="form-control" ><?php echo isset($ial['Fru_Part_NO'])?$ial['Fru_Part_NO']:''?></textarea>
@@ -153,10 +157,7 @@
 								<label>US_part_NO:</label>
 								<textarea  name="ial[US_part_NO]" class="form-control" ><?php echo isset($ial['US_part_NO'])?$ial['US_part_NO']:''?></textarea>
 							</div>
-							 <div class="col-lg-12" style="z-index: 0">
-								<label>Comments:</label>
-								  <textarea  name="ial[comment]" class="form-control"><?php echo isset($ial['comment'])?$ial['comment']:''?></textarea>
-							</div>
+
 						<hr/>
 						<!--pending list-->
 						<?php $this->load->view('pending');?>

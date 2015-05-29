@@ -37,7 +37,9 @@ $this->load->view ( 'left2' );
 										<thead>
 											<tr>
 												<th>ID</th>
-												<th>IAL number</th>
+                                                <th>IAL number</th>
+                                                <th>BPL number</th>
+                                                <th>record date</th>
                                                 <th>Brand</th>
                                                 <th>Family name</th>
                                                 <th>sub series</th>
@@ -45,7 +47,6 @@ $this->load->view ( 'left2' );
 												<th>EOW date</th>
 												<th>RTM date</th>
 												<th>status </th>
-												<th>record date</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -64,6 +65,8 @@ $this->load->view ( 'left2' );
 									<td><a href="<?php echo site_url('ial/task_create/task') ?>?id=<?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?>&pr_id=<?php echo isset($pr_id)?$pr_id:0;?>"><?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?></a></td>
 
 									<td><a href="<?php echo site_url('ial/task_create/task') ?>?id=<?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?>&pr_id=<?php echo isset($pr_id)?$pr_id:0;?>"><?php echo isset($task[$i]['IAL_number']) ?$task[$i]['IAL_number']:'';?></a></td>
+                                    <td><?php echo isset($task[$i]['BPL_Number']) ?$task[$i]['BPL_Number']:'';?></td>
+                                    <td><?php if(isset($task[$i]['Record_Date']) && $task[$i]['Record_Date']!='0000-00-00') { echo isset($task[$i]['Record_Date']) ?$task[$i]['Record_Date']:'';}?></td>
                                     <td><?php echo isset($task[$i]['Brand']) ?$task[$i]['Brand']:'';?></td>
                                     <td><?php if(isset($task[$i]['Family_name']) && $task[$i]['Family_name']!='0000-00-00') { echo isset($task[$i]['Family_name']) ?$task[$i]['Family_name']:'';}?></td>
                                     <td><?php echo isset($task[$i]['Sub_Series']) ?$task[$i]['Sub_Series']:'';?></td>
@@ -71,7 +74,6 @@ $this->load->view ( 'left2' );
                                     <td><?php echo isset($task[$i]['EOW']) ?$task[$i]['EOW']:'';?></td>
 									<td><?php echo isset($task[$i]['RTM']) ?$task[$i]['RTM']:'';?></td>
 									<td><?php echo isset($task[$i]['Status']) ?$task[$i]['Status']:'';?></td>
-                                    <td><?php if(isset($task[$i]['Record_Date']) && $task[$i]['Record_Date']!='0000-00-00') { echo isset($task[$i]['Record_Date']) ?$task[$i]['Record_Date']:'';}?></td>
 
                                 </tr>
 								<?php } ?>
