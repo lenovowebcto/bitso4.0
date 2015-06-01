@@ -18,12 +18,12 @@ class New_relation  extends CI_Controller{
 	}
 	function toaddbrand(){
 		$bid = isset($_POST['bid'])?$_POST['bid']:0;
-		$bname = $_POST['bname'];
-		$arr['bname'] = $bname;
+		$brand = $_POST['brand'];
+		
 		if($bid>0){
-			$res = $this->RelationModel->updatebrand($bid,$arr);
+			$res = $this->RelationModel->updatebrand($bid,$brand);
 		}else{
-			$res = $this->RelationModel->insertbrand($arr);
+			$res = $this->RelationModel->insertbrand($brand);
 		}
 		if($res){
 			redirect('Ial_admin/New_relation/index');
