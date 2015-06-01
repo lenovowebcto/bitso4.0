@@ -50,7 +50,11 @@
 								</div>
 							<div class="col-lg-3" style="z-index: 0">
 								<label>sales_org:</label>
+<<<<<<< HEAD
 								  <textarea  name="pn[sales_org]" class="form-control"><?php echo isset($pn['sales_org'])?$pn['sales_org']:'';?></textarea>
+=======
+								  <textarea type="text" style="height: 34px;" name="pn[sales_org]" class="form-control"><?php echo isset($pn['sales_org'])?$pn['sales_org']:'';?></textarea>
+>>>>>>> 8ba2c686d4dac3f5e4f57b734f19b8c265767a27
 						    </div>
 						    <div class="col-lg-12" style="z-index: 0">
 								

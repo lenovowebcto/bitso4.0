@@ -36,7 +36,7 @@ $this->load->view ( 'left2' );
 
                     <div class="panel-collapse collapse" id="collapseOne" style="height: auto;">
                         <div class="panel-body">
-                            <form action="<?php echo site_url('ial/task_create/toaddtask') ?>" method="post">
+                            <form action="<?php echo site_url('ial/task_create/task_create') ?>" method="post">
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
 
@@ -81,7 +81,7 @@ $this->load->view ( 'left2' );
                                         <label>Start AD:</label>
                                         <input type="text"
                                                style="width: 200px" id="AD" class="form-control"
-                                               data-beatpicker="true" name="task[AD]"
+                                               data-beatpicker="true" name="task[start_AD]"
                                                value="<?php echo isset($task['AD'])?$task['AD']:'0000-00-00';?>" />
 
                                     </div>
@@ -89,7 +89,7 @@ $this->load->view ( 'left2' );
                                         <label>End AD:</label>
                                         <input type="text"
                                                style="width: 200px" id="AD" class="form-control"
-                                               data-beatpicker="true" name="task[AD]"
+                                               data-beatpicker="true" name="task[end_AD]"
                                                value="<?php echo isset($task['AD'])?$task['AD']:'0000-00-00';?>"/>
                                     </div>
                                 </div>

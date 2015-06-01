@@ -5,7 +5,30 @@ class task_model extends CI_Model{
 	}
 	
 // select all tasks
+<<<<<<< HEAD
 	function selectAllTask($username,$dis){
+=======
+	function selectAllTask($username,$task){
+//        var_dump($task);
+//        exit;
+        if($task != null){
+            if($task['Brand'] != null){
+                $this->db->where('Brand',$task['Brand']);
+            }
+            if($task['Family_name'] != null){
+                $this->db->where('Family_name',$task['Family_name']);
+            }
+            if($task['Sub_Series'] != null){
+                $this->db->where('Sub_Series',$task['Sub_Series']);
+            }
+            if($task['start_AD'] != null and $task['start_AD'] != '0000-00-00') {
+                $this->db->where('AD >', $task['start_AD']);
+            }
+            if($task['end_AD'] != null and $task['end_AD'] != '0000-00-00'){
+                $this->db->where('AD < ',$task['end_AD']);
+            }
+        }
+>>>>>>> 8ba2c686d4dac3f5e4f57b734f19b8c265767a27
 		if($username != ""){
 			$this->db->where('User',$username);
 		}
