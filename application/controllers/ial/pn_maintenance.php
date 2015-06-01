@@ -42,6 +42,12 @@ class pn_maintenance extends CI_Controller{
 					$data['c'][] = $this->icm->selectc2byc1id($ca1_id);
 				}
 			}
+			$data['tt'] = $this->icm->selectatta($id);
+			if($data['tt']!=array() && $data['tt']['file_path']!=''){
+				$data['atta'] = $data['tt']['file_path'];
+				$arr =  $data['atta'];
+				$data['atta'] = explode(',',$arr);
+			}
 		}
 		
 	    $data['category1'] = $this->icm->ialcommoncategory();
@@ -62,10 +68,33 @@ class pn_maintenance extends CI_Controller{
 		$c1  = isset($_POST['c1'])?$_POST['c1']:'';
 		$c2  = isset($_POST['c2'])?$_POST['c2']:''; 
 		$ial_decide = 'pn';
+		$file_path = $_FILES['file_path']['name'];
+	    
 		if($id>0){
+			$atta = $this->icm->selectatta($id);
+			if($file_path!=''){
+				$fal = $this->_toupload();
+				if($fal && $atta['file_path']!=''){
+					$pn['file_path'] = $atta['file_path'].','.$file_path;
+				}elseif($fal  && $atta['file_path'] ==''){
+					$pn['file_path'] = $file_path ;
+				}elseif(!$fal  && $atta['file_path'] !=''){
+					$pn['file_path'] = $atta['file_path'];
+				}elseif(!$fal  && $atta['file_path'] ==''){
+					$pn['file_path'] = '';
+				}
+			}else{
+				$mgt['attachment'] = $atta['attachment'];
+			}
 			$num = $this->icm->selectAllIalPen($id,$ial_decide);
 			$res = $this->pn->editpnmaintenance($id,$pn,$pending,$sta,$c1,$c2,$user,$ial_decide,count($num));
 		}else{
+			if($file_path!=''){
+				$fal = $this->_toupload();
+				if($fal)$pn['file_path'] = $file_path ;
+			}else{
+				$pn['file_path'] = '' ;
+			}
 			$res = $this->pn->insertpnmaintenance($pn,$pending,$sta,$c1,$c2,$user,$ial_decide);
 		}
 		
@@ -78,6 +107,41 @@ class pn_maintenance extends CI_Controller{
 				$this->load->view('ial/pn/pn_edit');
 			}
 			
+		}
+	}
+	private function  _toupload(){
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = '*';
+		$this->upload->initialize($config);
+	
+		return $this->upload->do_upload('file_path');
+	}
+	public function down_load(){
+		$this->load->helper('download');
+		$fname = $_GET['fname'];
+		$url = preg_replace("/\s+/", "_","./uploads/".$fname);
+		$data = file_get_contents($url);
+		force_download($fname, $data);
+	}
+	
+	public function update(){
+		$key = $_POST['name'];
+		$id = $_POST['id'];
+		$atta = $this->icm->selectatta($id);
+		$arr = $atta['file_path'];
+		$atta = explode(',',$arr);
+		$new_att =array();
+		foreach($atta as $value){
+			if($key != $value){
+				array_push($new_att,$value);
+			}
+		}
+		$new_att = implode(',', $new_att);
+		$res = $this->icm->update($id,$new_att);
+		if($res){
+			echo 'success';
+		}else{
+			echo 'false';
 		}
 	}
 }

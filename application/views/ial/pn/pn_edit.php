@@ -6,7 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+  <script type="text/javascript">
+   
+    function del(key,index){
+        var id=$('#id').val();
+        var url="<?php echo  site_url('ial/pn_maintenance/update');?>"
+        $.post(url,{name:key,id:id},function(result){
+        
+          if(result == 'success'){
+        	     $("#"+index).remove();
+        	     alert("delete success");
+             }else{
+            	 alert("delete false");
+             }
+        });
+    }
 
+ 
+    </script>
     <title>BITSO 4.0</title>
     <?php $this->load->view('common');?>   
 </head>
@@ -50,11 +67,7 @@
 								</div>
 							<div class="col-lg-3" style="z-index: 0">
 								<label>sales_org:</label>
-<<<<<<< HEAD
 								  <textarea  name="pn[sales_org]" class="form-control"><?php echo isset($pn['sales_org'])?$pn['sales_org']:'';?></textarea>
-=======
-								  <textarea type="text" style="height: 34px;" name="pn[sales_org]" class="form-control"><?php echo isset($pn['sales_org'])?$pn['sales_org']:'';?></textarea>
->>>>>>> 8ba2c686d4dac3f5e4f57b734f19b8c265767a27
 						    </div>
 						    <div class="col-lg-12" style="z-index: 0">
 								
@@ -123,8 +136,20 @@
 								  <textarea  name="pn[Comments]" class="form-control"><?php echo isset($pn['Comments'])?$pn['Comments']:''?></textarea>
 							   </div>
 							</div>
-
-						
+                        <div class="col-lg-12">
+							   <label>Attachments:</label>
+								<input type="file" name="file_path" size="20" /> 
+						</div>
+						<div class="col-lg-12">
+						    <label>Files:</label><br>
+						    <?php if(isset($atta) && $atta!=array()){	
+						    	foreach ($atta as $v=>$key){ ?>
+						       <div id="<?php echo $v;?>"> <a href="<?php echo site_url('ial/pn_maintenance/down_load');?>?fname=<?php echo isset($key)?$key:'';?>"><?php echo isset($key)?$key:'';?></a>&nbsp;&nbsp;&nbsp;
+						        <input type="button"   class="btn btn-primary"   value="del"  onclick="del('<?php echo $key?>',<?php echo $v;?>)"/><br></div>
+							 	<?php 
+							 	}
+							    }?>
+						</div>
 						<hr/>
 						<!--pending list-->
 						<?php $this->load->view('pending');?>

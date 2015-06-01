@@ -72,4 +72,14 @@ class IAL_common_model extends CI_Model{
         $res = $this->db->get('ial_common_summary')->result_array();
         return $res;
     }
+    function selectatta($id){
+    	$this->db->where('id',$id);
+    	$res = $this->db->select('file_path')->get('ial_pn_main')->row_array();
+    	return $res;
+    }
+    function update($id,$new_att){
+    	$arr['file_path'] =$new_att;
+    	$this->db->where('id',$id);
+    	return $this->db->update('ial_pn_main',$arr);
+    }
 }
