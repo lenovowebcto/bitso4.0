@@ -3,3 +3,4 @@
 .svn/*
 .idea/*
 .settings/*
+./application/config/database.php
