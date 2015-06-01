@@ -41,8 +41,15 @@
 		$data['status'] = $this->icm->get_ial_status();
 		$data['type'] = $this->icm->select_ial_type();
 		$data['Brand'] = $this->icm->select_ial_brand();
-		$data['Family_name'] = $this->icm->select_ial_family();
-		$data['Sub_Series'] = $this->icm->select_ial_sub_series();
+		/*if($data['Brand']!=array()){
+			foreach($data['Brand'] as $key){
+				$bid = $key['bid'];
+				$data['c'][] = $f = $this->icm->selectc2bybid($bid);
+				
+			}
+		}
+		 $data['Family_name'] = $this->icm->select_ial_family();
+		$data['Sub_Series'] = $this->icm->select_ial_sub_series(); */
 		$data['Status'] = $this->icm->get_ial_status();
 		$user = Auth::getUser();
 		$group = $user['group'];

@@ -46,92 +46,56 @@
                         <div class="panel-heading">
                             Detail info as below
                         </div>
-                 <form action="<?php echo site_url('ial/pn_maintenance/toedit') ?>" method="post" 
-
-enctype="multipart/form-data">
+                 <form action="<?php echo site_url('ial/pn_maintenance/toedit') ?>" method="post" enctype="multipart/form-data">
                    
                       <input type="hidden" name="id" value="<?php echo isset($id)?$id:0;?>" id="id"/>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                        <div class="col-lg-3" style="z-index: 0">
 								<label>Request_Date:</label>
-								   <input type="text" name="pn[request_date]"  
-
-value="<?php echo isset($pn['request_date'])?$pn['request_date']:'0000-00-00';?>" class="form-control" data-
-
-beatpicker="true" />
+								   <input type="text" name="pn[request_date]"  value="<?php echo isset($pn['request_date'])?$pn['request_date']:'0000-00-00';?>" class="form-control" data-beatpicker="true" />
 							    </div>
                             <div class="col-lg-3" style="z-index: 0">
 								<label>Close_Date:</label>
-								   <input type="text" name="pn[close_date]"  
-
-value="<?php echo isset($pn['close_date'])?$pn['close_date']:'0000-00-00';?>" class="form-control" data-
-
-beatpicker="true" />
+								   <input type="text" name="pn[close_date]"  value="<?php echo isset($pn['close_date'])?$pn['close_date']:'0000-00-00';?>" class="form-control" data-beatpicker="true" />
 							    </div>
 
 			
 							<div class="col-lg-3" style="z-index: 0">
 								<label>Requester</label>
-								   <input type="text"  name="pn[Requester]"   
-
-value="<?php echo isset($pn['Requester'])?$pn['Requester']:''; ?>" class="form-control" /> 
+								   <input type="text"  name="pn[Requester]" value="<?php echo isset($pn['Requester'])?$pn['Requester']:''; ?>" class="form-control" /> 
 								</div>
 							<div class="col-lg-3" style="z-index: 0">
 								<label>sales_org:</label>
-								  <textarea type="text" style="height: 34px;" 
-
-name="pn[sales_org]" class="form-control"><?php echo isset($pn['sales_org'])?$pn['sales_org']:'';?></textarea>
+								  <textarea type="text" style="height: 34px;" name="pn[sales_org]" class="form-control"><?php echo isset($pn['sales_org'])?$pn['sales_org']:'';?></textarea>
 						    </div>
 						    <div class="col-lg-12" style="z-index: 0">
 								
 								<label>Email_Subject:</label>
-								<input type="text" name="pn[email_subject]" 
-
-class="form-control"  value="<?php echo isset($pn['email_subject'])?$pn['email_subject']:''?>"/>
-							   
+								<input type="text" name="pn[email_subject]" class="form-control"  value="<?php echo isset($pn['email_subject'])?$pn['email_subject']:''?>"/>						   
 							</div>
 						  
 							 <div class="col-lg-3" style="z-index: 0">
 								<label>status:</label>
 								<select name="pn[status]" class="form-control">
 								<?php  foreach($status as $key){ ?>
-								    <option value="<?php echo isset($key
-
-['stype'])?$key['stype']:''?>" <?php if(isset($pn['status']) && $pn['status']==$key['stype']){echo 'selected';}?> 
-
-><?php echo isset($key['stype'])?$key['stype']:''; ?></option> 
+								    <option value="<?php echo isset($key['stype'])?$key['stype']:''?>" <?php if(isset($pn['status']) && $pn['status']==$key['stype']){echo 'selected';}?> ><?php echo isset($key['stype'])?$key['stype']:''; ?></option> 
 								<?php }?>
 								</select>
 							</div>
 							<div class="col-lg-3" style="z-index: 0">
 								<label>Manual:</label>
 								<select name="pn[Manual]" class="form-control">
-								    <option value=" " <?php if(isset($pn['Manual']) 
-
-&& $pn['Manual']==''){echo 'selected';}?> ></option> 
-								    <option value="YES" <?php if(isset($pn
-
-['Manual']) && $pn['Manual']=='YES'){echo 'selected';}?> >YES</option> 
-								    <option value="NO" <?php if(isset($pn
-
-['Manual']) && $pn['Manual']=='NO'){echo 'selected';}?> >NO</option> 
+								    <option value=" " <?php if(isset($pn['Manual']) && $pn['Manual']==''){echo 'selected';}?> ></option> 
+								    <option value="YES" <?php if(isset($pn['Manual']) && $pn['Manual']=='YES'){echo 'selected';}?> >YES</option> 
+								    <option value="NO" <?php if(isset($pn['Manual']) && $pn['Manual']=='NO'){echo 'selected';}?> >NO</option> 
 								</select>
 							</div>
-							 
-
 							<div class="col-lg-3" style="z-index: 0">
 								<label>summary:</label>
-<!--								   <input type="text" name="pn[summary]" value="--
-
-><?php //echo isset($pn['summary'])?$pn['summary']:'';?><!--"    class="form-control" />-->
                                 <select name="pn[summary]" class="form-control">
                                     <?php  foreach($summary as $key){ ?>
-                                        <option value="<?php echo isset($key['summary'])?$key['summary']:''?>" <?
-
-php if(isset($pn['summary']) && $pn['summary']==$key['summary']){echo 'selected';}?> ><?php echo isset($key
-
-['summary'])?$key['summary']:''; ?></option>
+                                        <option value="<?php echo isset($key['summary'])?$key['summary']:''?>" <?php if(isset($pn['summary']) && $pn['summary']==$key['summary']){echo 'selected';}?> ><?php echo isset($key['summary'])?$key['summary']:''; ?></option>
                                     <?php }?>
                                 </select>
                             </div>
@@ -139,47 +103,33 @@ php if(isset($pn['summary']) && $pn['summary']==$key['summary']){echo 'selected'
                                 <label>Owner:</label>
                                 <select name="pn[team]" class="form-control">
                                     <?php  foreach($team as $key){ ?>
-                                        <option value="<?php echo isset($key['team'])?$key['team']:''?>" <?php if
-
-(isset($pn['team']) && $pn['team']==$key['team']){echo 'selected';}?> ><?php echo isset($key['team'])?$key
-
-['team']:''; ?></option>
+                                        <option value="<?php echo isset($key['team'])?$key['team']:''?>" <?php if(isset($pn['team']) && $pn['team']==$key['team']){echo 'selected';}?> ><?php echo isset($key['team'])?$key['team']:''; ?></option>
                                     <?php }?>
                                 </select>
                             </div>
 						    <div class="col-lg-3" style="z-index: 0">
 								<label>PN_quantity:</label>
-								   <input type="text" name="pn[PN_quantity]" 
-
-value="<?php echo isset($pn['PN_quantity'])?$pn['PN_quantity']:'';?>"    class="form-control" /> 
+								   <input type="text" name="pn[PN_quantity]" value="<?php echo isset($pn['PN_quantity'])?$pn['PN_quantity']:'';?>"    class="form-control" /> 
 							</div>
 							<div class="col-lg-3" style="z-index: 0">
 								<label>Curr_User:</label>
 								<select name="pn[User]" class="form-control">
 								<?php  foreach($user as $key){ ?>
-								    <option value="<?php echo isset($key
-
-['username'])?$key['username']:''?>" <?php if(isset($key['username']) && $key['username']==$username){echo 
-
-'selected';}?> ><?php echo isset($key['username'])?$key['username']:''; ?></option> 
+								    <option value="<?php echo isset($key['username'])?$key['username']:''?>" <?php if(isset($key['username']) && $key['username']==$username){echo 'selected';}?> ><?php echo isset($key['username'])?$key['username']:''; ?></option> 
 								<?php }?>
 								</select>
 							</div>
 							 <div class="col-lg-12" >
 								<div >
 								<label>PN:</label>
-								  <textarea  name="pn[PN]" class="form-control" 
-
-><?php echo isset($pn['PN'])?$pn['PN']:''?></textarea>
+								  <textarea  name="pn[PN]" class="form-control" ><?php echo isset($pn['PN'])?$pn['PN']:''?></textarea>
 							   </div>
 							</div>
 							
 							 <div class="col-lg-12" >
 								<div >
 								<label>Comments:</label>
-								  <textarea  name="pn[Comments]" class="form-
-
-control"><?php echo isset($pn['Comments'])?$pn['Comments']:''?></textarea>
+								  <textarea  name="pn[Comments]" class="form-control"><?php echo isset($pn['Comments'])?$pn['Comments']:''?></textarea>
 							   </div>
 							</div>
                         <div class="col-lg-12">
@@ -190,14 +140,9 @@ control"><?php echo isset($pn['Comments'])?$pn['Comments']:''?></textarea>
 						    <label>Files:</label><br>
 						    <?php if(isset($atta) && $atta!=array()){	
 						    	foreach ($atta as $v=>$key){ ?>
-						       <div id="<?php echo $v;?>"> <a href="<?php echo site_url
-
-('ial/pn_maintenance/down_load');?>?fname=<?php echo isset($key)?$key:'';?>"><?php echo isset($key)?$key:'';?
-
-></a>&nbsp;&nbsp;&nbsp;
-						        <input type="button"   class="btn btn-primary"   
-
-value="del"  onclick="del('<?php echo $key?>',<?php echo $v;?>)"/><br></div>
+						       <div id="<?php echo $v;?>">
+						        <a href="<?php echo site_url('ial/pn_maintenance/down_load');?>?fname=<?php echo isset($key)?$key:'';?>"><?php echo isset($key)?$key:'';?></a>&nbsp;&nbsp;&nbsp;
+						        <input type="button"   class="btn btn-primary"   value="del"  onclick="del('<?php echo $key?>',<?php echo $v;?>)"/><br></div>
 							 	<?php 
 							 	}
 							    }?>
@@ -208,12 +153,8 @@ value="del"  onclick="del('<?php echo $key?>',<?php echo $v;?>)"/><br></div>
 						<!-- end -->
                             <p>&nbsp;</p>
 						<p style="text-align:center;">
-					     <input class="btn btn-primary" type="button" value="Create Issue" 
-
-id="save">
-							<input type="submit"  class="btn btn-success" 
-
-value="SUBMIT"/></p>
+					     <input class="btn btn-primary" type="button" value="Create Issue" id="save">
+							<input type="submit"  class="btn btn-success" value="SUBMIT"/></p>
 						<p>&nbsp;</p>
 						</form>
 						<!--add history --->

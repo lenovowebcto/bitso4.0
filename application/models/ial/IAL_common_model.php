@@ -82,4 +82,8 @@ class IAL_common_model extends CI_Model{
     	$this->db->where('id',$id);
     	return $this->db->update('ial_pn_main',$arr);
     }
+    function selectc2bybid($bid){
+    	$this->db->where('bid',$bid);
+    	return $this->db->get('ial_family')->result_array();
+    }
 }

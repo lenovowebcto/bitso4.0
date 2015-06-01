@@ -7,7 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+<script type="text/javascript">
+function brand(){
+    alert("---------");
+}
+</script>
     <title>BITSO 4.0</title>
     <?php $this->load->view('common');?>
         <script src="<?php  echo base_url();?>util/bitso/bower_components/select/js/bootstrap-select.min.js"></script>
@@ -83,20 +87,16 @@
 									</div>
                             <div class="col-lg-3">
                                 <label>Brand:</label>
-                                <select style="width: 200px" id="Brand" class="form-control" name="task[Brand]">
-                                    <option  <?php if(isset($task['Brand']) && $task['Brand']==''){echo 'selected';}?> ></option>
-                                    <?php  foreach($Brand as $key){
-                                        ?>
-                                        <option <?php if(isset($task['Brand']) && $task['Brand']==$key['bname']){echo 'selected';}?> >
+                                <select onChange='brand()' style="width: 200px" id="Brand" class="form-control" name="task[Brand]">
+                                    <?php  foreach($Brand as $key){ ?>
+                                        <option    <?php if(isset($task['Brand']) && $task['Brand']==$key['bname']){echo 'selected';}?> >
                                             <?php echo isset($key['bname'])?$key['bname']:$brand; ?></option>
-                                    <?php
-                                    }?>
+                                    <?php }?>
                                 </select>
                             </div>
 									<div class="col-lg-3">
 											<label>Family name:</label>
                                             <select style="width: 200px" id="BU" class="form-control selectpicker" data-live-search="true" name="task[Family_name]">
-                                                <option value="" <?php if(isset($task['Family_name']) && $task['Family_name']==''){echo 'selected';}?> >&nbsp;</option>
                                                 <?php  foreach($Family_name as $key){
                                                     ?>
                                                     <option <?php if(isset($task['Family_name']) && $task['Family_name']==$key['Family_name']){echo 'selected';}?> >
@@ -188,6 +188,7 @@
         $(document).ready(function() {
             $('.selectpicker').selectpicker();
         }
+       
     </script>
     <script>
     <?php $this->load->view('his');?>
