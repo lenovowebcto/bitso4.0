@@ -58,7 +58,9 @@
 																
 											<td><?php echo isset($val['Manual']) ?$val['Manual']:'';?></td>
 											<td><?php echo isset($val['summary']) ?$val['summary']:'';?></td>
-											<td><?php echo isset($val['sales_org']) ?$val['sales_org']:'';?></td>
+<!--											<td>--><?php //echo isset($val['sales_org']) ?$val['sales_org']:'';?><!--</td>-->
+
+                                             <td><?php echo isset($val['sales_org']) ? str_replace("\n","<br>",$val['sales_org']):'';?></td>
 										</tr>
                                     	<?php }
                                     }?>

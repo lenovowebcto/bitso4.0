@@ -9,6 +9,8 @@
 <meta name="author" content="">
 <title>BITSO 4.0</title>
     <?php $this->load->view('common');?>
+    <script src="<?php  echo base_url();?>util/bitso/bower_components/select/js/bootstrap-select.min.js"></script>
+    <link href="<?php  echo base_url();?>util/bitso/bower_components/select/css/bootstrap-select.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -37,6 +39,7 @@ $this->load->view ( 'left2' );
                     <div class="panel-collapse collapse" id="collapseOne" style="height: auto;">
                         <div class="panel-body">
                             <form action="<?php echo site_url('ial/task_create/task_create') ?>" method="post">
+                                <input type="hidden" name="dis"  value="<?php echo $dis;?>"/>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
 
@@ -185,6 +188,11 @@ $this->load->view ( 'left2' );
 		$("dhistory").hide();
 		});
     });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.selectpicker').selectpicker();
+        }
     </script>
 </body>
 </html>
