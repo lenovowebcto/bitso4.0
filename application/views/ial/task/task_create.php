@@ -83,7 +83,7 @@
                             <div class="col-lg-3">
                                 <label>Brand:</label>
                                 <select style="width: 200px" id="Brand" class="form-control" name="task[Brand]">
-                                    <option value="" <?php if(isset($task['Brand']) && $task['Brand']==''){echo 'selected';}?> ></option>
+                                    <option  <?php if(isset($task['Brand']) && $task['Brand']==''){echo 'selected';}?> ></option>
                                     <?php  foreach($Brand as $key){
                                         ?>
                                         <option <?php if(isset($task['Brand']) && $task['Brand']==$key['bname']){echo 'selected';}?> >
@@ -137,31 +137,23 @@
 										         }?>
 											</select>
 									</div>
+									<?php if($dis=='Think'){?>
 									<div class="col-lg-3">
 											<label>BPL Number:</label> 
 											<input type="text" class="form-control" name="task[BPL_Number]"
 												value="<?php echo isset($task['BPL_Number'])?$task['BPL_Number']:'';?>"  />
-										
 									</div>
-
+                                    <?php } ?>
                             <div class="col-lg-3">
                                 <label>Planner:</label>
                                 <input type="text" class="form-control" name="task[Planner]"
                                        value="<?php echo isset($task['Planner'])?$task['Planner']:'';?>" />
                             </div>
-<!--							<div class="col-lg-9">-->
-<!--										<div >-->
-<!--											<label>Family Options:</label> -->
-<!--											<input type="text" class="form-control" name="task[Options]"-->
-<!--												value="--><?php //echo isset($task['Options'])?$task['Options']:'';?><!--" />-->
-<!--											</div>-->
-<!--									</div>-->
-									
+                              <input type="hidden" name="dis"  value="<?php echo $dis;?>"/>
 									<div class="col-lg-12">
 										<div >
 											<label>Comment:</label> 
 											<textarea class="form-control" rows="3" name="task[Comment]" ><?php  echo isset($task['Comment'])?$task['Comment']:'';?></textarea>
-											
 										</div>
 									</div>
 									</div>

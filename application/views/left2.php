@@ -304,8 +304,11 @@
 						<li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>IAL Task<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                          			<li><a href="<?php echo site_url('ial/task_create/index');?>?pr_id=5">Task List</a></li>
-                          			<li><a href="<?php echo site_url('ial/task_create/task');?>?pr_id=5">Add Task</a></li>
+                          			<li><a href="<?php echo site_url('ial/task_create/index');?>?pr_id=5&dis=Think">Think List</a></li>
+                          			<li><a href="<?php echo site_url('ial/task_create/task');?>?pr_id=5&dis=Think">Add Think Task</a></li>
+                           
+                          			<li><a href="<?php echo site_url('ial/task_create/index');?>?pr_id=5&dis=Lenovo">Lenovo List</a></li>
+                          			<li><a href="<?php echo site_url('ial/task_create/task');?>?pr_id=5&dis=Lenovo">Add Lenovo Task</a></li>
                             </ul>
                         </li>
                         

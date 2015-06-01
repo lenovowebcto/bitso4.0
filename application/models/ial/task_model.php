@@ -5,9 +5,8 @@ class task_model extends CI_Model{
 	}
 	
 // select all tasks
-	function selectAllTask($username,$task){
-//        var_dump($task);
-//        exit;
+
+	function selectAllTask($username,$dis,$task){
         if($task != null){
             if($task['Brand'] != null){
                 $this->db->where('Brand',$task['Brand']);
@@ -25,10 +24,14 @@ class task_model extends CI_Model{
                 $this->db->where('AD < ',$task['end_AD']);
             }
         }
+
 		if($username != ""){
 			$this->db->where('User',$username);
 		}
-		return $this->db->get('ial_task')->result_array();
+		$this->db->like('brand',$dis);
+		$this->db->	from('ial_task it');
+		$this->db->	join('ial_common_brand icb','it.brand=icb.bname');
+		return $this->db->get()->result_array();
 	}
 	
     //insert
