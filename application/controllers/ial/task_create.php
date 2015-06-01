@@ -7,12 +7,7 @@
 		Auth::execute_auth();
 	}
 	public function index() {
-<<<<<<< HEAD
-		$user = Auth::getUser();
-		
-=======
-//        var_dump($_POST['task']);
-//        exit;
+
         $user = Auth::getUser();
         $task = '';
 
@@ -20,20 +15,14 @@
             $task = $_POST['task'];
         }
         $data['task'] = $this->TaskModel->selectAllTask($user['username'],$task);
->>>>>>> 8ba2c686d4dac3f5e4f57b734f19b8c265767a27
+
 		$data['pr_id'] = $pr_id = isset($_GET['pr_id'])?$_GET['pr_id']:0;
 		$data['dis'] = $dis = $_GET['dis'];
 		$user = Auth::getUser();
 		if ($user['type'] =='1'){
-<<<<<<< HEAD
-			$data['task'] = $this->TaskModel->selectAllTask('',$dis);
+			$data['task'] = $this->TaskModel->selectAllTask('',$dis,$task);
 		}elseif($user['type'] == '2'){
-			$data['task'] = $this->TaskModel->selectAllTask($user['username'],$dis);
-=======
-			$data['task'] = $this->TaskModel->selectAllTask('',$task);
-		}elseif($user['type'] == '2'){
-			$data['task'] = $this->TaskModel->selectAllTask($user['username'],$task);
->>>>>>> 8ba2c686d4dac3f5e4f57b734f19b8c265767a27
+			$data['task'] = $this->TaskModel->selectAllTask($user['username'],$dis,$task);
 		}
         $data['Brand'] = $this->icm->select_ial_brand();
         $data['Family_name'] = $this->icm->select_ial_family();
