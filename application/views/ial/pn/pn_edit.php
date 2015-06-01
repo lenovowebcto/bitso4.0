@@ -185,16 +185,31 @@
                             </div>
                             <div class="col-lg-12">
                                 <label>Files:</label><br>
-                                <?php if(isset($atta) && $atta!=array()){
-                                    foreach ($atta as $v=>$key){ ?>
+                                <?php if(isset($atta) && $atta!=array()){?>
+                                	<table class="table table-striped table-bordered table-hover" id="file_table">
+                                	<thead>
+                                	<tr>
+                                	<th >filename</th>
+                                	<th >operation</th>
+                                	</tr>
+                                	</thead>
+                                	<tbody>
+                                	
+                                   <?php  foreach ($atta as $v=>$key){ ?>
+                                   <tr>
+										<td>
                                         <div id="<?php echo $v;?>"> <a href="<?php echo site_url
 
-                                            ('ial/pn_maintenance/down_load');?>?fname=<?php echo isset($key)?$key:'';?>"><?php echo isset($key)?$key:'';?></a>&nbsp;&nbsp;&nbsp;
+                                            ('ial/pn_maintenance/down_load');?>?fname=<?php echo isset($key)?$key:'';?>"><?php echo isset($key)?$key:'';?></a>
+                                            </td>
+										<td>
                                             <input type="button"   class="btn btn-primary"
-
                                                    value="del"  onclick="del('<?php echo $key?>',<?php echo $v;?>)"/><br></div>
+                                    </td>
+										</tr>
                                     <?php
                                     }
+                                    ?></table><?php 
                                 }?>
                             </div>
                             <hr/>
