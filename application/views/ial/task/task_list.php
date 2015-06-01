@@ -140,7 +140,7 @@ $this->load->view ( 'left2' );
 								for($i = 0; $i < count ( $task ); $i ++) {
 									?>
 						    	<tr>
-									<td><a href="<?php echo site_url('ial/task_create/task') ?>?id=<?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?>&pr_id=<?php echo isset($pr_id)?$pr_id:0;?>"><?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?></a></td>
+									<td><a href="<?php echo site_url('ial/task_create/task') ?>?id=<?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?>&pr_id=<?php echo isset($pr_id)?$pr_id:0;?>&dis=<?php echo $dis;?>"><?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?></a></td>
 
 									<td><a href="<?php echo site_url('ial/task_create/task') ?>?id=<?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?>&pr_id=<?php echo isset($pr_id)?$pr_id:0;?>"><?php echo isset($task[$i]['IAL_number']) ?$task[$i]['IAL_number']:'';?></a></td>
                                     <td><?php echo isset($task[$i]['BPL_Number']) ?$task[$i]['BPL_Number']:'';?></td>

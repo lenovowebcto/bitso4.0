@@ -8,13 +8,14 @@
 	}
 	public function index() {
 		$user = Auth::getUser();
-		$data['task'] = $this->TaskModel->selectAllTask($user['username']);
+		
 		$data['pr_id'] = $pr_id = isset($_GET['pr_id'])?$_GET['pr_id']:0;
+		$data['dis'] = $dis = $_GET['dis'];
 		$user = Auth::getUser();
 		if ($user['type'] =='1'){
-			$data['task'] = $this->TaskModel->selectAllTask('');
+			$data['task'] = $this->TaskModel->selectAllTask('',$dis);
 		}elseif($user['type'] == '2'){
-			$data['task'] = $this->TaskModel->selectAllTask($user['username']);
+			$data['task'] = $this->TaskModel->selectAllTask($user['username'],$dis);
 		}
         $data['Brand'] = $this->icm->select_ial_brand();
         $data['Family_name'] = $this->icm->select_ial_family();
@@ -26,7 +27,7 @@
 		$data['w'] = 'www';
 		$data['pr_id'] = $pr_id = isset($_GET['pr_id'])?$_GET['pr_id']:0;
 		$id = isset ( $_GET ['id'] ) ? $_GET ['id'] : 0;
-
+		$data['dis'] = $dis = $_GET['dis'];
 		$data['category1'] = $this->icm->ialcommoncategory();
 		if($data['category1']!=array())
 		$data['category2'] = $this->icm->ialcommoncategory2($data['category1'][0]['id']);
@@ -73,6 +74,7 @@
 		$c2  = isset($_POST['c2'])?$_POST['c2']:'';
 		
 		$data ['id'] = $id = isset($_POST ['id'])?$_POST ['id']:'';
+		$dis = isset($_POST ['dis'])?$_POST ['dis']:'';
 		$data ['pr_id'] = $pr_id = isset($_POST ['pr_id'])?$_POST ['pr_id']:'';
 		$task = $_POST['task'];
 		$user= Auth::getUser();
@@ -87,18 +89,18 @@
 			$num = $this->TaskModel->selectAllpeis($id,$pr_id);
 			$db_states = $this->TaskModel->updatetask ($id, $task,$pr_id,$user,$pending,$sta,count($num),$c1,$c2);
 				
-			if ($db_states === FALSE) {
-				redirect ( 'ial/task_create/task' );
+			if ($db_states) {
+				redirect ( 'ial/task_create/index?pr_id='.$pr_id.'&dis='.$dis);
 			} else {
-				redirect ( 'ial/task_create/index?pr_id='.$pr_id );
+				$this->load->view('ial/task_create/task?id='.$id.'&pr_id='.$pr_id.'&dis='.$dis);
 			}
 		} else {
 			// add
 			$db_states = $this->TaskModel->inserttask ($task,$user,$pending,$sta,$pr_id,$c1,$c2);
-			if ($db_states === FALSE) {
-				redirect ( 'ial/task_create/task' );
+			if ($db_states) {
+				redirect ( 'ial/task_create/index?pr_id='.$pr_id.'&dis='.$dis);
 			} else {
-				redirect ( 'ial/task_create/index?pr_id='.$pr_id );
+				$this->load->view('ial/task_create/task?pr_id='.$pr_id.'&dis='.$dis);
 			}
 		}
 		
