@@ -6,7 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+<script type="text/javascript">
 
+function test(){
+	var eow = $("#eow").val();
+	var ad = $("#ad").val();
+	var url="<?php echo site_url('ial/ial_bpl/time')?>";
+	 $.post(url,{eow:eow,ad:ad},function(result){
+         $("#rtm").val(result);      
+       });
+	/* if(eow!=''){
+		
+	 }else if(eow!='' && (ad =='')){
+		 
+	 } */
+}
+
+</script>
     <title>BITSO 4.0</title>
     <?php $this->load->view('common');?>   
 </head>
@@ -36,22 +52,32 @@
                         <div class="panel-body">
                        <div class="col-lg-3" style="z-index: 0">
 								<label>RTM:</label>
-								   <input type="text" name="ial[RTM]"  value="<?php echo isset($ial['RTM'])?$ial['RTM']:'0000-00-00';?>" class="form-control" data-beatpicker="true" />
+								   <input type="text" name="ial[RTM]"  id="rtm"
+								   onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',el:$dp.$('startTime')})"
+								   value="<?php echo isset($ial['RTM'])?$ial['RTM']:'';?>" class="form-control"/>
 							    
 							</div>
                             <div class="col-lg-3" style="z-index: 0">
 								<label>AD:</label>
-								   <input type="text" name="ial[AD]"  value="<?php echo isset($ial['AD'])?$ial['AD']:'0000-00-00';?>" class="form-control" data-beatpicker="true" />
-							    
+								   <input type="text"  name="ial[AD]"  id="ad"  onChange="test()"
+								   value="<?php echo isset($ial['AD'])?$ial['AD']:'';?>"   
+								   onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',el:$dp.$('startTime')})" 
+								   class="form-control" />   
 							</div>
 			                <div class="col-lg-3" style="z-index: 0">
 								<label>EOW:</label>
-								   <input type="text" name="ial[EOW]"  value="<?php echo isset($ial['EOW'])?$ial['EOW']:'0000-00-00';?>" class="form-control" data-beatpicker="true" />
+								   <input type="text" name="ial[EOW]"  id="eow"  onChange="test()"
+								    value="<?php echo isset($ial['EOW'])?$ial['EOW']:'';?>"
+								    onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',el:$dp.$('startTime')})"
+								     class="form-control" />
 							    
 							</div>
 							<div class="col-lg-3" style="z-index: 0">
 								<label>Review_Date:</label>
-								   <input type="text" name="ial[review_date]"  value="<?php echo isset($ial['review_date'])?$ial['review_date']:'0000-00-00';?>" class="form-control" data-beatpicker="true" />
+								   <input type="text" name="ial[review_date]"  
+								   onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',el:$dp.$('startTime')})"
+								   value="<?php echo isset($ial['review_date'])?$ial['review_date']:'';?>" 
+								   class="form-control" />
 							    
 							</div>
 							
@@ -113,7 +139,7 @@
 								</select>
 							</div>
 							<div class="panel">
-							<div class="col-lg-3" style="z-index: 0 ;background-color:#dcdcdc;">
+							<div class="col-lg-3" style="z-index: 0 ;">
 								<label>relayware:</label>
 								<select name="ial[relayware]" class="form-control">
 								    <option value=" " <?php if(isset($ial['relayware']) && $ial['relayware']==''){echo 'selected';}?> ></option> 
@@ -121,7 +147,7 @@
 								    <option value="NO" <?php if(isset($ial['relayware']) && $ial['relayware']=='NO'){echo 'selected';}?> >NO</option> 
 								</select>
 							</div>
-						<div class="col-lg-3" style="z-index: 0;background-color:#dcdcdc;">
+						<div class="col-lg-3" style="z-index: 0;">
 								<label>somo:</label>
 								<select name="ial[somo]" class="form-control" >
 								    <option value=" " <?php if(isset($ial['somo']) && $ial['somo']==''){echo 'selected';}?> ></option> 
@@ -129,7 +155,7 @@
 								    <option value="NO" <?php if(isset($ial['somo']) && $ial['somo']=='NO'){echo 'selected';}?> >NO</option> 
 								</select>
 							</div>
-							<div class="col-lg-3" style="z-index: 0;background-color:#dcdcdc;">
+							<div class="col-lg-3" style="z-index: 0;">
 								<label>MTM:</label>
 								<select name="ial[MTM]" class="form-control">
 								    <option value=" " <?php if(isset($ial['MTM']) && $ial['MTM']==''){echo 'selected';}?> ></option> 
@@ -137,7 +163,7 @@
 								    <option value="NO" <?php if(isset($ial['MTM']) && $ial['MTM']=='NO'){echo 'selected';}?> >NO</option> 
 								</select>
 							</div>
-							<div class="col-lg-3" style="z-index: 0;background-color:#dcdcdc;">
+							<div class="col-lg-3" style="z-index: 0;">
 								<label>Curr_User:</label>
 								<select name="ial[User]" class="form-control">
 								<?php  foreach($user as $key){ ?>

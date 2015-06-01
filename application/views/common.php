@@ -4,6 +4,8 @@
     <script src="<?php  echo base_url();?>util/bitso/bower_components/raphael/raphael-min.js"></script>
     <script src="<?php  echo base_url();?>util/bitso/bower_components/morrisjs/morris.min.js"></script>
     <script src="<?php  echo base_url();?>util/bitso/js/morris-data.js"></script>
+    <script src="<?php echo  base_url();?>util/datepicker/WdatePicker.js"></script>
+    <link  href="<?php echo  base_url();?>util/datepicker/skin/default/datepicker.css" />
  
    
     <link href="<?php  echo base_url();?>util/bitso/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">

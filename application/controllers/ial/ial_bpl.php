@@ -82,4 +82,15 @@ class ial_bpl extends CI_Controller{
 			}
 		}
 	}
+	function time(){
+		$eow = $_POST['eow'];
+		$ad = $_POST['ad'];
+		
+		if(strlen($eow)>0){
+		   $rtm = date('Y-m-d', strtotime($eow. '-7 day'));
+		}else if(strlen($eow)==0 && strlen($ad)>0){
+		   $rtm = date('Y-m-d', strtotime($ad. '-7 day'));
+		}
+		echo $rtm;
+	}
 }

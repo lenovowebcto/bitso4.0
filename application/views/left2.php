@@ -274,15 +274,18 @@
                             <ul class="nav nav-second-level">
                               
                                 <li><a href="<?php echo site_url('admin/user');?>">User Management</a></li>
-                                <li><a href="<?php echo site_url('Ial_admin/IAL_family');?>">Family Management</a></li>
+                               
                                 <li><a href="<?php echo site_url('Ial_admin/IAL_warranty');?>">Warranty Type Management</a></li>
                                 <li><a href="<?php echo site_url('Ial_admin/IAL_type');?>">IAL Type Management</a></li>
                                 <li><a href="<?php echo site_url('Ial_admin/IAL_category');?>">IAL Category Management</a></li>
                                 
                                 <li><a href="<?php echo site_url('Ial_admin/IAL_team');?>">IAL Team Management</a></li>
                                 <li><a href="<?php echo site_url('Ial_admin/IAL_status');?>">IAL Status Management</a></li>
+                               <!-- 
+                                <li><a href="<?php echo site_url('Ial_admin/IAL_family');?>">Family Management</a></li>
                                 <li><a href="<?php echo site_url('Ial_admin/IAL_brand');?>">IAL Brand Management</a></li>
                                 <li><a href="<?php echo site_url('Ial_admin/IAL_sub_series');?>">IAL Sub Series Management</a></li>
+                                -->
                                 <li><a href="<?php echo site_url('Ial_admin/UploadImage');?>">IAL Image Upload</a></li>
                                 <li><a href="<?php echo site_url('Ial_admin/Ial_Summary');?>">IAL Summary</a></li>
                                 <li><a href="<?php echo site_url('Ial_admin/New_relation');?>">IAL New Relation</a></li>
