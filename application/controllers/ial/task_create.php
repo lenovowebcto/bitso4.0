@@ -7,14 +7,21 @@
 		Auth::execute_auth();
 	}
 	public function index() {
-		$user = Auth::getUser();
-		$data['task'] = $this->TaskModel->selectAllTask($user['username']);
+//        var_dump($_POST['task']);
+//        exit;
+        $user = Auth::getUser();
+        $task = '';
+
+        if(isset($_POST['task']) and $_POST['task'] !=null ) {
+            $task = $_POST['task'];
+        }
+        $data['task'] = $this->TaskModel->selectAllTask($user['username'],$task);
 		$data['pr_id'] = $pr_id = isset($_GET['pr_id'])?$_GET['pr_id']:0;
 		$user = Auth::getUser();
 		if ($user['type'] =='1'){
-			$data['task'] = $this->TaskModel->selectAllTask('');
+			$data['task'] = $this->TaskModel->selectAllTask('',$task);
 		}elseif($user['type'] == '2'){
-			$data['task'] = $this->TaskModel->selectAllTask($user['username']);
+			$data['task'] = $this->TaskModel->selectAllTask($user['username'],$task);
 		}
         $data['Brand'] = $this->icm->select_ial_brand();
         $data['Family_name'] = $this->icm->select_ial_family();

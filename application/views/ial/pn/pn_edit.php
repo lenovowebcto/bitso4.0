@@ -50,7 +50,7 @@
 								</div>
 							<div class="col-lg-3" style="z-index: 0">
 								<label>sales_org:</label>
-								  <textarea type="text" name="pn[sales_org]" class="form-control"><?php echo isset($pn['sales_org'])?$pn['sales_org']:'';?></textarea>
+								  <textarea type="text" style="height: 34px;" name="pn[sales_org]" class="form-control"><?php echo isset($pn['sales_org'])?$pn['sales_org']:'';?></textarea>
 						    </div>
 						    <div class="col-lg-12" style="z-index: 0">
 								
