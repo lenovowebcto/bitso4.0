@@ -7,17 +7,17 @@
 		Auth::execute_auth();
 	}
 	public function index() {
-
-        $user = Auth::getUser();
         $task = '';
-
         if(isset($_POST['task']) and $_POST['task'] !=null ) {
             $task = $_POST['task'];
         }
-        $data['task'] = $this->TaskModel->selectAllTask($user['username'],$task);
-
 		$data['pr_id'] = $pr_id = isset($_GET['pr_id'])?$_GET['pr_id']:0;
-		$data['dis'] = $dis = $_GET['dis'];
+        if(isset($_GET['dis'])){
+            $data['dis'] = $dis = $_GET['dis'];
+        }
+        if(isset($_POST['dis'])){
+            $data['dis'] = $dis = $_POST['dis'];
+        }
 		$user = Auth::getUser();
 		if ($user['type'] =='1'){
 			$data['task'] = $this->TaskModel->selectAllTask('',$dis,$task);

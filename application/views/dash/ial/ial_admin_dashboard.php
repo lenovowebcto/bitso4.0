@@ -13,7 +13,7 @@
     <?php $this->load->view('common');?>
 </head>
 <body>
-    <div id="wrapper">
+    <br id="wrapper">
           <?php $this->load->view('left2');
           ?>
            <!-- table  start-->
@@ -164,8 +164,8 @@
                                             <td><?php echo isset($val['Requester'])?$val['Requester']:'';?></td>
                                             <td class="center"><?php echo isset($val['status'])?$val['status']:'';?></td>
                                             <td class="center"><?php echo isset($val['Manual'])?$val['Manual']:'';?></td> 
-                                            <td class="center"><?php echo isset($val['summary'])?$val['summary']:'';?></td> 
-                                            <td class="center"><?php echo isset($val['sales_org'])?$val['sales_org']:'';?></td> 
+                                            <td class="center"><?php echo isset($val['summary'])?$val['summary']:'';?></td>
+                                             <td class="center"><?php echo isset($val['sales_org']) ? str_replace("\n","<br>",$val['sales_org']):'';?></td>
                                         </tr>
                                     	<?php }
                                     }?>

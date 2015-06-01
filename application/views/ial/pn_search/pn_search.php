@@ -76,7 +76,8 @@
 																
 											<td><?php echo isset($ial_pn[$i]['Manual']) ?$ial_pn[$i]['Manual']:'';?></td>
 											<td><?php echo isset($ial_pn[$i]['summary']) ?$ial_pn[$i]['summary']:'';?></td>
-											<td><?php echo isset($ial_pn[$i]['sales_org']) ?$ial_pn[$i]['sales_org']:'';?></td>
+<!--											<td>--><?php //echo isset($ial_pn[$i]['sales_org']) ?$ial_pn[$i]['sales_org']:'';?><!--</td>-->
+                                          <td><?php echo isset($ial_pn[$i]['sales_org']) ? str_replace("\n","<br>",$ial_pn[$i]['sales_org']):'';?></td>
 										</tr>
 						<?php }} ?>
                                     </tbody>
