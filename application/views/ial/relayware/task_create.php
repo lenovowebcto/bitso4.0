@@ -40,7 +40,7 @@
 											<input type="hidden" name="deadline" value="<?php echo isset($task['AD'])?$task['AD']:'0000-00-00';?>"/>
 											 <input type="text"
 												style="width: 200px" id="AD" class="form-control"
-												data-beatpicker="true" name="task[AD]"
+                                                onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',el:$dp.$('startTime')})" name="task[AD]"
 												value="<?php echo isset($task['AD'])?$task['AD']:'0000-00-00';?>" />
 										</div>
 									<div class="col-lg-3">
@@ -48,7 +48,7 @@
 											<input type="hidden" name="Upload_Date" value="<?php echo isset($task['Upload_Date'])?$task['Upload_Date']:'0000-00-00';?>"/>
 											 <input type="text"
 												style="width: 200px" id="Upload_Date" class="form-control"
-												data-beatpicker="true" name="task[Upload_Date]"
+                                                onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',el:$dp.$('startTime')})" name="task[Upload_Date]"
 												value="<?php echo isset($task['Upload_Date'])?$task['Upload_Date']:'0000-00-00';?>" />
 										</div>
 									<div class="col-lg-3">

@@ -42,7 +42,8 @@
 											<input type="hidden" name="Record_Date" value="<?php echo isset($task['Record_Date'])?$task['Record_Date']:'0000-00-00';?>"/>
 											 <input type="text"
 												style="width: 200px" id="Record_Date" class="form-control"
-												data-beatpicker="true" name="task[Record_Date]"
+												 name="task[Record_Date]"
+                                                onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',el:$dp.$('startTime')})"
 												value="<?php echo isset($task['Record_Date'])?$task['Record_Date']:'0000-00-00';?>" <?php if($type==2){?> disabled='disabled'<?php }?>/>
 
 									</div>
@@ -51,7 +52,7 @@
 											<input type="hidden" name="AD" value="<?php echo isset($task['AD'])?$task['AD']:'0000-00-00';?>"/>
 											 <input type="text"
 												style="width: 200px" id="AD" class="form-control"
-												data-beatpicker="true" name="task[AD]"
+                                                onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',el:$dp.$('startTime')})" name="task[AD]"
 												value="<?php echo isset($task['AD'])?$task['AD']:'0000-00-00';?>" <?php if($type==2){?> disabled='disabled'<?php }?>/>
 										
 									</div>
@@ -60,7 +61,7 @@
 											<input type="hidden" name="EOW" value="<?php echo isset($task['EOW'])?$task['EOW']:'0000-00-00';?>"/>
 											 <input type="text"
 												style="width: 200px" id="EOW" class="form-control"
-												data-beatpicker="true" name="task[EOW]"
+                                                onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',el:$dp.$('startTime')})" name="task[EOW]"
 												value="<?php echo isset($task['EOW'])?$task['EOW']:'0000-00-00';?>" <?php if($type==2){?> disabled='disabled'<?php }?>/>
 										
 									</div>
@@ -69,7 +70,7 @@
 											<input type="hidden" name="RTM" value="<?php echo isset($task['RTM'])?$task['RTM']:'0000-00-00';?>"/>
 											 <input type="text"
 												style="width: 200px" id="RTM" class="form-control"
-												data-beatpicker="true" name="task[RTM]"
+                                                onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',el:$dp.$('startTime')})" name="task[RTM]"
 												value="<?php echo isset($task['RTM'])?$task['RTM']:'0000-00-00';?>" <?php if($type==2){?> disabled='disabled'<?php }?>/>
 										
 									</div>
