@@ -70,7 +70,7 @@ $this->load->view ( 'left2' );
 																
 											<td><?php echo isset($list[$i]['Manual']) ?$list[$i]['Manual']:'';?></td>
 											<td><?php echo isset($list[$i]['summary']) ?$list[$i]['summary']:'';?></td>
-											<td><?php echo isset($list[$i]['sales_org']) ?$list[$i]['sales_org']:'';?></td>
+											<td><?php echo isset($list[$i]['sales_org']) ? str_replace("\n","<br>",$list[$i]['sales_org']):'';?></td>
 										</tr>
 						<?php } ?>
                                     </tbody>
