@@ -23,24 +23,24 @@ function brand(){
 			    $("#BU").empty('');
 	            $("#BU").html(tt);
 			   } 
+	         $('.selectpicker').selectpicker('refresh');
 	      });
 }
 function fname(){
 	var f =  $("#BU").val();
-	 var html = '<option value=""></option>';
+	 var html = '';
 	   var url = "<?php echo site_url('ial/task_create/subser');?>";
 	   $.post(url,{fname:f},function(result){
 		   if(result==''){
 			       $("#Sub_Series").empty(''); 
 			   }else{
 				   $.each(eval(result),function(key,val){
-			            html+="<option  id="+val.id+"  >"+val.sub_series+"   </option>"
+			            html+="<option  id="+val.id+" >"+val.sub_series+" </option>"
 					   }); 
 				   $("#Sub_Series").empty('');
 				   $("#Sub_Series").html(html);
-				   }
-		  
-	           
+				   }    
+		         $('.selectpicker').selectpicker('refresh');       
 		      });
 }
 
@@ -129,19 +129,27 @@ function fname(){
                             </div>
 									<div class="col-lg-3" id="div">
 										<label>Family name</label>
-										<select onChange="fname()" style="width: 200px" id="BU"  class="form-control" data-live-search="true" name="task[Family_name]">
-										    
+										<select onChange="fname()" style="width: 200px" id="BU"  class="form-control selectpicker" data-live-search="true" name="task[Family_name]">
+										   <?php  foreach($Family_name as $key){
+                                                    ?>
+                                                    <option <?php if(isset($task['Family_name']) && $task['Family_name']==$key['Family_name']){echo 'selected';}?> >
+                                                        <?php echo isset($key['Family_name'])?$key['Family_name']:$family_name; ?></option>
+                                                <?php
+                                                }?>	      
 										</select>
 									</div>
 									
 									<div class="col-lg-3">
 											<label>Sub Series:</label>
-                                            <select  id="Sub_Series" class="form-control " data-live-search="true" name="task[Sub_Series]">
-                                             
+                                            <select  id="Sub_Series" class="form-control selectpicker" data-live-search="true" name="task[Sub_Series]">
+                                              <?php  foreach($Sub_Series as $key){
+                                                    ?>
+                                                    <option <?php if(isset($task['Sub_Series']) && $task['Sub_Series']==$key['sub_series']){echo 'selected';}?> >
+                                                        <?php echo isset($key['sub_series'])?$key['sub_series']:$sub_Series; ?></option>
+                                                <?php
+                                                }?>
                                             </select>
 									</div>
-                            
-
                             <div class="col-lg-3" style="z-index: 0">
                                 <label>specialist:</label>
                                 <select name="task[User]" class="form-control">
@@ -209,8 +217,7 @@ function fname(){
 
     <script>
     $(document).ready(function(){
-       $('.selectpicker').selectpicker();
-        //$('.selectpicker').selectpicker();
+       $('.selectpicker').selectpicker('refresh');
     });
     <?php $this->load->view('his');?>
    </script>

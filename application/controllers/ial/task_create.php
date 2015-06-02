@@ -41,15 +41,9 @@
 		$data['status'] = $this->icm->get_ial_status();
 		$data['type'] = $this->icm->select_ial_type();
 		$data['Brand'] = $this->icm->select_ial_brand();
-		/*if($data['Brand']!=array()){
-			foreach($data['Brand'] as $key){
-				$bid = $key['bid'];
-				$data['c'][] = $f = $this->icm->selectc2bybid($bid);
-				
-			}
-		}
-		 $data['Family_name'] = $this->icm->select_ial_family();
-		$data['Sub_Series'] = $this->icm->select_ial_sub_series(); */
+		
+		$data['Family_name'] = $this->icm->select_ial_family();
+		$data['Sub_Series'] = $this->icm->select_ial_sub_series();
 		$data['Status'] = $this->icm->get_ial_status();
 		$user = Auth::getUser();
 		$group = $user['group'];
@@ -72,7 +66,8 @@
 			}
 			//////////////
 			$data ['id'] = $id;
-			$data ['task'] = $this->TaskModel->selectbyid ( $id );
+			$data ['task'] = $this->TaskModel->selectbyid($id);
+			var_dump($data ['task']);exit;
 			$val = $data['task']['Comment'];
 			if($val!=""){
 				$Comment = explode(";", $val);
