@@ -125,5 +125,10 @@
 		if($res!=array())echo  json_encode($res);
 		if($res == array())echo  '';
 	}
-	
+	function subser(){
+		$Family_name = $_POST['fname'];
+		$res = $this->icm->selectsubserbyf($Family_name);
+		if($res!=array())echo  json_encode($res);
+		if($res == array())echo  '';
+	}
 }
