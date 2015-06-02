@@ -10,15 +10,14 @@
 <script type="text/javascript">
 function brand(){
 
-   var brand = $("select option:selected").val();
-   var html = '<option value=""></option>';
-   var url = "<?php echo site_url('ial/task_create/family');?>";
+    var brand = $("select option:selected").val();
+    var tt="";
+    var url = "<?php echo site_url('ial/task_create/family');?>";
    $.post(url,{brand:brand},function(result){
 	   $.each(eval(result),function(key,val){
-            html+="<option  id="+val.id+"  >"+val.Family_name+"   </option>"
-           
-		   });       
-            $("#family").html(html);
+            tt += "<option>"+val.Family_name+" </option>"
+		   }); 
+            $("#BU").html(tt);
 	      });
 }
 
@@ -29,7 +28,6 @@ function fname(){
 	   $.post(url,{fname:f},function(result){
 		   $.each(eval(result),function(key,val){
 	            html+="<option  id="+val.id+"  >"+val.sub_series+"   </option>"
-	           
 			   }); 
 	            $("#Sub_Series").html(html);
 		      });
@@ -118,13 +116,13 @@ function fname(){
                                     <?php }?>
                                 </select>
                             </div>
-									<div class="col-lg-3">
-											<label>Family name:</label>
-                                            <select onChange='fname()' style="width: 200px" id="family"  class="form-control " data-live-search="true" name="task[Family_name]">
-                                             
-                                            </select>
+									<div class="col-lg-3" id="div">
+										<label>Family name</label>
+										<select onChange="fname()" style="width: 200px" id="BU"  class="form-control selectpicker" data-live-search="true" name="Family_name">
+										
+										</select>
 									</div>
-
+									
 									<div class="col-lg-3">
 											<label>Sub Series:</label>
                                             <select  id="Sub_Series" class="form-control " data-live-search="true" name="task[Sub_Series]">
@@ -197,13 +195,12 @@ function fname(){
     </div>
   <?php  $this->load->view('foot'); ?>
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+
     <script>
-        $(document).ready(function(){
-            $('.selectpicker').selectpicker();
-        });
-       
-    </script>
-    <script>
+    $(document).ready(function(){
+      //  $('.selectpicker').selectpicker('val',f);
+        $('.selectpicker').selectpicker();
+    });
     <?php $this->load->view('his');?>
    </script>
 
