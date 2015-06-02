@@ -12,7 +12,7 @@ function brand(){
     var brand = $("select option:selected").val();
     var tt="";
     var url = "<?php echo site_url('ial/task_create/family');?>";
-   
+   var name = "<?php isset($task['Family_name'])?$task['Family_name']:'';?>";
    $.post(url,{brand:brand},function(result){
 	   if(result==''){
 		         $("#BU").empty('');

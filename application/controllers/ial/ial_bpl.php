@@ -50,7 +50,7 @@ class ial_bpl extends CI_Controller{
 		$data['category2'] = $this->icm->ialcommoncategory2($data['category1'][0]['id']); 
 		$data['status'] = $this->icm->get_ial_status(); 
 		$data['type'] = $this->icm->select_ial_type();
-		$data['brand'] = $this->icm->select_ial_brand();
+		$data['brand'] = $this->icm->select_ial_brand('');
 		$data['warranty'] = $this->icm->select_ial_warranty();
 		
 		$this->load->view('ial/ial_bpl/add_ial_bpl',$data);

@@ -38,7 +38,8 @@ class IAL_common_model extends CI_Model{
 	function select_ial_warranty(){
 		return $this->db->get('ial_warranty')->result_array();
 	}
-	function select_ial_brand(){
+	function select_ial_brand($dis){
+		if($dis!='')$this->db->where('dis',$dis);
 		return $this->db->get('ial_common_brand')->result_array();
 	}
 	function select_ial_type(){

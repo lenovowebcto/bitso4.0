@@ -24,7 +24,7 @@
 		}elseif($user['type'] == '2'){
 			$data['task'] = $this->TaskModel->selectAllTask($user['username'],$dis,$task);
 		}
-        $data['Brand'] = $this->icm->select_ial_brand();
+        $data['Brand'] = $this->icm->select_ial_brand('');
         $data['Family_name'] = $this->icm->select_ial_family();
         $data['Sub_Series'] = $this->icm->select_ial_sub_series();
 		$this->load->view('ial/task/task_list',$data);
@@ -40,7 +40,7 @@
 		$data['category2'] = $this->icm->ialcommoncategory2($data['category1'][0]['id']);
 		$data['status'] = $this->icm->get_ial_status();
 		$data['type'] = $this->icm->select_ial_type();
-		$data['Brand'] = $this->icm->select_ial_brand();
+		$data['Brand'] = $this->icm->select_ial_brand($dis);
 		
 		$data['Family_name'] = $this->icm->select_ial_family();
 		$data['Sub_Series'] = $this->icm->select_ial_sub_series();
@@ -67,7 +67,13 @@
 			//////////////
 			$data ['id'] = $id;
 			$data ['task'] = $this->TaskModel->selectbyid($id);
-			var_dump($data ['task']);exit;
+			
+			if ($data ['task']!=array()){
+				$Family_name = $data ['task']['Family_name'];
+				$brand = $data ['task']['Brand'];
+				$data['Family_name'] = $this->icm->selectfbybr($brand);
+				$data['Sub_Series'] =  $this->icm->selectsubserbyf($Family_name);
+			}
 			$val = $data['task']['Comment'];
 			if($val!=""){
 				$Comment = explode(";", $val);
@@ -86,6 +92,8 @@
 		$dis = isset($_POST ['dis'])?$_POST ['dis']:'';
 		$data ['pr_id'] = $pr_id = isset($_POST ['pr_id'])?$_POST ['pr_id']:'';
 		$task = $_POST['task'];
+		if(!isset($task['Family_name']))$task['Family_name']='';
+		if(!isset($task['Sub_Series']))$task['Sub_Series']='';
 		$user= Auth::getUser();
 		if(isset($task['Comment']) && $task['Comment']!='')
 		{
