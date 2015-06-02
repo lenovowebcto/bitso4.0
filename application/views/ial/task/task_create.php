@@ -9,8 +9,20 @@
     <meta name="author" content="">
 <script type="text/javascript">
 function brand(){
-    alert("---------");
+
+   var brand = $("select option:selected").val();
+   var html = '';
+   var url = "<?php echo site_url('ial/task_create/family');?>";
+   $.post(url,{brand:brand},function(result){
+	   $.each(eval(result),function(key,val){
+            html+="<option  id="+val.id+"  >"+val.Family_name+"   </option>"
+           
+		   });
+	        
+            $("#family").html(html);
+	      });
 }
+
 </script>
     <title>BITSO 4.0</title>
     <?php $this->load->view('common');?>
@@ -96,26 +108,20 @@ function brand(){
                             </div>
 									<div class="col-lg-3">
 											<label>Family name:</label>
-                                            <select style="width: 200px" id="BU" class="form-control selectpicker" data-live-search="true" name="task[Family_name]">
-                                                <?php  foreach($Family_name as $key){
-                                                    ?>
-                                                    <option <?php if(isset($task['Family_name']) && $task['Family_name']==$key['Family_name']){echo 'selected';}?> >
-                                                        <?php echo isset($key['Family_name'])?$key['Family_name']:$family_name; ?></option>
-                                                <?php
-                                                }?>
+                                            <select style="width: 200px" id="family" class="form-control selectpicker" data-live-search="true" name="task[Family_name]">
+                                             
                                             </select>
 									</div>
 
 									<div class="col-lg-3">
 											<label>Sub Series:</label>
-                                            <select  id="Sub_Series" class="form-control selectpicker" data-live-search="true" name="task[Sub_Series]">
-                                                <option value="" <?php if(isset($task['Sub_Series']) && $task['Sub_Series']==''){echo 'selected';}?> >&nbsp;</option>
-                                                <?php  foreach($Sub_Series as $key){
+                                            <select onChange='family()' id="Sub_Series" class="form-control selectpicker" data-live-search="true" name="task[Sub_Series]">
+                                             <!--     <?php  foreach($Sub_Series as $key){
                                                     ?>
                                                     <option <?php if(isset($task['Sub_Series']) && $task['Sub_Series']==$key['sub_series']){echo 'selected';}?> >
                                                         <?php echo isset($key['sub_series'])?$key['sub_series']:$sub_Series; ?></option>
                                                 <?php
-                                                }?>
+                                                }?>-->
                                             </select>
 									</div>
                             
@@ -185,9 +191,9 @@ function brand(){
   <?php  $this->load->view('foot'); ?>
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
-        $(document).ready(function() {
+        $(document).ready(function(){
             $('.selectpicker').selectpicker();
-        }
+        });
        
     </script>
     <script>

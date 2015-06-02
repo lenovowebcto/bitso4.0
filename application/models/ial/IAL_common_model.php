@@ -86,4 +86,8 @@ class IAL_common_model extends CI_Model{
     	$this->db->where('bid',$bid);
     	return $this->db->get('ial_family')->result_array();
     }
+    function selectfbybr($brand){
+    	$sql ="SELECT i.* FROM ial_common_brand icb LEFT JOIN ial_family i ON icb.`bid` = i.`bid`  WHERE bname='$brand'";
+    	return $this->db->query($sql)->result_array();
+    }
 }

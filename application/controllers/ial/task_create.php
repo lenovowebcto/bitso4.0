@@ -119,5 +119,11 @@
 		}
 		
 	}
+	function family(){
+		$brand = $_POST['brand'];
+		$res = $this->icm->selectfbybr($brand);
+		if($res!=array())echo  json_encode($res);
+		if($res == array())echo  '';
+	}
 	
 }
