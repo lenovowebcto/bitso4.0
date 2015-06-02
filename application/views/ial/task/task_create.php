@@ -27,12 +27,10 @@ function fname(){
 	 var html = '<option value=""></option>';
 	   var url = "<?php echo site_url('ial/task_create/subser');?>";
 	   $.post(url,{fname:f},function(result){
-		  
 		   $.each(eval(result),function(key,val){
 	            html+="<option  id="+val.id+"  >"+val.sub_series+"   </option>"
 	           
 			   }); 
-		   alert(result);      
 	            $("#Sub_Series").html(html);
 		      });
 }
