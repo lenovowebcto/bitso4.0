@@ -91,36 +91,38 @@
                             <div class="col-lg-3" style="z-index: 0">
                                 <label>status:</label>
                                 <select name="pn[status]" class="form-control">
-                                    <?php  foreach($status as $key){ ?>
-                                        <option value="<?php echo isset($key
-
-                                            ['stype'])?$key['stype']:''?>" <?php if(isset($pn['status']) && $pn['status']==$key['stype']){echo 'selected';}?>
-
+                                    <?php if(isset($id) && $id>0){ foreach($status as $key){ ?>
+                                        <option value="<?php echo isset($key['stype'])?$key['stype']:''?>" 
+                                        <?php if(isset($pn['status']) && $pn['status']==$key['stype']){echo 'selected';}?>
                                             ><?php echo isset($key['stype'])?$key['stype']:''; ?></option>
-                                    <?php }?>
+                                    <?php }}else{?>
+                                    	<?php foreach($status as $key){?>
+                                    	 <option value="<?php echo isset($key['stype'])?$key['stype']:''?>" 
+                                        <?php if($key['stype']=='Close'){echo 'selected';}?>
+                                            ><?php echo isset($key['stype'])?$key['stype']:''; ?></option>
+                                  <?php  }}?>
                                 </select>
                             </div>
                             <div class="col-lg-3" style="z-index: 0">
                                 <label>Manual:</label>
+                                <?php if(isset($id) && $id>0){ ?>
                                 <select name="pn[Manual]" class="form-control">
-                                    <option value=" " <?php if(isset($pn['Manual'])
-
-                                        && $pn['Manual']==''){echo 'selected';}?> ></option>
-                                    <option value="YES" <?php if(isset($pn
-
-                                            ['Manual']) && $pn['Manual']=='YES'){echo 'selected';}?> >YES</option>
-                                    <option value="NO" <?php if(isset($pn
-
-                                            ['Manual']) && $pn['Manual']=='NO'){echo 'selected';}?> >NO</option>
+                                    <option value=" " <?php if(isset($pn['Manual'])&& $pn['Manual']==''){echo 'selected';}?> ></option>
+                                    <option value="YES" <?php if(isset($pn['Manual']) && $pn['Manual']=='YES'){echo 'selected';}?> >YES</option>
+                                    <option value="NO" <?php if(isset($pn['Manual']) && $pn['Manual']=='NO'){echo 'selected';}?>>NO</option>
                                 </select>
+                                <?php }else{?>
+                                <select name="pn[Manual]" class="form-control">
+                                    <option value=" " ></option>
+                                    <option value="YES" >YES</option>
+                                    <option value="NO" selected>NO</option>
+                                </select>
+                                <?php }?>
                             </div>
 
 
                             <div class="col-lg-3" style="z-index: 0">
                                 <label>summary:</label>
-                                <!--								   <input type="text" name="pn[summary]" value="--
-
-                                ><?php //echo isset($pn['summary'])?$pn['summary']:'';?><!--"    class="form-control" />-->
                                 <select name="pn[summary]" class="form-control">
                                     <?php  foreach($summary as $key){ ?>
                                         <option value="<?php echo isset($key['summary'])?$key['summary']:''?>" <?php if(isset($pn['summary']) && $pn['summary']==$key['summary']){
