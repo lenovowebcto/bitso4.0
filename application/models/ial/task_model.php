@@ -7,6 +7,7 @@ class task_model extends CI_Model{
 // select all tasks
 
 	function selectAllTask($username,$dis,$task){
+		
         if($task != null){
             if($task['Brand'] != null){
                 $this->db->where('Brand',$task['Brand']);
@@ -14,7 +15,7 @@ class task_model extends CI_Model{
             if($task['Family_name'] != null){
                 $this->db->where('Family_name',$task['Family_name']);
             }
-            if($task['Sub_Series'] != null){
+            if(isset($task['Sub_Series']) && $task['Sub_Series']!=''){
                 $this->db->where('Sub_Series',$task['Sub_Series']);
             }
             if($task['start_AD'] != null and $task['start_AD'] != '0000-00-00') {

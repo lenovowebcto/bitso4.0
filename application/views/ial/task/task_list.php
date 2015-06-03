@@ -78,7 +78,7 @@ $this->load->view ( 'left2' );
 
                     <div class="panel-collapse collapse" id="collapseOne" style="height: auto;">
                         <div class="panel-body">
-                            <form action="<?php echo site_url('ial/task_create/task_create') ?>" method="post">
+                            <form action="<?php echo site_url('ial/task_create/index'); ?>?pr_id=5&dis=<?php echo $dis;?>" method="post">
                                 <input type="hidden" name="dis"  value="<?php echo $dis;?>"/>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
