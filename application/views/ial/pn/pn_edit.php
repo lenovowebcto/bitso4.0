@@ -56,18 +56,14 @@
                             <div class="col-lg-3" style="z-index: 0">
                                 <label>Request_Date:</label>
                                 <input type="text" name="pn[request_date]"
-
-                                       value="<?php echo isset($pn['request_date'])?$pn['request_date']:'0000-00-00';?>" class="form-control" data-
-
-                                       beatpicker="true" />
+                                       onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',el:$dp.$('startTime')})"
+                                       value="<?php echo isset($pn['request_date'])?$pn['request_date']:'';?>" class="form-control"  />
                             </div>
                             <div class="col-lg-3" style="z-index: 0">
                                 <label>Close_Date:</label>
                                 <input type="text" name="pn[close_date]"
-
-                                       value="<?php echo isset($pn['close_date'])?$pn['close_date']:'0000-00-00';?>" class="form-control" data-
-
-                                       beatpicker="true" />
+                                      onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',el:$dp.$('startTime')})"
+                                       value="<?php echo isset($pn['close_date'])?$pn['close_date']:'';?>" class="form-control" />
                             </div>
 
 

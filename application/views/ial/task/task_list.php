@@ -124,7 +124,7 @@ $this->load->view ( 'left2' );
                                         <label>Start AD:</label>
                                         <input type="text"
                                                style="width: 200px" id="AD" class="form-control"
-                                               data-beatpicker="true" name="task[start_AD]"
+                                                 onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',el:$dp.$('startTime')})" name="task[start_AD]"
                                                value="<?php echo isset($task['AD'])?$task['AD']:'0000-00-00';?>" />
 
                                     </div>
@@ -132,7 +132,7 @@ $this->load->view ( 'left2' );
                                         <label>End AD:</label>
                                         <input type="text"
                                                style="width: 200px" id="AD" class="form-control"
-                                               data-beatpicker="true" name="task[end_AD]"
+                                                 onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',el:$dp.$('startTime')})" name="task[end_AD]"
                                                value="<?php echo isset($task['AD'])?$task['AD']:'0000-00-00';?>"/>
                                     </div>
                                 </div>
