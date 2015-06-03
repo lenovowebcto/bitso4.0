@@ -37,10 +37,12 @@
         		$data['Sub_Series'] = $this->icm->select_ial_sub_series();
         	}
         	
+        }else{
+        	$data['Family_name'] = $this->icm->select_ial_family();
+        	$data['Sub_Series'] = $this->icm->select_ial_sub_series();
         }
   
-       /*  $data['Family_name'] = $this->icm->select_ial_family();
-        $data['Sub_Series'] = $this->icm->select_ial_sub_series(); */
+       
 		$this->load->view('ial/task/task_list',$data);
 	}
 

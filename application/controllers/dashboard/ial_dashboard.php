@@ -32,8 +32,9 @@ class ial_dashboard extends CI_Controller{
 		$data['c1'] = $this->ial_dash->gettaskovertaskNO($uname);
 		$data['c2'] = $this->ial_dash->getialovertaskNO($uname);
 		$data['c3'] = $this->ial_dash->getpnovertaskNO($uname);
-		if(get_filenames('uploads/dashboard/')){
-			$data['imagename'] = get_filenames('uploads/dashboard/')[0];
+	    if(get_filenames('uploads/dashboard/')!=array()){
+			$d = get_filenames('uploads/dashboard/');
+			$data['imagename'] = $d[0];
 		}else{
 			$data['imagename'] = '';
 		}
