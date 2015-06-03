@@ -9,8 +9,48 @@
 <meta name="author" content="">
 <title>BITSO 4.0</title>
     <?php $this->load->view('common');?>
+    
+    <script type="text/javascript">
+function brand(){
+    var brand = $("select option:selected").val();
+    var tt="";
+    var url = "<?php echo site_url('ial/task_create/family');?>";
+    var name = "<?php isset($task['Family_name'])?$task['Family_name']:'';?>";
+   $.post(url,{brand:brand},function(result){
+	   if(result==''){
+		         $("#BU").empty('');
+		   }else{
+			   $.each(eval(result),function(key,val){
+		            tt += "<option>"+val.Family_name+" </option>"
+				   }); 
+			    $("#BU").empty('');
+	            $("#BU").html(tt);
+			   } 
+	         $('.selectpicker').selectpicker('refresh');
+	      });
+}
+function fname(){
+	 var f =  $("#BU").val();
+
+	 var html = '';
+	 var url = "<?php echo site_url('ial/task_create/subser');?>";
+	   $.post(url,{fname:f},function(result){
+		   if(result==''){
+			       $("#Sub_Series").empty(''); 
+			   }else{
+				   $.each(eval(result),function(key,val){
+			            html+="<option  id="+val.id+" >"+val.sub_series+" </option>"
+					   }); 
+				   $("#Sub_Series").empty('');
+				   $("#Sub_Series").html(html);
+				   }    
+		         $('.selectpicker').selectpicker('refresh');       
+		      });
+}
+</script>
     <script src="<?php  echo base_url();?>util/bitso/bower_components/select/js/bootstrap-select.min.js"></script>
-    <link href="<?php  echo base_url();?>util/bitso/bower_components/select/css/bootstrap-select.min.css" rel="stylesheet">
+<link href="<?php  echo base_url();?>util/bitso/bower_components/select/css/bootstrap-select.min.css" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -45,9 +85,9 @@ $this->load->view ( 'left2' );
 
                                     <div class="col-lg-3">
                                         <label>Brand:</label>
-                                        <select style="width: 200px" id="Brand" class="form-control" name="task[Brand]">
-                                            <option value="" <?php if(isset($task['Brand']) && $task['Brand']==''){echo 'selected';}?> ></option>
-                                            <?php  foreach($Brand as $key){
+                                        <select  onChange='brand()' style="width: 200px" id="Brand" class="form-control" name="task[Brand]">
+                                            <!-- <option value="" <?php if(isset($task['Brand']) && $task['Brand']==''){echo 'selected';}?> ></option>
+                                             --><?php  foreach($Brand as $key){
                                                 ?>
                                                 <option <?php if(isset($task['Brand']) && $task['Brand']==$key['bname']){echo 'selected';}?> >
                                                     <?php echo isset($key['bname'])?$key['bname']:$brand; ?></option>
@@ -57,7 +97,7 @@ $this->load->view ( 'left2' );
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Family name:</label>
-                                        <select style="width: 200px" id="BU" class="form-control selectpicker" data-live-search="true" name="task[Family_name]">
+                                        <select onChange="fname()" style="width: 200px" id="BU" class="form-control selectpicker" data-live-search="true" name="task[Family_name]">
                                             <option value="" <?php if(isset($task['Family_name']) && $task['Family_name']==''){echo 'selected';}?> >&nbsp;</option>
                                             <?php  foreach($Family_name as $key){
                                                 ?>
@@ -188,11 +228,6 @@ $this->load->view ( 'left2' );
 		$("dhistory").hide();
 		});
     });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('.selectpicker').selectpicker();
-        }
     </script>
 </body>
 </html>
