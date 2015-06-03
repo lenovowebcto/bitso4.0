@@ -8,6 +8,7 @@ class Pn_model extends CI_model{
 		if($username!=''){
 			$this->db->where('User',$username);
 		}
+		$this->db->where_not_in('status','Cancel');
 		return $this->db->get('ial_pn_main')->result_array();
 	}
 	

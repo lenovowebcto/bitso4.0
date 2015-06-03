@@ -7,10 +7,11 @@ class IAL_DashModel extends CI_Model{
 	function getwillpn_maintenance($uname){
 		$today = date('Y-m-d',time());
 		$sev = date('Y-m-d',strtotime('-7 day'));
+		$this->db->where_not_in('status','Cancel');
 		if($uname ==''){
-			$arr = $this->db->query("select * from ial_pn_main where request_date<'$today' and request_date>='$sev'and status!='Close'")->result_array();
+			$arr = $this->db->query("select * from ial_pn_main where request_date<'$today' and request_date>='$sev'and status ='Open'")->result_array();
 		}else{
-			$arr = $this->db->query("select * from ial_pn_main where request_date<'$today' and request_date>='$sev'and status!='Close' and User='$uname'")->result_array();
+			$arr = $this->db->query("select * from ial_pn_main where request_date<'$today' and request_date>='$sev'and status ='Open' and User='$uname'")->result_array();
 		}
 		return $arr;
 	}
@@ -39,6 +40,7 @@ class IAL_DashModel extends CI_Model{
 	
 	function getpns($uname){
 		if($uname!='')$this->db->where('User',$uname);
+		$this->db->where_not_in('status','Cancel');
 		return $this->db->get('ial_pn_main')->result_array();
 	}
 	function getbpls($uname){
@@ -52,6 +54,7 @@ class IAL_DashModel extends CI_Model{
 	
 	function getAlltaskNO($uname){
 		if($uname!= '')$this->db->where('User',$uname);
+		$this->db->where_not_in('status','Cancel');
 		$n1 = $this->db->count_all_results('ial_pn_main');
 		if($uname!= '')$this->db->where('User',$uname);
 		$n2 = $this->db->count_all_results('ial_bpl_list');
@@ -65,12 +68,12 @@ class IAL_DashModel extends CI_Model{
 		$today = date('Y-m-d',time());
 		$sev = date('Y-m-d',strtotime('-7 day'));
 		if($uname==''){
-			$n1 =  $this->db->query("select * from ial_pn_main where status!='Close' and request_date>'$sev' and request_date<'$today'")->num_rows();
+			$n1 =  $this->db->query("select * from ial_pn_main where status ='Open' and request_date>'$sev' and request_date<'$today'")->num_rows();
 			$n2 =  $this->db->query("select * from ial_bpl_list where RTM > '$today' and status!='Close'")->num_rows();
 			$n3 =  $this->db->query("select * from ial_task where RTM > '$today' and status!='Close' ")->num_rows();
 			
 		}else{
-			$n1 =  $this->db->query("select * from ial_pn_main where status!='Close' and request_date>'$sev' and request_date<'$today' and User='$uname'")->num_rows();
+			$n1 =  $this->db->query("select * from ial_pn_main where status='Open' and request_date>'$sev' and request_date<'$today' and User='$uname'")->num_rows();
 			$n2 =  $this->db->query("select * from ial_bpl_list where RTM > '$today' and status!='Close' and User='$uname'")->num_rows();
 			$n3 =  $this->db->query("select * from ial_task where RTM > '$today' and status!='Close' and User='$uname'")->num_rows();
 			
@@ -84,12 +87,12 @@ class IAL_DashModel extends CI_Model{
 		if($uname==''){
 			$n1 =  $this->db->query("select * from ial_bpl_list where AD>'$today' and AD<='$sev' and status!='Close'")->num_rows();
 			$n2 =  $this->db->query("select * from ial_task where AD>'$today' and AD<='$sev' and status!='Close'")->num_rows();
-			$n3 =  $this->db->query("select * from ial_pn_main where close_date>'$today' and close_date<='$sev' and status!='Close'")->num_rows();
+			$n3 =  $this->db->query("select * from ial_pn_main where close_date>'$today' and close_date<='$sev' and status='Open'")->num_rows();
 			
 		}else{
 			$n1 =  $this->db->query("select * from ial_bpl_list where AD>'$today' and AD<='$sev' and status!='Close' and User='$uname'")->num_rows();
 			$n2 =  $this->db->query("select * from ial_task where AD>'$today' and AD<='$sev' and status!='Close' and User='$uname'")->num_rows();
-			$n3 =  $this->db->query("select * from ial_pn_main where close_date>'$today' and close_date<='$sev' and status!='Close' and User='$uname'")->num_rows();
+			$n3 =  $this->db->query("select * from ial_pn_main where close_date>'$today' and close_date<='$sev' and status ='Open' and User='$uname'")->num_rows();
 			
 		}
 		return $n1 + $n2 +$n3;
@@ -100,9 +103,9 @@ class IAL_DashModel extends CI_Model{
 		
 		$sev = date('Y-m-d',strtotime('-7 day'));
 		if($uname==''){
-			return $this->db->query("select * from ial_pn_main where status!='Close' and request_date>'$sev' and request_date<'$today'")->result_array();
+			return $this->db->query("select * from ial_pn_main where status ='Open' and request_date>'$sev' and request_date<'$today'")->result_array();
 		}else{
-			return $this->db->query("select * from ial_pn_main where status!='Close' and request_date>'$sev' and request_date<'$today' and User='$uname'")->result_array();
+			return $this->db->query("select * from ial_pn_main where status ='Open' and request_date>'$sev' and request_date<'$today' and User='$uname'")->result_array();
 		}
 	}
 	function getNewbpls($uname){
@@ -134,9 +137,9 @@ class IAL_DashModel extends CI_Model{
 		$today = date('Y-m-d',time());
 		$sev = date('Y-m-d',strtotime('-7 day'));
 		if($uname==''){
-			$n1 =  $this->db->query("select * from ial_pn_main where status!='Close' and request_date>'$sev' and request_date<'$today'")->num_rows();
+			$n1 =  $this->db->query("select * from ial_pn_main where status ='Open' and request_date>'$sev' and request_date<'$today'")->num_rows();
 		}else{
-			$n1 =  $this->db->query("select * from ial_pn_main where status!='Close' and request_date>'$sev' and request_date<'$today' and User='$uname' ")->num_rows();
+			$n1 =  $this->db->query("select * from ial_pn_main where status ='Open' and request_date>'$sev' and request_date<'$today' and User='$uname' ")->num_rows();
 		}
 		return $n1;
 	}
@@ -163,7 +166,7 @@ class IAL_DashModel extends CI_Model{
 	function getpnovertasks($uname){
 		$today = date('Y-m-d',time());
 		$sev = date('Y-m-d',strtotime('+7 day'));
-		return $this->db->query("select * from ial_pn_main where close_date>'$today' and close_date<='$sev' and status!='Close'")->result_array();
+		return $this->db->query("select * from ial_pn_main where close_date>'$today' and close_date<='$sev' and status ='Open'")->result_array();
 	} 
 	function gettaskovertaskNO($uname){
 		$today = date('Y-m-d',time());
@@ -178,6 +181,6 @@ class IAL_DashModel extends CI_Model{
 	function getpnovertaskNO($uname){
 		$today = date('Y-m-d',time());
 		$sev = date('Y-m-d',strtotime('+7 day'));
-		return $this->db->query("select * from ial_pn_main where close_date>'$today' and close_date<='$sev' and status!='Close'")->num_rows();
+		return $this->db->query("select * from ial_pn_main where close_date>'$today' and close_date<='$sev' and status ='Open'")->num_rows();
 	}
 }
