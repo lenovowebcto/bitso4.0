@@ -37,9 +37,7 @@ function check(){
  </script>
 </head>
 <body>
-    <div id="wrapper">
-              <?php 
-              $this->load->view('left2');?>
+   <?php $this->load->view('left2');?>
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -119,7 +117,7 @@ function check(){
 							   </div>
 							</div>
 							<div  style="text-align:center;" >
-							    <input type="submit"  class="btn btn-success" value="SUBMIT"/></p>
+							    <input type="submit"  class="btn btn-success" value="SUBMIT"/>
 							</div>
 						</form>
 					</div></div>
