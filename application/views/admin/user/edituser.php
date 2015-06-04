@@ -17,13 +17,16 @@ function check(){
 	var pswval = $('#password').val();
 	var repsw = $('#repsw').val();
 	var pemail = $('#email').val();
-	if(!psw.test(pswval)){
-		 alert('Password is invalid');
-		 return false ;
-	}else if(psw.test(pswval) && pswval !=repsw){
-		 alert('RePassword and password is not the same one');
-		 return false ;
-	}
+	if(repsw!=''){
+		if(!psw.test(pswval)){
+			 alert('Password is invalid');
+			 return false ;
+		}else if(psw.test(pswval) && pswval !=repsw){
+			 alert('RePassword and password is not the same one');
+			 return false ;
+		}
+		}
+	
 	if(!email.test(pemail)){
 		alert('Email  is invalid');
 		 return false ;
@@ -63,14 +66,14 @@ function check(){
 							
 							 <div  class="col-lg-3">
 							   <label>Password</label>
-							   <input type="password" class="form-control" name="user[UPWD]" id="password" value=""/>
+							   <input type="password" class="form-control" name="user[UPWD]" id="password" />
 							  </div>
 						<?php 
 							     if(isset($uid) && $uid>0){
 							    ?>   
 							   <div  class="col-lg-3">
 							     <label>RePassword</label>
-							     <input type="password" class="form-control" name="repsw" id="repsw" value=""/>
+							     <input type="password" class="form-control" name="repsw" id="repsw" />
 							   </div>
      	                <?php } ?>
      	                <div  class="col-lg-3">
@@ -104,12 +107,12 @@ function check(){
 							   <label>Role</label>
 							   <select name="user[type]" class="form-control"> 
 								    <option value="1" <?php if(isset($user['type']) && $user['type'] == 1){echo 'selected';}?> >admin</option> 
-								    <option value="2" <?php if(isset($user['type']) && $user['type'] == 1){echo 'selected';}?>>user</option> 
+								    <option value="2" <?php if(isset($user['type']) && $user['type'] == 2){echo 'selected';}?>>user</option> 
 								</select>
 							</div>
 						   <div  class="col-lg-3">
 							   <label >active</label>
-							   <select name="user[type]" class="form-control"> 
+							   <select name="user[active]" class="form-control"> 
 								    <option value="1" <?php if(isset($user['active']) && $user['active'] == 1){echo 'selected';}?> >active</option> 
 								    <option value="0" <?php if(isset($user['active']) && $user['active'] == 0){echo 'selected';}?>>inactive</option> 
 								</select>

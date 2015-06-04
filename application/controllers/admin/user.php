@@ -33,15 +33,24 @@ class user extends CI_Controller {
 		$psw = $user ['UPWD'];
 		$group = $_POST['group'];
 		$user['group'] = $group;
-		$user ['UPWD'] = md5 ( $user ['UPWD'] );
-		
+		$user ['UPWD'] = md5 ($user ['UPWD']);
+	
 		if ($uid > 0) {
 			$repsw = $_POST ['repsw'];
-			if ($repsw == $psw) {
-				$result = $this->UserModel->updateUser($uid, $user);
-			} else {
-				redirect ( 'admin/user/adduser?uid=' . $uid );
+			if($psw!=''){
+				if ($repsw == $psw) {
+					$result = $this->UserModel->updateUser($uid, $user);
+				} else {
+					redirect ( 'admin/user/adduser?uid=' . $uid );
+				}
+			}else{
+				$arr =array('Username'=>$user['Username'],'email'=>$user['email'],
+						'title'=>$user['title'],'local'=>$user['local'],'type'=>$user['type'],
+						'active'=>$user['active'],'group'=>$user['group']
+				);
+				$result = $this->UserModel->updateUser($uid, $arr);
 			}
+			
 		} else {
 			$result = $this->UserModel->insetuser ( $user );
 		}
