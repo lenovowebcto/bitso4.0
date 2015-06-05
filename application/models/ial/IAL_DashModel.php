@@ -20,9 +20,13 @@ class IAL_DashModel extends CI_Model{
 		$today = date('Y-m-d',time());
 		$sev = date('Y-m-d',strtotime('+7 day'));
 		if($uname==''){
-			$arr =  $this->db->query("select * from ial_task where AD>'$today' and AD<='$sev' and status='Open'")->result_array();
+			$sql ="SELECT i.*,icb.dis  FROM ial_task  i LEFT JOIN ial_common_brand icb
+			ON i.`Brand`=icb.`bname` where i.AD>'$today' and i.AD<='$sev' and i.status='Open'";
+			$arr =  $this->db->query($sql)->result_array();
 		}else{
-			$arr =  $this->db->query("select * from ial_task where AD>'$today' and AD<='$sev' and status='Open' and User='$uname'")->result_array();
+			$sql ="SELECT i.*,icb.dis  FROM ial_task  i LEFT JOIN ial_common_brand icb
+			ON i.`Brand`=icb.`bname` where i.AD>'$today' and i.AD<='$sev' and i.status='Open' and User='$uname'";
+			$arr =  $this->db->query($sql)->result_array();
 		}
 		return $arr;
 	}
@@ -118,7 +122,7 @@ class IAL_DashModel extends CI_Model{
 		if($uname==''){
 			return  $this->db->query("select * from ial_bpl_list where RTM > '$today' and status='Open'")->result_array();
 		}else{
-			return  $this->db->query("select * from ial_bpl_list where RTM > '$today' and status='Open' and user='$uname'")->result_array();
+			return  $this->db->query("select * from ial_bpl_list where RTM > '$today' and status='Open' and User='$uname'")->result_array();
 		}
 	}
 	function getNewtask($uname){
@@ -165,31 +169,59 @@ class IAL_DashModel extends CI_Model{
 	 function gettaskovertasks($uname){
 		$today = date('Y-m-d',time());
 		$sev = date('Y-m-d',strtotime('+7 day'));
-		return  $this->db->query("select * from ial_task where AD>'$today' and AD<='$sev' and status='Open'")->result_array();
+		if($uname==''){
+			$sql ="SELECT i.*,icb.dis  FROM ial_task  i LEFT JOIN ial_common_brand icb
+			ON i.`Brand`=icb.`bname` where i.AD>'$today' and i.AD<='$sev' and i.status='Open'";
+			return  $this->db->query($sql)->result_array();
+		}else{
+			$sql ="SELECT i.*,icb.dis  FROM ial_task  i LEFT JOIN ial_common_brand icb
+			ON i.`Brand`=icb.`bname` where i.AD>'$today' and i.AD<='$sev' and i.status='Open' and User='$uname'";
+			return  $this->db->query($sql)->result_array();
+		}
 	}
 	function getialovertasks($uname){
 		$today = date('Y-m-d',time());
 		$sev = date('Y-m-d',strtotime('+7 day'));
-		return $this->db->query("select * from ial_bpl_list where AD>'$today' and AD<='$sev' and status='Open'")->result_array();
+		if($uname==''){
+			return $this->db->query("select * from ial_bpl_list where AD>'$today' and AD<='$sev' and status='Open'")->result_array();
+		}else{
+			return $this->db->query("select * from ial_bpl_list where AD>'$today' and AD<='$sev' and status='Open' and User='$uname'")->result_array();
+		}
 	}
 	function getpnovertasks($uname){
 		$today = date('Y-m-d',time());
 		$sev = date('Y-m-d',strtotime('+7 day'));
-		return $this->db->query("select * from ial_pn_main where close_date>'$today' and close_date<='$sev' and status ='Open'")->result_array();
+		if($uname==''){
+			return $this->db->query("select * from ial_pn_main where close_date>'$today' and close_date<='$sev' and status ='Open'")->result_array();
+		}else{
+			return $this->db->query("select * from ial_pn_main where close_date>'$today' and close_date<='$sev' and status ='Open' and User='$uname'")->result_array();
+		}
 	} 
-	function gettaskovertaskNO($uname){
+	 function gettaskovertaskNO($uname){
 		$today = date('Y-m-d',time());
 		$sev = date('Y-m-d',strtotime('+7 day'));
-		return  $this->db->query("select * from ial_task where AD>'$today' and AD<='$sev' and status='Open'")->num_rows();
+		if($uname==''){
+			return  $this->db->query("select * from ial_task where AD>'$today' and AD<='$sev' and status='Open'")->num_rows();		
+		}else{
+			return  $this->db->query("select * from ial_task where AD>'$today' and AD<='$sev' and status='Open' and User='$uname'")->num_rows();
+		}
 	}
 	function getialovertaskNO($uname){
 		$today = date('Y-m-d',time());
 		$sev = date('Y-m-d',strtotime('+7 day'));
-		return $this->db->query("select * from ial_bpl_list where AD>'$today' and AD<='$sev' and status='Open'")->num_rows();
+		if($uname==''){
+			return $this->db->query("select * from ial_bpl_list where AD>'$today' and AD<='$sev' and status='Open'")->num_rows();
+		}else{
+			return $this->db->query("select * from ial_bpl_list where AD>'$today' and AD<='$sev' and status='Open' and User='$uname'")->num_rows();
+		}
 	}
 	function getpnovertaskNO($uname){
 		$today = date('Y-m-d',time());
 		$sev = date('Y-m-d',strtotime('+7 day'));
-		return $this->db->query("select * from ial_pn_main where close_date>'$today' and close_date<='$sev' and status ='Open'")->num_rows();
+		if($uname==''){
+			return $this->db->query("select * from ial_pn_main where close_date>'$today' and close_date<='$sev' and status ='Open'")->num_rows();
+		}else{
+			return $this->db->query("select * from ial_pn_main where close_date>'$today' and close_date<='$sev' and status ='Open' and User='$uname'")->num_rows();
+		}
 	}
 }

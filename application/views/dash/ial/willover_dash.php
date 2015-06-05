@@ -172,7 +172,7 @@
                                     	?>
                                     	
                                     	 <tr class="odd gradeX">
-                                            <td><a href="<?php echo site_url('ial/task_create/task')?>?pr_id=5&id=<?php echo isset($val['id'])?$val['id']:0;?>">
+                                            <td><a href="<?php echo site_url('ial/task_create/task')?>?pr_id=5&id=<?php echo isset($val['id'])?$val['id']:0;?>&dis=<?php echo isset($val['dis'])?$val['dis']:'';?>">
                                             <?php echo $key+1;?></a></td>
                                             
                                             <td><?php if(isset($val['Record_Date']) && $val['Record_Date']!='0000-00-00'){echo $val['Record_Date'];}?></td>
