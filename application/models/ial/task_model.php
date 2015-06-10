@@ -32,7 +32,6 @@ class task_model extends CI_Model{
 		$this->db->where('dis',$dis);
 		$this->db->	from('ial_task it');
 		$this->db->	join('ial_common_brand icb','it.brand=icb.bname');
-		$a = $this->db->get();
 		return $this->db->get()->result_array();
 	}
 	
