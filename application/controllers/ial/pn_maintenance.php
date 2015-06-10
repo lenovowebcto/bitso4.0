@@ -84,7 +84,7 @@ class pn_maintenance extends CI_Controller{
 					$pn['file_path'] = '';
 				}
 			}else{
-				$mgt['attachment'] = $atta['attachment'];
+				$mgt['attachment'] = isset($atta['attachment'])?$atta['attachment']:'';
 			}
 			$num = $this->icm->selectAllIalPen($id,$ial_decide);
 			$res = $this->pn->editpnmaintenance($id,$pn,$pending,$sta,$c1,$c2,$user,$ial_decide,count($num));
