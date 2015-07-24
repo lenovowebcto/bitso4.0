@@ -18,7 +18,7 @@
          <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">LOIS Element Task List</h1>
+                    <h1 class="page-header">LOIS CSR Task List</h1>
                      <ul class="nav nav-tabs" id="myTab">
 							<div ><a  href="<?php echo site_url('element/ele_task/project_list');?>?pro_name=<?php echo $pro_name;?>&pr_id=<?php echo $pr_id;?>&archive=1">
 							

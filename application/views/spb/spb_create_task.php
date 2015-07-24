@@ -123,7 +123,7 @@ $this->load->view ( 'left2' );
 									<div class="col-lg-3">
 										<div class="input-prepend input-group">
 											<label>Owner:</label> <input type="text" style="width: 200px"
-												id="Owner" class="form-control" name="task[Owner]"
+												id="Owner" class="form-control" name="task[OWNER]"
 												value="<?php echo isset($task['OWNER'])?$task['OWNER']:'';?>" />
 										</div>
 									</div>

@@ -94,6 +94,7 @@ class addtask extends CI_Controller {
 				$pr['attachment'] = $file ;
 				$pr['pr_name'] = $family;
 				$pr['pro_id'] = $pr_at['projectid'] ;
+				$pr['upload_time'] = date('y-m-d H:i:s',time());
 			}
 		}
 	
@@ -157,14 +158,23 @@ class addtask extends CI_Controller {
 					$task['Drr_deadline'] = $Drr_deadline;
 				}
 			}
-			/* elseif($user['type']==2){
-				$task['deadline'] = $find;
-				$task['Drr_deadline'] = $drrd;
-			} */
+			$old_task = $this->TaskModel->selectTaskById ($id);
+			$str ='';
+			unset($old_task['id']);
+			unset($old_task['archive']);
+		
+			foreach($old_task as $k=>$v){
+				if($v != $task[$k]){
+					$str .= $k.':{'.$v.'=>'.$task[$k].'},';
+				}
+			}
+			$str = rtrim($str,',');
+			if($str=='')$str='NO FIELD CHANGE';
+			
 			//查找相关的 pendissue , if isset delete or insert
 			$num = $this->TaskModel->selectAllpeis($id,$pr_id);
 			// update
-			$result = $this->TaskModel->updatetask ($id, $pr_id,$task,$user,$pending,$sta,count($num),$pr,$c1,$c2);
+			$result = $this->TaskModel->updatetask ($id, $pr_id,$task,$user,$pending,$sta,count($num),$pr,$c1,$c2,$str);
 			if ($result){
 				redirect ('task/addtask/name_task?pr_id='.$pr_id );
 			} else {

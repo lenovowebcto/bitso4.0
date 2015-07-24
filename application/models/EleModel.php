@@ -52,7 +52,7 @@ class EleModel extends CI_Model{
 		return $res;
 	}
 	
-	function update_eletask($ele,$pid,$pr_id,$pending,$sta,$user,$num,$pr,$c1,$c2){
+	function update_eletask($ele,$pid,$pr_id,$pending,$sta,$user,$num,$pr,$c1,$c2,$str){
 		$this->db->trans_start();
 		$this->db->where('pid',$pid);
 	    $this->db->update('lois_element',$ele);
@@ -80,6 +80,7 @@ class EleModel extends CI_Model{
 		$ch['change_user'] = $user['username']; //current user
 		$ch['change_time'] = date('y-m-d h:i:s',time());
 		$ch['oper'] = "update";
+		$ch['content'] = $str;
 		
 		$this->db->insert('change_history',$ch);
 		
@@ -102,7 +103,7 @@ class EleModel extends CI_Model{
 	
 	function selectattabyname($name){
 		$this->db->where('pr_name',$name);
-		$this->db->select('attachment');
+		$this->db->select('attachment,upload_time');
 		return $this->db->get('project_attach')->result_array();
 	}
 }

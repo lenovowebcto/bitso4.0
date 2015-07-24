@@ -19,7 +19,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">LOIS Element Task List</h1>
+                    <h1 class="page-header">LOIS CSR Task List</h1>
                 </div>
             </div>
             <!-- /.row -->
@@ -80,40 +80,57 @@
 						     </div>
 							<div class="col-lg-3" style="z-index: 0">
 								<div class="input-prepend input-group">
-								<label>Receive_Date:</label>
+								<label>SBB Receive_Date:</label>
 								   <input type="text" name="ele[Receive_Date]"  value="<?php echo isset($eletask['Receive_Date'])?$eletask['Receive_Date']:'0000-00-00';?>" class="form-control" data-beatpicker="true" />
 							    </div>
 							</div>
 							<div class="col-lg-3" style="z-index: 0">
 								<div class="input-prepend input-group">
-								<label>Start Processing Date:</label>
+								<label>SBB Start Processing Date:</label>
 								   <input type="text"  name="task[start_date]"   value="<?php echo isset($task['start_date'])?$task['start_date']:'0000-00-00'; ?>" class="form-control" data-beatpicker="true" /> 
 								</div>
 							</div>
 							
 							<div class="col-lg-3" style="z-index: 0">
 								<div class="input-prepend input-group">
-								<label>AD:</label>
+								<label>SBB AD:</label>
 								   <input type="text" name="ele[AD]"  value="<?php echo isset($eletask['AD'])?$eletask['AD']:'0000-00-00';?>"    class="form-control" data-beatpicker="true" /> 
 								</div>
 							</div>
 							<div class="col-lg-3" style="z-index: 0">
 								<div class="input-prepend input-group">
-								<label>DRR_DeadLine:</label>
+								<label>SBB DRR_DeadLine:</label>
 								<input type="hidden" name="DeadLine" value="<?php echo isset($eletask['DeadLine'])?$eletask['DeadLine']:'0000-00-00';?>"/>
 								   <input type="text" name="ele[DeadLine]" value="<?php echo isset($eletask['DeadLine'])?$eletask['DeadLine']:'0000-00-00';?>"    class="form-control" data-beatpicker="true"  <?php if($t==2){?> disabled='disabled'<?php }?>/> 
 								</div>
 							</div>
 							 <div class="col-lg-3" style="z-index: 0">
 								<div class="input-prepend input-group">
-								<label>Drr Complete Date:</label>
+								<label>SBB Drr_Complete Date:</label>
 								   <input type="text" name="ele[Drr_Complete_Date]" value="<?php echo isset($eletask['Drr_Complete_Date'])?$eletask['Drr_Complete_Date']:'0000-00-00';?>"    class="form-control" data-beatpicker="true"  /> 
 								</div>
 							</div>
 							<div class="col-lg-3" style="z-index: 0">
+								<div class="input-prepend input-group">
+								<label>SBB Drr Date:</label>
+								   <input type="text" name="ele[drr_date]" value="<?php echo isset($eletask['drr_date'])?$eletask['drr_date']:'0000-00-00';?>"    class="form-control" data-beatpicker="true"  /> 
+								</div>
+							</div>
+							<div class="col-lg-3" style="z-index: 0">
+								<div class="input-prepend input-group">
+								<label>SBB DRR feedback date:</label>
+								   <input type="text" name="ele[drr_fb_date]" value="<?php echo isset($eletask['drr_fb_date'])?$eletask['drr_fb_date']:'0000-00-00';?>"    class="form-control" data-beatpicker="true"  /> 
+								</div>
+							</div>
+							<div class="col-lg-3" style="z-index: 0">
 							<div class="input-prepend input-group">
-								<label>Count:</label>
+								<label>SBB Account:</label>
 								   <input type="text" name="ele[Count]" value="<?php echo isset($eletask['Count'])?$eletask['Count']:'';?>"  class="form-control" onkeyup="value=value.replace(/[^\d]/g,'') " /> 
+							</div></div>
+							<div class="col-lg-3" style="z-index: 0">
+							<div class="input-prepend input-group">
+								<label>CV Account:</label>
+								   <input type="text" name="ele[CV_account]" value="<?php echo isset($eletask['CV_account'])?$eletask['CV_account']:0;?>"  class="form-control" onkeyup="value=value.replace(/[^\d]/g,'') " /> 
 							</div></div>
 							<div class="col-lg-3" style="z-index: 0">
 							<div class="input-prepend input-group">

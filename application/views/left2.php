@@ -156,7 +156,7 @@
                         </li>
                         
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Elements<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> CSR<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li><a href="<?php echo site_url('element/ele_task/addeletask');?>?pr_id=3">Create Task</a></li>
                                 <li><a href="<?php echo site_url('element/ele_task')?>?pr_id=3"> Ele Task List</a></li>
@@ -179,7 +179,7 @@
                           			</ul>
                           			</li>
                           			 <li>
-			                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Elements<span class="fa arrow"></span></a>
+			                            <a href="#"><i class="fa fa-wrench fa-fw"></i> CSR<span class="fa arrow"></span></a>
 			                            <ul class="nav nav-second-level">
 			                                <li><a href="<?php echo site_url('element/ele_task/addeletask');?>?pr_id=3">Create Task</a></li>
 			                                <li><a href="<?php echo site_url('element/ele_task')?>?pr_id=3"> Ele Task List</a></li>

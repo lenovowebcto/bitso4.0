@@ -10,11 +10,9 @@
     <meta name="author" content="">
 
     <title>BITSO 4.0</title>
-    <?php $this->load->view('common');?>
-   
+    <?php $this->load->view('common');?> 
 </head>
 <body>
-
     <div id="wrapper">
 
           <?php 
@@ -80,7 +78,7 @@
 							</div>
 							<div class="col-lg-3">
 								<div class="input-prepend input-group">
-								<label>Checked DRR Date:</label>
+								<label>DRR Feedback Date:</label>
 								   <input type="text" name="task[Drr_received]"  value="<?php echo isset($task['Drr_received'])?$task['Drr_received']:'0000-00-00';?>" style="width: 200px;"   class="form-control" data-beatpicker="true"  /> 
 								</div>
 							</div>
@@ -112,7 +110,7 @@
 							</div>
 							<div class="col-lg-3">
 								<label>Action:</label>
-                            <select name="task[action]" class="form-control">
+                            <select name="task[Action]" class="form-control">
 					         <?php  foreach($action as $key){
 					         	?>
 					         	<option value="<?php echo isset($key['ACTION'])?$key['ACTION']:''; ?>" <?php if(isset($task['Action']) && $task['Action']==$key['ACTION']){echo 'selected';}?> ><?php echo isset($key['ACTION'])?$key['ACTION']:''; ?></option> 

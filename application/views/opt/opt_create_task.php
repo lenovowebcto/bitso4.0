@@ -105,7 +105,7 @@ $this->load->view ( 'left2' );
 									</div>
 									<div class="col-lg-3">
 										<div class="input-prepend input-group">
-											<label>Checked DRR Received:</label> <input type="text"
+											<label> DRR Feedback Date:</label> <input type="text"
 												style="width: 200px" id="CK_DRR_DATE" class="form-control"
 												data-beatpicker="true" name="opt[CK_DRR_DATE]"
 												value="<?php echo isset($opt['CK_DRR_DATE'])?$opt['CK_DRR_DATE']:'0000-00-00';?>" />

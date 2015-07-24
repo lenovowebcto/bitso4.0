@@ -9,6 +9,7 @@ class AdmintaskModel extends CI_Model{
 	}
 	
 	function selectuserlist(){
+		$this->db->where('group','LOIS');
 		$res = $this->db->select('*')->from('common_user')->get()->result_array();
 		return $res;
 	}
@@ -26,7 +27,7 @@ class AdmintaskModel extends CI_Model{
 		$this->db->where('Ticket_id',$tid);
 		return $this->db->update('admin_task',$ad);
 	}
-	//ÈôÊÇadmin Ôò»áÐÞ¸Ä´Ëprob_state Îªclosed ½«dist¸ÄÎª0 £¬ÈôÊÇuser ÔòÌõ¼þÎªopen ½«dist¸ÄÎª0
+	//ï¿½ï¿½ï¿½ï¿½admin ï¿½ï¿½ï¿½ï¿½Þ¸Ä´ï¿½prob_state Îªclosed ï¿½ï¿½distï¿½ï¿½Îª0 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½user ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªopen ï¿½ï¿½distï¿½ï¿½Îª0
 	function readallrask($at){
 		if($at!=''){
 			$this->db->where('AssignTo',$at);

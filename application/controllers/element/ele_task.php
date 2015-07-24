@@ -13,6 +13,7 @@ class ele_task  extends CI_Controller{
 		//ֻ��ʾproject_name  
 		$data['pr_id'] = $pr_id = isset($_GET['pr_id'])?$_GET['pr_id']:0;
 		$data['list'] = $list= $this->EleModel->allproname();
+	
 		foreach($list as $val){
 			$name = $val['project_name'];
 			$data['attachment'][$name] = $this->EleModel->selectattabyname($name);
@@ -63,6 +64,7 @@ class ele_task  extends CI_Controller{
 	}
 	//toadd 
 	function toaddeletask(){
+		
 		$pending = isset($_POST['pending'])?$_POST['pending']:'';
 		$sta  = isset($_POST['sta'])?$_POST['sta']:'';
 		$c1  = isset($_POST['c1'])?$_POST['c1']:'';
@@ -72,6 +74,7 @@ class ele_task  extends CI_Controller{
 		$user= Auth::getUser();
 		$pid = isset($_POST['pid'])?$_POST['pid']:0;
 		$ele = $_POST['ele'];
+	
 		$drrd = $ele['DeadLine'];
 		$pname = $ele['project_name'];
 		$pr_at = $this->TaskModel->selectidbyname($pname);
@@ -83,6 +86,7 @@ class ele_task  extends CI_Controller{
 				$pr['attachment'] = $file ;
 				$pr['pr_name'] = $pname;
 				$pr['pro_id'] = $pr_at['projectid'] ;
+				$pr['upload_time'] = date('y-m-d H:i:s',time());
 			}
 		}
 	
@@ -99,16 +103,27 @@ class ele_task  extends CI_Controller{
 			$ele['DeadLine'] = $AD;
 		}
 		$DeadLine = $_POST['DeadLine'];
+		
 		if($pid>0){
+			
 			//update 1.admin  2. 若DRR Deadline 改变则按照改变的值，若不改变则用计算的值===>若为user则其值deadline值不会被改变
 			if($user['type']==1 && $drrd!=$DeadLine){
 				$ele['DeadLine'] = $drrd;
 			}
-			/* elseif($user['type']==2){
-				$ele['DeadLine'] = $DeadLine;
-			} */
+			$old_ele = $this->EleModel->selecteletask($pid);
+			$str ='';
+            unset($old_ele['pid']);
+            unset($old_ele['archive']);
+			foreach($old_ele as $k=>$v){
+				if($v != $ele[$k]){
+					$str .= $k.':{'.$v.'=>'.$ele[$k].'},';
+				}
+			}
+			$str = rtrim($str,',');
+		    if($str=='')$str='NO FIELD CHANGE';
+		 
 			$num = $this->TaskModel->selectAllpeis($pid,$pr_id);
-			$res = $this->EleModel->update_eletask($ele,$pid,$pr_id,$pending,$sta,$user,count($num),$pr,$c1,$c2);
+			$res = $this->EleModel->update_eletask($ele,$pid,$pr_id,$pending,$sta,$user,count($num),$pr,$c1,$c2,$str);
 		}else{
 			$res = $this->EleModel->insereletask($ele,$pending,$sta,$pr_id,$user,$pr,$c1,$c2);
 		}

@@ -52,7 +52,7 @@ class Lois_ep_reqModel extends CI_Model{
 		return $arr;
 	}
 	
-	function updatetask($id,$task,$pr_id,$user,$pending,$sta,$num,$c1,$c2){
+	function updatetask($id,$task,$pr_id,$user,$pending,$sta,$num,$c1,$c2,$str){
 		
 		  $this->db->trans_start();
 		  $this->db->where('ID',$id);
@@ -80,7 +80,7 @@ class Lois_ep_reqModel extends CI_Model{
 		  $ch['change_user'] = $user['username']; //current user
 		  $ch['change_time'] = date('y-m-d h:i:s',time());
 		  $ch['oper'] = "update";
-	      
+		  $ch['content'] = $str;
 	      $this->db->insert('change_history',$ch);
 	      return $this->db->trans_complete();
 	}

@@ -82,7 +82,7 @@
                             <div class="col-lg-3">
                                 <div class="input-prepend input-group">
                                     <label>Status:</label> <select style="width: 200px"
-                                                                   id="Status" class="form-control" name="task[Status]">
+                                                                   id="Status" class="form-control" name="task[status]">
                                         <?php  foreach($status as $key){
                                             ?>
                                             <option id=<?php echo isset($key['sid'])?$key['sid']:''; ?> <?php if(isset($task['STATUS']) && $task['STATUS']==$key['stype']){echo 'selected';}?> ><?php echo isset($key['stype'])?$key['stype']:''; ?></option>
@@ -119,7 +119,7 @@
 									<div class="col-lg-3">
 										<div class="input-prepend input-group">
 											<label>MODELCOUNT:</label> 
-											<input type="text" class="form-control" name="task[MODELCOUNT]"
+											<input type="text" class="form-control" name="task[ModelCount]"
 												value="<?php echo isset($task['ModelCount'])?$task['ModelCount']:'';?>" onkeyup="value=value.replace(/[^\d]/g,'') " />
 										</div>
 									</div>

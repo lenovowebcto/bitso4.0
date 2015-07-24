@@ -9,6 +9,7 @@
                                             <th>Name</th>
                                             <th>Time</th>
                                             <th>Action</th>
+                                            <th>Content</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -21,6 +22,7 @@
 										     	<td><?php echo isset($hist[$i]['change_user']) ?$hist[$i]['change_user']:'';?></td>
 												<td><?php echo isset($hist[$i]['change_time']) ?$hist[$i]['change_time']:'';?></td>
 												<td><?php echo isset($hist[$i]['oper']) ?$hist[$i]['oper']:'';?></td>
+												<td><?php echo isset($hist[$i]['content']) ?$hist[$i]['content']:'';?></td>
 											</tr>
                                        <?php }}?>
                                     </tbody>

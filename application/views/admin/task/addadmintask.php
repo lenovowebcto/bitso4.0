@@ -81,12 +81,12 @@
 							</div>
 							
 							<div class="col-lg-3">
-								<label>Family:</label>
+								<label>Brand:</label>
 								<select class="form-control"  name="ad[Family]">
                                        <?php if(count($family)>0){
 								         	foreach ($family as $val){
 								         		?>
-								         		 <option  <?php if(isset($task['Family']) && $task['Family']==$val){echo 'selected';} ?>  value="<?php echo isset($val)?$val:''; ?>" ><?php echo isset($val)?$val:''; ?></option>
+								         		 <option  <?php if(isset($task['Family']) && $task['Family']==$val['bname']){echo 'selected';} ?>  value="<?php echo isset($val['bname'])?$val['bname']:''; ?>" ><?php echo isset($val['bname'])?$val['bname']:''; ?></option>
 								         		<?php 
 								         	}
 								         } ?>
@@ -105,7 +105,6 @@
                                 </select>
 							
 							</div>
-							<div>
                                 <div class="col-lg-3">
 								<label>Geos:</label>
 								<select class="form-control"  name="ad[Geos]">
@@ -118,7 +117,6 @@
 								         } ?>
                                 </select>
 							</div>
-							<div>
                                 <div class="col-lg-3">
 								<label>Data Area:</label>
 								<select class="form-control"  name="ad[DataArea]">
@@ -132,7 +130,7 @@
                                 </select>
 							
 							</div>
-							<div>
+						
                                 <div class="col-lg-3">
 								<label>Severity:</label>
 								<select class="form-control"  name="ad[Severity]">
@@ -145,15 +143,18 @@
 								         } ?>
                                 </select>
 							</div>
-							
 							<div class="col-lg-3">
+								<label>Issue Root Cause:</label>
+								<input class="form-control" name="ad[issue_root]"  value="<?php echo isset($task['issue_root'])?$task['issue_root']:'';?>">
+							</div>  
+							<div class="col-lg-3">   
 								<label>Size of Impact:</label>
 								<input class="form-control" name="ad[ImpactSize]"  value="<?php echo isset($task['ImpactSize'])?$task['ImpactSize']:'';?>">
 							</div>
-							<?php if(isset($t_id) && $t_id>0){?>
+							
 							<div>
                                 <div class="col-lg-3">
-								<label>prob_state:</label>
+								<label>ticket_state:</label>
 								<select class="form-control"  name="ad[prob_state]">
 								     <option  <?php if(isset($task['prob_state']) && $task['prob_state']=="open"){echo 'selected';} ?>  value="open" >open</option>
                                      <option  <?php if(isset($task['prob_state']) && $task['prob_state']=="working"){echo 'selected';} ?>  value="working" >working</option>
@@ -162,10 +163,14 @@
                                      <option  <?php if(isset($task['prob_state']) && $task['prob_state']=="Closed"){echo 'selected';} ?>  value="Closed" >Closed</option>
                                 </select>
 							</div>
-							<?php }?>
+							
 							<div class="col-lg-12">
 								<label>Problem Details:</label>
 								<textarea  class="form-control" name="ad[ProblemDetails]"><?php echo isset($task['ProblemDetails'])?$task['ProblemDetails']:''?></textarea>
+							</div>
+							<div class="col-lg-12">
+								<label>Comments:</label>
+								<textarea  class="form-control" name="ad[comments]"><?php echo isset($task['comments'])?$task['comments']:''?></textarea>
 							</div>
 							<div class="col-lg-12">
 							   <label>Attachments:</label>

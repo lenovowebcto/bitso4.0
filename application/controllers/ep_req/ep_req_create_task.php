@@ -100,12 +100,23 @@
 			if($user['type']==1 &&  $hid_deadline != $deadline){
 				$task['Deadline'] = $deadline;
 			}
-			/* elseif($user['type']==2){
-				$task['Deadline'] = $hid_deadline;
-			} */
+			
 			// update
 			$num = $this->Lois_ep_reqModel->selectAllpeis($id,$pr_id);
-			$db_states = $this->Lois_ep_reqModel->updatetask ($id, $task,$pr_id,$user,$pending,$sta,count($num),$c1,$c2);
+			$old_task= $this->Lois_ep_reqModel->selectTaskById ( $id );
+			$str ='';
+			unset($old_task['ID']);
+			unset($old_task['archive']);
+			
+			foreach($old_task as $k=>$v){
+				if($v != $task[$k]){
+					$str .= $k.':{'.$v.'=>'.$task[$k].'},';
+				}
+			}
+			$str = rtrim($str,',');
+			if($str=='')$str='NO FIELD CHANGE';
+			
+			$db_states = $this->Lois_ep_reqModel->updatetask ($id, $task,$pr_id,$user,$pending,$sta,count($num),$c1,$c2,$str);
 			
 			if ($db_states === FALSE) {
 				redirect ( 'ep_req/ep_req_create_task/task' );

@@ -48,7 +48,7 @@ class TaskModel extends CI_Model{
 		return $arr;
 	}
 	
-	function updatetask($id,$pr_id,$task,$user,$pending,$sta,$num,$pr,$c1,$c2){
+	function updatetask($id,$pr_id,$task,$user,$pending,$sta,$num,$pr,$c1,$c2,$str){
 		$this->db->trans_start();
 		$this->db->where('id',$id);
 	    $this->db->update('tickets',$task);
@@ -76,6 +76,7 @@ class TaskModel extends CI_Model{
 		$ch['change_user'] = $user['username']; //current user
 		$ch['change_time'] = date('y-m-d h:i:s',time());
 		$ch['oper'] = "update";
+		$ch['content'] = $str;
 		
 		$this->db->insert('change_history',$ch);
 		if($pr!=array())$this->db->insert('project_attach',$pr);
@@ -176,7 +177,7 @@ class TaskModel extends CI_Model{
     
     function selectattabyname($name){
     	$this->db->where('pr_name',$name);
-    	$this->db->select('attachment');
+    	$this->db->select('attachment,upload_time');
     	return $this->db->get('project_attach')->result_array();
     }
     

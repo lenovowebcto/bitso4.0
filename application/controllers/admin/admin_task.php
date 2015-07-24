@@ -3,6 +3,7 @@ class admin_task extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->model('AdmintaskModel');
+		$this->load->model('BrandModel');
 		$this->load->helper(array('form', 'url'));
 		Auth::execute_auth();
 	}
@@ -19,14 +20,12 @@ class admin_task extends CI_Controller{
 		if($data['task']!=array())$data['fp'] = json_decode($data['task']['file_path']);
 		$data['source']    = $this->config->item('source');
 		$data['geo']       = $this->config->item('geo');
-		$data['family']    = $this->config->item('family');
+		$data['family']    = $this->BrandModel->selectAllBrand();
 		$data['dataarea']  = $this->config->item('dataarea');
 		$data['severity']  = $this->config->item('severity');
 		$data['ProdState'] = $this->config->item('ProdState');
 		$data['users'] = $this->AdmintaskModel->selectuserlist();
-		/* $user = Auth::getuser();
-		if($user['type'] ==1)$this->load->view('admin/task/addadmintask',$data);
-		if($user['type'] ==2)$this->load->view('admin/task/user_task',$data); */
+		
 		$this->load->view('admin/task/addadmintask',$data);
 
 	}

@@ -95,12 +95,23 @@ class spb_create_task extends CI_Controller {
 			if($user['type']==1 &&  $hidden_Deadline != $Deadline){
 				$task['Deadline'] = $Deadline;
 			}
-			/* elseif($user['type']==2){
-				$task['Deadline'] = $hidden_Deadline;
-			} */
+			
 			$num = $this->Lois_opt_spbModel->selectAllpeis ( $id, $pr_id );
+			$old_task = $this->Lois_opt_spbModel->selectTaskById ( $id );
+			$str ='';
+			unset($old_task['TID']);
+			unset($old_task['archive']);
+			
+			foreach($old_task as $k=>$v){
+				if($v != $task[$k]){
+					$str .= $k.':{'.$v.'=>'.$task[$k].'},';
+				}
+			}
+			$str = rtrim($str,',');
+			if($str=='')$str='NO FIELD CHANGE';
+			
 			// update
-			$result = $this->Lois_opt_spbModel->updatetask ($id,$pr_id,$task,$user,$pending,$sta,count($num),$c1,$c2);
+			$result = $this->Lois_opt_spbModel->updatetask ($id,$pr_id,$task,$user,$pending,$sta,count($num),$c1,$c2,$str);
 			if ($result) {
 				redirect ( 'spb/spb_create_task/index?pr_id='.$pr_id.'&archive='.$archive);
 			} else {

@@ -18,7 +18,7 @@
          <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">LOIS Element Task List</h1>
+                    <h1 class="page-header">LOIS CSR Task List</h1>
                 </div>
             </div>
             <div class="row">
@@ -59,10 +59,12 @@
 									<td><?php echo isset($list[$i]['AD']) ?$list[$i]['AD']:'';?></td>
 									<td><?php echo isset($list[$i]['Type']) ?$list[$i]['Type']:'';?></td>
 									<td><?php echo isset($list[$i]['Owner']) ?$list[$i]['Owner']:'';?></td>
+									
 								    <td><?php foreach($attachment as $key=>$val){
 								    	if($key == $list[$i]['project_name']){
 								    		foreach($val as $v){  ?>
-								    		<a href="<?php echo site_url('admin/admin_task/down_load');?>?fname=<?php echo isset($v['attachment'])?$v['attachment']:'';?>"><?php echo isset($v['attachment'])?$v['attachment']:'';?></a><br>
+								    		<a  onmouseover="alert('<?php echo $v["upload_time"];?>')"  
+								    		href="<?php echo site_url('admin/admin_task/down_load');?>?fname=<?php echo isset($v['attachment'])?$v['attachment']:'';?>"><?php echo isset($v['attachment'])?$v['attachment']:'';?></a><br>
 								    		<?php 
 								    		}
 								    	}

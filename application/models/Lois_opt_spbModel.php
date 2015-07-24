@@ -51,8 +51,8 @@ class Lois_opt_spbModel extends CI_Model{
 		return $arr;
 	}
 	
-	function updatetask($id,$pr_id,$task,$user,$pending,$sta,$num,$c1,$c2){
-		$this->db->trans_start();
+	function updatetask($id,$pr_id,$task,$user,$pending,$sta,$num,$c1,$c2,$str){
+		  $this->db->trans_start();
 
 		  $this->db->where('TID',$id);
 	      $this->db->update('lois_opt_spb',$task);
@@ -80,6 +80,7 @@ class Lois_opt_spbModel extends CI_Model{
 	      $ch ['change_user'] = $user['username'];
 	      $ch['change_time'] = date('y-m-d h:i:s',time());
 	      $ch['oper'] = "update";
+	      $ch['content'] = $str;
 	      
 	      $this->db->insert('change_history',$ch);
 	      return $this->db->trans_complete();
