@@ -74,8 +74,7 @@
 												<td><?php foreach($attachment as $key=>$val){
 											    	if($key == $task[$i]['family']){
 											    		foreach($val as $v){  ?>
-											    		<a 
-											    		onmouseover="alert('<?php echo $v["upload_time"];?>')" 
+											    		<a title='<?php echo $v["upload_time"];?>'
 											    		 href="<?php echo site_url('admin/admin_task/down_load');?>?fname=<?php echo isset($v['attachment'])?$v['attachment']:'';?>"><?php echo isset($v['attachment'])?$v['attachment']:'';?></a><br>
 											    		<?php 
 											    		}
