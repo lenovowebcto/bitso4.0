@@ -82,7 +82,7 @@ class opt_create_task extends CI_Controller {
 			$data ['opt_id'] =$id= $_GET ['optid'];
 			$data ['opt_pr_id'] = $pr_id = $_GET['pr_id'];
 			$data ['opt'] = $this->Lois_optModel->selectTaskById ( $_GET ['optid'] );
-            // 修改时找到对应的 pending issues中 ca1—id的值
+            // 淇敼鏃舵壘鍒板搴旂殑 pending issues涓� ca1鈥攊d鐨勫��
             $c1id = $this->TaskModel->selectbyid($id,$pr_id);
 		    if($c1id!=array()){
 			foreach($c1id as $key){
@@ -110,7 +110,7 @@ class opt_create_task extends CI_Controller {
 			$data ['svcid'] = $id = $_GET ['svcid'];
 			$data ['svc_pr_id'] = $pr_id = $_GET['pr_id'];
 			$data ['svc'] = $this->Lois_svcModel->selectTaskById ( $_GET ['svcid'] );
-            // 修改时找到对应的 pending issues中 ca1—id的值
+            // 淇敼鏃舵壘鍒板搴旂殑 pending issues涓� ca1鈥攊d鐨勫��
             $c1id = $this->TaskModel->selectbyid($id,$pr_id);
 		   if($c1id!=array()){
 			foreach($c1id as $key){
@@ -140,7 +140,7 @@ class opt_create_task extends CI_Controller {
 
             if($data['comp']==array())$data['fp'] = array();
             if($data['comp']!=array())$data['fp'] = json_decode($data['comp']['file_path']);
-            // 修改时找到对应的 pending issues中 ca1—id的值
+            // 淇敼鏃舵壘鍒板搴旂殑 pending issues涓� ca1鈥攊d鐨勫��
             $c1id = $this->TaskModel->selectbyid($id,$pr_id);
 		    if($c1id!=array()){
 			foreach($c1id as $key){
@@ -214,10 +214,28 @@ class opt_create_task extends CI_Controller {
             if($user['type']==1 &&  $hid_drr != $drr){
                 $task['DRR_DATE'] = $drr;
             }
-			// 查找相关的 pendissue , if isset delete or insert
+            
+            //write log
+            $old_task = $this->Lois_optModel->selectTaskById ( $id );
+            $str ='';
+            unset($old_task['OPTID']);
+            unset($old_task['archive']);
+
+            foreach($old_task as $k=>$v){
+            	if($v != $task[$k]){
+            		$str .= $k.':{'.$v.'=>'.$task[$k].'},';
+            	}
+            }
+            $str = rtrim($str,',');
+            if($str==''){
+            	$str='NO FIELD CHANGE';
+            }
+            //write log 
+            
+			// 鏌ユ壘鐩稿叧鐨� pendissue , if isset delete or insert
 			$num = $this->Lois_optModel->selectAllpeis ( $id, $pr_id );
 			// update
-			$result = $this->Lois_optModel->updatetask ( $id, $pr_id, $task, $user, $pending, $sta, count ( $num ),$c1,$c2);
+			$result = $this->Lois_optModel->updatetask ( $id, $pr_id, $task, $user, $pending, $sta, count ( $num ),$c1,$c2,$str);
 			if ($result) {
 				redirect ( 'opt/opt_create_task/index?pr_id=' . $pr_id.'&archive='.$archive );
 			} else {
@@ -252,7 +270,7 @@ class opt_create_task extends CI_Controller {
 		$user = Auth::getUser ();
         $ad = $task['AD'];
         $reqd = $task['TASKR_DATE'];
-        $type = $task['type'];
+        $type = $task['Type'];
         $hid_deadline = $_POST['svc_Deadline'];
         $deadline = $task['Deadline'];
         $w = date('w',strtotime($reqd));
@@ -269,10 +287,28 @@ class opt_create_task extends CI_Controller {
             if($user['type']==1 &&  $hid_deadline != $deadline){
                 $task['Deadline'] = $deadline;
             }
-			// 查找相关的 pendissue , if isset delete or insert
+            
+            //write log
+            $old_task = $this->Lois_svcModel->selectTaskById ( $id );
+            $str ='';
+            unset($old_task['SVCID']);
+            unset($old_task['archive']);
+           
+            foreach($old_task as $k=>$v){
+            	if($v != $task[$k]){
+            		$str .= $k.':{'.$v.'=>'.$task[$k].'},';
+            	}
+            }
+            $str = rtrim($str,',');
+            if($str==''){
+            	$str='NO FIELD CHANGE';
+            }
+            //write log
+            
+			// 鏌ユ壘鐩稿叧鐨� pendissue , if isset delete or insert
 			$num = $this->Lois_svcModel->selectAllpeis ( $id, $pr_id );
 			// update
-			$result = $this->Lois_svcModel->updatetask ( $id, $pr_id, $task, $user, $pending, $sta, count ( $num ) ,$c1,$c2);
+			$result = $this->Lois_svcModel->updatetask ( $id, $pr_id, $task, $user, $pending, $sta, count ( $num ) ,$c1,$c2,$str);
 			if ($result) {
 				redirect ( 'opt/opt_create_task/index?pr_id=' . $pr_id.'&archive='.$archive );
 			} else {
@@ -342,11 +378,28 @@ class opt_create_task extends CI_Controller {
                 if($fn !=array())$task['file_path'] = json_encode($fn);
                 if($fn ==array()) $task['file_path'] = $file;
             }
-			// 查找相关的 pendissue , if isset delete or insert
+            
+            //write log
+            $old_task = $this->Lois_compatibilityModel->selectTaskById ( $id );
+            $str ='';
+            unset($old_task['ID']);
+            unset($old_task['archive']);
+            
+            foreach($old_task as $k=>$v){
+            	if($v != $task[$k]){
+            		$str .= $k.':{'.$v.'=>'.$task[$k].'},';
+            	}
+            }
+            $str = rtrim($str,',');
+            if($str==''){
+            	$str='NO FIELD CHANGE';
+            }
+            //write log
+			// 鏌ユ壘鐩稿叧鐨� pendissue , if isset delete or insert
 			$num = $this->Lois_compatibilityModel->selectAllpeis ( $id, $pr_id );
 			// update
             if($fal) {
-                $result = $this->Lois_compatibilityModel->updatetask($id, $pr_id, $task, $user, $pending, $sta, count($num),$c1,$c2);
+                $result = $this->Lois_compatibilityModel->updatetask($id, $pr_id, $task, $user, $pending, $sta, count($num),$c1,$c2,$str);
             }
 			if ($result) {
 				redirect ( 'opt/opt_create_task/index?pr_id=' . $pr_id.'&archive='.$archive);

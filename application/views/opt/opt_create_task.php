@@ -149,7 +149,7 @@ $this->load->view ( 'left2' );
 									<div class="col-lg-3">
 										<div class="input-prepend input-group">
 											<label>TYPE:</label><select style="width: 200px" id="type"
-												class="form-control" name="opt[type]">
+												class="form-control" name="opt[TYPE]">
 												<?php 
 										          foreach($req_type as $key){
 										         	?>
@@ -184,7 +184,7 @@ $this->load->view ( 'left2' );
 									<div class="col-lg-3">
 										<div class="input-prepend input-group">
 											<label>Status:</label> <select style="width: 200px"
-												id="Status" class="form-control" name="opt[Status]">
+												id="Status" class="form-control" name="opt[STATUS]">
 												<?php  foreach($status as $key){
 					         	?>
 					         	<option id=<?php echo isset($key['sid'])?$key['sid']:''; ?> <?php if(isset($opt['STATUS']) && $opt['STATUS']==$key['stype']){echo 'selected';}?> ><?php echo isset($key['stype'])?$key['stype']:''; ?></option> 
@@ -211,7 +211,7 @@ $this->load->view ( 'left2' );
 									<div class="col-lg-3">
 										<div class="input-prepend input-group">
 											<label>Owner:</label> <input type="text" style="width: 200px"
-												id="Owner" class="form-control" name="opt[Owner]"
+												id="Owner" class="form-control" name="opt[OWNER]"
 												value="<?php echo isset($opt['OWNER'])?$opt['OWNER']:'';?>" />
 										</div>
 									</div>
@@ -269,6 +269,7 @@ $this->load->view ( 'left2' );
                                             <th>Name</th>
                                             <th>Time</th>
                                             <th>Action</th>
+                                            <th>Content</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -281,6 +282,7 @@ $this->load->view ( 'left2' );
 										     	<td><?php echo isset($hist[$i]['change_user']) ?$hist[$i]['change_user']:'';?></td>
 												<td><?php echo isset($hist[$i]['change_time']) ?$hist[$i]['change_time']:'';?></td>
 												<td><?php echo isset($hist[$i]['oper']) ?$hist[$i]['oper']:'';?></td>
+												<td><?php echo isset($hist[$i]['content']) ?$hist[$i]['content']:'';?></td>
 											</tr>
                                        <?php }}?>
                                     </tbody>
@@ -375,11 +377,11 @@ $this->load->view ( 'left2' );
 									<div class="col-lg-3">
 										<div class="input-prepend input-group">
 											<label>TYPE:</label><select style="width: 200px" id="type"
-												class="form-control" name="svc[type]">
+												class="form-control" name="svc[Type]">
 												<?php 
 						          foreach($req_type as $key){
 						         	?>
-						         	<option id=<?php echo isset($key['rqtype'])?$key['rqtype']:''; ?> <?php if(isset($svc['Type']) && $svc['Type']==$key['rqtype']){echo 'selected';}?> ><?php echo isset($key['rqtype'])?$key['rqtype']:''; ?></option> 
+						         	<option id=<?php echo isset($key['rqtype'])?$key['rqtype']:''; ?> <?php if(isset($svc['TYPE']) && $svc['TYPE']==$key['rqtype']){echo 'selected';}?> ><?php echo isset($key['rqtype'])?$key['rqtype']:''; ?></option> 
 						         	<?php 
 						         }?>
 												</select>
@@ -411,7 +413,7 @@ $this->load->view ( 'left2' );
 									<div class="col-lg-3">
 										<div class="input-prepend input-group">
 											<label>Status:</label> <select style="width: 200px"
-												id="Status" class="form-control" name="svc[Status]">
+												id="Status" class="form-control" name="svc[STATUS]">
 												<?php  foreach($status as $key){
 					         	?>
 					         	<option id=<?php echo isset($key['sid'])?$key['sid']:''; ?> <?php if(isset($svc['STATUS']) && $svc['STATUS']==$key['stype']){echo 'selected';}?> ><?php echo isset($key['stype'])?$key['stype']:''; ?></option> 
@@ -424,8 +426,8 @@ $this->load->view ( 'left2' );
 									<div class="col-lg-3">
 										<div class="input-prepend input-group">
 											<label>Owner:</label> <input type="text" style="width: 200px"
-												id="Owner" class="form-control" name="svc[Owner]"
-												value="<?php echo isset($svc['Owner'])?$svc['Owner']:'';?>" />
+												id="Owner" class="form-control" name="svc[OWNER]"
+												value="<?php echo isset($svc['OWNER'])?$svc['OWNER']:'';?>" />
 										</div>
 									</div>
 									
@@ -478,6 +480,7 @@ $this->load->view ( 'left2' );
                                             <th>Name</th>
                                             <th>Time</th>
                                             <th>Action</th>
+                                            <th>Content</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -490,6 +493,7 @@ $this->load->view ( 'left2' );
 										     	<td><?php echo isset($hist[$i]['change_user']) ?$hist[$i]['change_user']:'';?></td>
 												<td><?php echo isset($hist[$i]['change_time']) ?$hist[$i]['change_time']:'';?></td>
 												<td><?php echo isset($hist[$i]['oper']) ?$hist[$i]['oper']:'';?></td>
+												<td><?php echo isset($hist[$i]['content']) ?$hist[$i]['content']:'';?></td>
 											</tr>
                                        <?php }}?>
                                     </tbody>
@@ -554,7 +558,7 @@ $this->load->view ( 'left2' );
 											<div class="input-prepend input-group">
 												<label>Loadsheet:</label> <input type="text"
 													style="width: 200px" id="Loadsheet" class="form-control"
-													name="comp[Loadsheet]"
+													name="comp[LOADSHEET]"
 													value="<?php echo isset($comp['LOADSHEET'])?$comp['LOADSHEET']:'';?>" />
 											</div>
 										</div>
@@ -605,7 +609,7 @@ $this->load->view ( 'left2' );
                                         <div class="col-lg-3">
                                             <div class="input-prepend input-group">
                                                 <label>Status:</label> <select style="width: 200px"
-                                                                               id="Status" class="form-control" name="comp[Status]">
+                                                                               id="Status" class="form-control" name="comp[STATUS]">
                                                     <?php  foreach($status as $key){
                                                         ?>
                                                         <option id=<?php echo isset($key['sid'])?$key['sid']:''; ?> <?php if(isset($comp['STATUS']) && $comp['STATUS']==$key['stype']){echo 'selected';}?> ><?php echo isset($key['stype'])?$key['stype']:''; ?></option>
@@ -619,7 +623,7 @@ $this->load->view ( 'left2' );
 											<div class="input-prepend input-group">
 												<label>Owner:</label> <input type="text"
 													style="width: 200px" id="Owner" class="form-control"
-													name="comp[Owner]"
+													name="comp[OWNER]"
 													value="<?php echo isset($comp['OWNER'])?$comp['OWNER']:'';?>" />
 											</div>
 										</div>
@@ -683,6 +687,7 @@ $this->load->view ( 'left2' );
                                             <th>Name</th>
                                             <th>Time</th>
                                             <th>Action</th>
+                                            <th>Content</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -695,6 +700,7 @@ $this->load->view ( 'left2' );
 										     	<td><?php echo isset($hist[$i]['change_user']) ?$hist[$i]['change_user']:'';?></td>
 												<td><?php echo isset($hist[$i]['change_time']) ?$hist[$i]['change_time']:'';?></td>
 												<td><?php echo isset($hist[$i]['oper']) ?$hist[$i]['oper']:'';?></td>
+												<td><?php echo isset($hist[$i]['content']) ?$hist[$i]['content']:'';?></td>
 											</tr>
                                        <?php }}?>
                                     </tbody>

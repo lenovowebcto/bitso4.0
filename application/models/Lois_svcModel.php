@@ -53,7 +53,7 @@ class Lois_svcModel extends CI_Model{
 		return $arr;
 	}
 	
-	function updatetask($id,$pr_id,$task,$user,$pending,$sta,$num,$c1,$c2){
+	function updatetask($id,$pr_id,$task,$user,$pending,$sta,$num,$c1,$c2,$str){
 
 		$this->db->trans_start ();
 		$this->db->where ( 'SVCID', $id );
@@ -83,7 +83,7 @@ class Lois_svcModel extends CI_Model{
 		$ch ['change_user'] = $user['username'];
 		$ch ['change_time'] = date ( 'y-m-d h:i:s', time () );
 		$ch ['oper'] = "update";
-		
+		$ch['content'] = $str;
 		$this->db->insert ( 'change_history', $ch );
 		return $this->db->trans_complete ();
 	}
