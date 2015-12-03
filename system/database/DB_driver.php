@@ -249,7 +249,6 @@ class CI_DB_driver {
 	 */
 	function query($sql, $binds = FALSE, $return_object = TRUE)
 	{
-		//echo $sql;exit;
 		if ($sql == '')
 		{
 			if ($this->db_debug)

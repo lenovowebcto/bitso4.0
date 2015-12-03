@@ -55,6 +55,7 @@ class spb_create_task extends CI_Controller {
 		// common information
 		$data ['task'] = $this->Lois_opt_spbModel->commonbrand ();
 		$data ['status'] = $this->Lois_ep_reqModel->commonstatus ();
+		$data['projectstatus'] = $this->TaskModel->commonprojectstatus();
 		$data['bu'] = $this->Lois_ep_reqModel->selectAllBu();
         $data['session_name'] = $this->UserModel->selectUser();
         $u = Auth::getUser();
@@ -81,7 +82,7 @@ class spb_create_task extends CI_Controller {
 		$user = Auth::getUser ();
 		$trd = $task['TASKR_DATE'];
 		$hidden_Deadline = $_POST['Deadline'];
-		$Deadline = $task['Deadline'];
+		$Deadline = isset($task['Deadline'])?$task['Deadline']:'0000-000-00';
 		$w = date('w',strtotime($trd));
 		if($w==5){
 			$task['Deadline'] =  date('Y-m-d', strtotime($trd. '+3 day'));

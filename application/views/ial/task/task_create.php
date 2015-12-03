@@ -151,7 +151,7 @@ function fname(){
                                             </select>
 									</div>
                             <div class="col-lg-3" style="z-index: 0">
-                                <label>specialist:</label>
+                                <label>User:</label>
                                 <select name="task[User]" class="form-control">
                                     <?php  foreach($user as $key){ ?>
                                         <option value="<?php echo isset($key['username'])?$key['username']:''?>" <?php if(isset($key['username']) && $key['username']==$username){echo 'selected';}?> ><?php echo isset($key['username'])?$key['username']:''; ?></option>

@@ -58,10 +58,10 @@ $this->load->view ( 'left2' );
 								for($i = 0; $i < count ( $task ); $i ++) {
 									?>
 						    	<tr>
-									<td><a href="<?php echo site_url('ial/create_relayware/task') ?>?id=<?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?>&pr_id=<?php echo isset($pr_id)?$pr_id:0;?>"><?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?></a></td>
-									
-									<td><?php echo isset($task[$i]['BPL_PAL_Number']) ?$task[$i]['BPL_PAL_Number']:'';?></td>
-									<!--  <td><?php echo isset($task[$i]['Deadline']) ?$task[$i]['Deadline']:'';?></td>-->
+									<td><a href="<?php echo site_url('ial/create_relayware/task') ?>?id=<?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?>&pr_id=<?php echo isset($pr_id)?$pr_id:0;?>">
+									<?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?></a></td>
+									<td><a href="<?php echo site_url('ial/create_relayware/task') ?>?id=<?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?>&pr_id=<?php echo isset($pr_id)?$pr_id:0;?>">
+									<?php echo isset($task[$i]['BPL_PAL_Number']) ?$task[$i]['BPL_PAL_Number']:'';?></a></td>
 									<td><?php echo isset($task[$i]['Brand']) ?$task[$i]['Brand']:'';?></td>
 									<td><?php if(isset($task[$i]['AD']) && $task[$i]['AD']!='0000-00-00') { echo isset($task[$i]['AD']) ?$task[$i]['AD']:'';}?></td>
 									<td><?php echo isset($task[$i]['Requester']) ?$task[$i]['Requester']:'';?></td>
@@ -92,7 +92,7 @@ $this->load->view ( 'left2' );
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
                 responsive: true
-        });
+        }).fnDestroy();
 		
 		$("#showhistory").click(function(){
 		$("dhistory").hide();

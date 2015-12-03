@@ -254,10 +254,7 @@ if ( ! function_exists('get_config'))
 			}
 		}
 
-//		return $_config[0] =& $config;
-        $_config[0] =& $config;
-
-        return $_config[0];
+		return $_config[0] =& $config;
 	}
 }
 
@@ -469,12 +466,9 @@ if ( ! function_exists('set_status_header'))
 */
 if ( ! function_exists('_exception_handler'))
 {
-	
 	function _exception_handler($severity, $message, $filepath, $line)
 	{
-
-		//echo $message;exit;
-		//mysql_connect() [function.mysql-connect]: Can't connect to MySQL server on '10.100.15.242' (10061)=======>D:\www\project\bitso2\system\database\drivers\mysql\mysql_driver.php===>73
+		
 		 // We don't bother with "strict" notices since they tend to fill up
 		 // the log file with excess information that isn't normally very helpful.
 		 // For example, if you are running PHP 5 and you use version 4 style

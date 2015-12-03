@@ -48,7 +48,7 @@
 						            	    
 						            	    <th >AD</th>
 						            	    <th >DRR_DeadLine</th>
-						            	    <th >Count</th>
+						            	    <th >CTO</th>
 						            	    <th >Status</th>
 						            	    <th >Owner</th>
                                         </tr>
@@ -76,7 +76,8 @@
 							   <!-- <td><?php echo isset($list[$i]['AD']) ?$list[$i]['AD']:'';?></td>
 									<td><?php echo isset($list[$i]['DeadLine']) ?$list[$i]['DeadLine']:'';?></td> -->			
 									
-									<td><?php echo isset($list[$i]['Count']) ?$list[$i]['Count']:'';?></td>
+									<!-- <td><?php echo isset($list[$i]['Count']) ?$list[$i]['Count']:'';?></td> -->
+									<td><?php echo isset($list[$i]['cto']) ?$list[$i]['cto']:'';?></td>
 									<td><?php echo isset($list[$i]['Status']) ?$list[$i]['Status']:'';?></td>
 									<td><?php echo isset($list[$i]['Owner']) ?$list[$i]['Owner']:'';?></td>
 								</tr>

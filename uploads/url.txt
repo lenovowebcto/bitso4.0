@@ -1,3 +1,0 @@
-http://www.yiiframework.com/doc/guide/1.1/zh_cn/basics.application
-http://yii2.techbrood.com/guide-active-record.html  yiiÖÐÎÄ
- 

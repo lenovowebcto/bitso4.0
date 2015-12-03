@@ -29,6 +29,7 @@ class task_model extends CI_Model{
 		if($username != ""){
 			$this->db->where('User',$username);
 		}
+		//$this->db->like('brand',$dis);
 		$this->db->where('dis',$dis);
 		$this->db->	from('ial_task it');
 		$this->db->	join('ial_common_brand icb','it.brand=icb.bname');

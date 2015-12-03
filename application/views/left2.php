@@ -1,6 +1,7 @@
 <?php
      $task = Auth::getTask();
      $user = Auth::getUser(); 
+	 //echo '<pre>'; var_dump($user);exit;
 ?>
 <?php if(isset($user['group']) && $user['group'] == 'LOIS') {?>
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -109,6 +110,7 @@
                                 <li><a href="<?php echo site_url('admin/project');?>">Project Config</a></li>
                                 <li><a href="<?php echo site_url('admin/brand');?>">Brand Config</a></li>
                                 <li><a href="<?php echo site_url('admin/status');?>">Status Config</a></li>
+								<li><a href="<?php echo site_url('admin/projectstatus');?>">Project Status Config</a></li>
                                 <li><a href="<?php echo site_url('admin/bu');?>">BU Config</a></li>
                                 <li><a href="<?php echo site_url('admin/reqtype');?>">Request type Config</a></li>
                                 <li><a href="<?php echo site_url('admin/category');?>">Catrgory Config</a></li>

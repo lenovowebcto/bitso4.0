@@ -91,6 +91,10 @@ class TaskModel extends CI_Model{
 		$query = $this->db->get('common_status');
 		return  $query->result_array();
 	}
+	function commonprojectstatus(){
+		$query = $this->db->get('common_porject_status');
+		return  $query->result_array();
+	}
 	function commonaction(){
 		$query = $this->db->get('common_action');
 		return  $query->result_array();
@@ -138,8 +142,12 @@ class TaskModel extends CI_Model{
   }
   
   function selecttaskgroupname(){
-	  	$this->db->select('t.*,t.family,SUM(CASE WHEN STATUS !="final" THEN 1 ELSE 0 END) "num"')->from('tickets t')->group_by('t.family');
-	  	return $this->db->get()->result_array();
+  	    
+  	    $sql='select  t.*,t.family,cp.subseries,SUM(CASE WHEN STATUS !="final" THEN 1 ELSE 0 END) "num" from tickets t  join common_project cp on t.family = cp.pname group by t.family';
+  	    $arr = $this->db->query($sql)->result_array();
+  	    return $arr;
+	  	//$this->db->select('t.*,t.family,SUM(CASE WHEN STATUS !="final" THEN 1 ELSE 0 END) "num"')->from('tickets t')->group_by('t.family');
+	  	//return $this->db->get()->result_array();
   }
   
   function selectidbyname($family){

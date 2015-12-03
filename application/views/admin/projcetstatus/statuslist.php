@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-  
+    
     <title>BITSO 4.0</title>
     <?php $this->load->view('common');?>
 <script src="<?php  echo base_url();?>util/bitso/bower_components/jquery/dist/jquery.min.js"></script>
+  
 </head>
 <body>
     <div id="wrapper">
@@ -20,10 +21,10 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                           <h2>Project List</h2>
+                           <h2>Status List</h2>
                         </div>
                          <div class="panel-heading">
-                           <a href="<?php echo site_url('admin/project/addproject');?>"><input type="button"  value="ADD PROJECT"/></a>
+                           <a href="<?php echo site_url('admin/projectstatus/addstatus');?>"><input type="button"  value="ADD STATUS"/></a>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -31,25 +32,24 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th >pname</th>
-						            	    <th>subseries</th>
+                                            <th >stype</th>
 						            	    <th >operate</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 							        <?php
-									if(count($project)==0):
+									if(count($status)==0):
 										?>
 										<tr><td colspan='11'>No data</td></tr>
 									<?php
 									  endif;
-						              for($i = 0;$i<count($project); $i++){
+						              for($i = 0;$i<count($status); $i++){
 									?>
 									<tr>
-									    <td><?php echo isset($project[$i]['pname']) ?$project[$i]['pname']:'';?></td>
-									    <td><?php echo isset($project[$i]['subseries']) ?$project[$i]['subseries']:'';?></td>
-										<td><a href="<?php echo site_url('admin/project/addproject') ?>?projectid=<?php  echo isset($project[$i]['projectid']) ?$project[$i]['projectid']:'';?>">edit</a>
-										 <!-- ||<a href="<?php echo site_url('admin/project/deleteproject') ?>?projectid=<?php  echo isset($project[$i]['projectid']) ?$project[$i]['projectid']:'';?>">delete</a> -->
+									    <td><?php echo isset($status[$i]['stype']) ?$status[$i]['stype']:'';?></td>
+										<td><a href="<?php echo site_url('admin/projectstatus/addstatus') ?>?sid=<?php  echo isset($status[$i]['sid']) ?$status[$i]['sid']:'';?>">edit</a> 
+									<!--	||<a href="<?php echo site_url('admin/status/deletestatus') ?>?sid=<?php  echo isset($status[$i]['sid']) ?$status[$i]['sid']:'';?>">delete</a>  -->
+										
 										</td>
 								    </tr>	
 								    <?php }?>

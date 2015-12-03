@@ -18,7 +18,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header"><?php if(isset($projectid) && $projectid>0){echo 'Edit';}else{echo 'Add';} ?> Project</h1>
+                    <h1 class="page-header"><?php if(isset($sid) && $sid>0){echo 'Edit';}else{echo 'Add';} ?> Status</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -26,16 +26,12 @@
 			<div class="panel-body">
 				<div class="row">
                     <div class="col-lg-6">
-                      <form action="<?php echo site_url('admin/project/toaddproject') ?>" method="post">
+                      <form action="<?php echo site_url('admin/projectstatus/toaddstatus') ?>" method="post">
                        <table>
-							 <input name="projectid"  value="<?php echo isset($projectid)?$projectid:0; ?>" type="hidden"/>
+							 <input name="sid"  value="<?php echo isset($sid)?$sid:0; ?>" type="hidden"/>
 							 <div  class="input-append date">
-							   <label>pname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-							  <input type="text" name="pname"  value="<?php echo isset($project['pname'])?$project['pname']:'';?>"/>
-							  </div><br>
-							  <div  class="input-append date">
-							   <label>subseries</label>
-							  <input type="text" name="subseries"  value="<?php echo isset($project['subseries'])?$project['subseries']:'';?>"/>
+							   <label>status:</label>
+							  <input type="text" name="stype"  value="<?php echo isset($status['stype'])?$status['stype']:'';?>"/>
 							  </div><br>
 							<div  class="input-append date">
 							   <label></label>

@@ -112,9 +112,9 @@ $this->load->view ( 'left2' );
 										<div class="input-prepend input-group">
 											<label>Status:</label> <select style="width: 200px"
 												id="Status" class="form-control" name="task[STATUS]">
-									<?php  foreach($status as $key){
+									<?php  foreach($projectstatus as $key){
 					         	?>
-					         	<option id=<?php echo isset($key['sid'])?$key['sid']:''; ?> <?php if(isset($task['status']) && $task['status']==$key['stype']){echo 'selected';}?> ><?php echo isset($key['stype'])?$key['stype']:''; ?></option> 
+					         	<option id=<?php echo isset($key['sid'])?$key['sid']:''; ?> <?php if(isset($task['STATUS']) && $task['STATUS']==$key['stype']){echo 'selected';}?> ><?php echo isset($key['stype'])?$key['stype']:''; ?></option> 
 					         	<?php 
 					         }?>
 											</select>

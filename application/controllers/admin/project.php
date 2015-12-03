@@ -17,7 +17,9 @@ class project extends CI_Controller{
 	 function toaddproject(){
 	 	$pid = isset($_POST['projectid'])?$_POST['projectid']:0;
 	 	$pname = $_POST['pname'];
-	 	$arr['pname'] = $pname;
+	 	$subseries = $_POST['subseries'];
+	 	$arr = array('pname'=>$pname,'subseries'=>$subseries);
+	 	
 	 	if($pid>0){
 	 		$res = $this->ProjectModel->updateproject($pid,$arr);
 	 	}else{

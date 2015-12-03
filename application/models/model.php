@@ -7,6 +7,8 @@ class Model extends CI_Model{
 	
 	function login($username,$psw){
 	    $sql  = "select * from common_user where username='$username' and UPWD='$psw' and active=1";
+		
+		//var_dump($sql);exit;
 	    $arr  =  $this->db->query($sql);
 	    return   $arr->num_rows;
 	}
@@ -21,7 +23,7 @@ class Model extends CI_Model{
 		$this->db->where('AssignTo',$username);
 		return $this->db->get('admin_task')->result_array();
 	}
-	//�õ�����user�Ѿ�ִ���귵�ظ�admin��task
+
 	function getClosedtask(){
 		$this->db->where('prob_state',"Closed");
 		$this->db->where('dist',1);

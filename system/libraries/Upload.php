@@ -79,7 +79,6 @@ class CI_Upload {
 	 */
 	public function initialize($config = array())
 	{
-		
 		$defaults = array(
 							'max_size'			=> 0,
 							'max_width'			=> 0,
@@ -143,6 +142,7 @@ class CI_Upload {
 	 */
 	public function do_upload($field = 'userfile')
 	{
+
 	// Is $_FILES[$field] set? If not, no reason to continue.
 		if ( ! isset($_FILES[$field]))
 		{
@@ -618,6 +618,7 @@ class CI_Upload {
 		}
 
 		$mime = $this->mimes_types($ext);
+
 		if (is_array($mime))
 		{
 			if (in_array($this->file_type, $mime, TRUE))
@@ -625,10 +626,8 @@ class CI_Upload {
 				return TRUE;
 			}
 		}
-
 		elseif ($mime == $this->file_type)
 		{
-
 				return TRUE;
 		}
 
@@ -700,7 +699,6 @@ class CI_Upload {
 	 */
 	public function validate_upload_path()
 	{
-		
 		if ($this->upload_path == '')
 		{
 			$this->set_error('upload_no_filepath');

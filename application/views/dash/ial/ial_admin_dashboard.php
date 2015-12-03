@@ -133,8 +133,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                          PN_Maintanence  DataTables Advanced Tables
+                        <div class="panel-heading"  style="background:#EEEE00;color=:#EEEE00">
+                          PN_Maintanence
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -186,8 +186,8 @@
              <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                         IAL_Task  DataTables Advanced Tables
+                       <div class="panel-heading" style="background:#7CFC00;color=:#EEEE00">
+                         IAL_Task  
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -241,8 +241,8 @@
                       <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                          IAL_BPL_list  DataTables Advanced Tables
+                        <div class="panel-heading" style="background:#2FF666;color=:#EEEE00">
+                          IAL_BPL_list  
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">

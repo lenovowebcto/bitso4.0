@@ -36,7 +36,7 @@
                                     <thead>
                                         <tr>
                                                 <th>ID</th>
-												<th>Family</th>
+												<th>Family|subseries</th>
 												<th>Request Type</th>
 												<th>Ann Date</th>
 												<th>POR Version</th>
@@ -61,7 +61,7 @@
 												?>
 					                       <tr>
 												<td><a href="<?php echo site_url('task/addtask') ?>?f=<?php echo isset($task[$i]["family"]) ?$task[$i]["family"]:""?>&pr_id=<?php echo isset($pr_id)?$pr_id:0;?>&archive=0"><?php echo $i+1;?></a></td>
-												<td><?php echo isset($task[$i]['family']) ?$task[$i]['family']:'';?></td>
+												<td><?php echo isset($task[$i]['family']) ?$task[$i]['family']:'';?>|<?php echo isset($task[$i]['subseries']) ?$task[$i]['subseries']:'';?></td>
 												<td><?php echo isset($task[$i]['request_type']) ?$task[$i]['request_type']:'';?></td>
 												<td><?php if(isset($task[$i]['ann_date']) && $task[$i]['ann_date']!='0000-00-00') { echo isset($task[$i]['ann_date']) ?$task[$i]['ann_date']:'';}?></td>
 									
@@ -74,7 +74,8 @@
 												<td><?php foreach($attachment as $key=>$val){
 											    	if($key == $task[$i]['family']){
 											    		foreach($val as $v){  ?>
-											    		<a title='<?php echo $v["upload_time"];?>'
+											    		<a  title="<?php echo $v['upload_time'];?>"
+											    		
 											    		 href="<?php echo site_url('admin/admin_task/down_load');?>?fname=<?php echo isset($v['attachment'])?$v['attachment']:'';?>"><?php echo isset($v['attachment'])?$v['attachment']:'';?></a><br>
 											    		<?php 
 											    		}

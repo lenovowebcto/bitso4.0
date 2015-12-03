@@ -43,8 +43,8 @@
 											<input type="hidden" name="deadline" value="<?php echo isset($task['Deadline'])?$task['Deadline']:'0000-00-00';?>"/>
 											 <input type="text"
 												style="width: 200px" id="Deadline" class="form-control"
-												data-beatpicker="true" name="task[Deadline]"
-												value="<?php echo isset($task['Deadline'])?$task['Deadline']:'0000-00-00';?>" <?php if($type==2){?> disabled='disabled'<?php }?>/>
+												 name="task[Deadline]"
+												value="<?php echo isset($task['Deadline'])?$task['Deadline']:'0000-00-00';?>" <?php if($type==2){?> readonly="readonly" <?php }else{ echo 'data-beatpicker="true"';}?>/>
 										</div>
 									</div>
 
@@ -83,21 +83,19 @@
                                 <div class="input-prepend input-group">
                                     <label>Status:</label> <select style="width: 200px"
                                                                    id="Status" class="form-control" name="task[status]">
-                                        <?php  foreach($status as $key){
+                                        <?php  foreach($projectstatus as $key){
                                             ?>
-                                            <option id=<?php echo isset($key['sid'])?$key['sid']:''; ?> <?php if(isset($task['STATUS']) && $task['STATUS']==$key['stype']){echo 'selected';}?> ><?php echo isset($key['stype'])?$key['stype']:''; ?></option>
+                                            <option value="<?php echo isset($key['stype'])?$key['stype']:''; ?>" 
+											<?php if(isset($task['status']) && $task['status']==$key['stype']){echo 'selected';}?> ><?php echo isset($key['stype'])?$key['stype']:''; ?></option>
+											
                                         <?php
                                         }?>
                                     </select>
                                 </div>
                             </div>
-									<div class="col-lg-3">
-										<div class="input-prepend input-group">
-											<label>Request:</label>
-											 <input type="text" class="form-control" name="task[Request]"
-												value="<?php echo isset($task['Request'])?$task['Request']:'';?>" />
-										</div>
-									</div>
+							
+							
+									
 									<div class="col-lg-3">
 										<div class="input-prepend input-group">
 											<label>Requestor:</label> 
@@ -134,8 +132,16 @@
 									
 									<div class="col-lg-3">
 										<div class="input-prepend input-group">
-											<label>Subject:</label> 
+											<label>Subject/EPID:</label> 
 											<input type="text"  class="form-control" name="task[Subject]" value="<?php echo isset($task['Subject'])?$task['Subject']:'';?>" />
+										</div>
+									</div>
+									
+									<div class="col-lg-12">
+										<div >
+											<label>Request:</label> 
+											<textarea class="form-control" rows="3" name="task[Request]" ><?php echo isset($task['Request'])?$task['Request']:'';?></textarea>
+											
 										</div>
 									</div>
 									<div class="col-lg-12">

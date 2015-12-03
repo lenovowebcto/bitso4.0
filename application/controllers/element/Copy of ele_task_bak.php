@@ -13,7 +13,7 @@ class ele_task  extends CI_Controller{
 		//ֻ��ʾproject_name  
 		$data['pr_id'] = $pr_id = isset($_GET['pr_id'])?$_GET['pr_id']:0;
 		$data['list'] = $list= $this->EleModel->allproname();
-	//echo '<pre>';var_dump($data['list']);exit;
+	
 		foreach($list as $val){
 			$name = $val['project_name'];
 			$data['attachment'][$name] = $this->EleModel->selectattabyname($name);
@@ -27,14 +27,6 @@ class ele_task  extends CI_Controller{
 		 $data['pro_name'] = $pro_name = isset($_GET['pro_name'])?$_GET['pro_name']:0;
 		 $data['pr_id'] = $pr_id = isset($_GET['pr_id'])?$_GET['pr_id']:0;
 		 $data['list'] = $this->EleModel->selectAllTask($pro_name,$archive);
-		 
-		 foreach ($data['list'] as $key=>$val){
-		 	if($val['cto']!=""){
-		 		$cto = explode(";", $val['cto']);
-		 		$data['list'][$key]['cto'] = implode(PHP_EOL, $cto);
-		 	}
-		 }
-		 
 		 $this->load->view('ele/eletasklist',$data); 
 	}
 	//add ele_task
@@ -63,18 +55,11 @@ class ele_task  extends CI_Controller{
 					$data['c'][] = $this->TaskModel->selectc2byc1id($ca1_id);
 				}
 			}
-			$data['eletask'] = $this->EleModel->selecteletask($pid);
+		}
 		
-		$val = $data['eletask']['cto'];
-		if($val!=""){
-			$cto = explode(";", $val);
-			$data['eletask']['cto'] = implode(PHP_EOL, $cto);
-		}
-		}
-
+		$data['eletask'] = $this->EleModel->selecteletask($pid);
 		$data['type'] = $this->EleModel->get_reqtype();
 		$data['status'] = $this->EleModel->get_status();
-		$data['projectstatus'] = $this->TaskModel->commonprojectstatus();
 		$this->load->view('ele/addeletask',$data);
 	}
 	//toadd 
@@ -90,13 +75,6 @@ class ele_task  extends CI_Controller{
 		$pid = isset($_POST['pid'])?$_POST['pid']:0;
 		$ele = $_POST['ele'];
 	
-		if(isset($ele['cto']) && $ele['cto']!='')
-		{
-			$arr = explode(PHP_EOL,$ele['cto']);
-			$cto = implode(';', $arr);
-			$ele['cto'] = $cto;
-		}
-		
 		$drrd = $ele['DeadLine'];
 		$pname = $ele['project_name'];
 		$pr_at = $this->TaskModel->selectidbyname($pname);

@@ -36,6 +36,7 @@ class addtask extends CI_Controller {
 		// common information
 		$data['brand'] = $this->TaskModel->commonbrand ();
 		$data['status'] = $this->TaskModel->commonstatus ();
+		$data['projectstatus'] = $this->TaskModel->commonprojectstatus();
 		$data['action'] = $this->TaskModel->commonaction ();
 		$data['req_type'] = $this->TaskModel->request_type();
 		$data['pro'] = $this->TaskModel->pro_name();

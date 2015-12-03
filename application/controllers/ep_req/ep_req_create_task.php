@@ -53,6 +53,7 @@
 		}
 		// common information
 		$data ['status'] = $this->Lois_ep_reqModel->commonstatus ();
+		$data['projectstatus'] = $this->TaskModel->commonprojectstatus();
 		$data['bu'] = $this->Lois_ep_reqModel->selectAllBu();
         $data['session_name'] = $this->UserModel->selectUser();
         $u = Auth::getUser();

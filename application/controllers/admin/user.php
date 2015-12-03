@@ -44,14 +44,9 @@ class user extends CI_Controller {
 					redirect ( 'admin/user/adduser?uid=' . $uid );
 				}
 			}else{
-				$arr =array(
-						'Username'=>$user['Username'],
-						'email'=>$user['email'],
-						'title'=>$user['title'],
-						'local'=>$user['local'],
-						'type'=>$user['type'],
-						'active'=>$user['active'],
-						'group'=>$user['group']
+				$arr =array('Username'=>$user['Username'],'email'=>$user['email'],
+						'title'=>$user['title'],'local'=>$user['local'],'type'=>$user['type'],
+						'active'=>$user['active'],'group'=>$user['group']
 				);
 				$result = $this->UserModel->updateUser($uid, $arr);
 			}

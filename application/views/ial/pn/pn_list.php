@@ -9,6 +9,25 @@
 <meta name="author" content="">
 <title>BITSO 4.0</title>
     <?php $this->load->view('common');?>
+     <script>
+    function changestatus(id){
+    	var url = "<?php echo site_url('ial/pn_maintenance/editstatus');?>";
+    	var sta = $("#sta"+id).val();
+	
+    	$.ajax({
+           type:'POST',
+           url:url,
+           data:{id:id,sta:sta},
+           async:true,
+           success:function(result){
+             if(result=='success'){
+                 alert("Change Success");
+                }
+            }
+           });
+        }
+   
+    </script>
 </head>
 
 <body>
@@ -37,22 +56,20 @@ $this->load->view ( 'left2' );
 									id="dataTables-example">
 									<thead>
 										<tr>
-											<th>#</th>
-											<th>Request_Date</th>
-											<th>Close_Date</th>
-											<th>Requester/Owner</th>
-											<th>Status</th>
-											<th>Manual</th>
-											<th>Summary</th>
-											<th>Sales_Org</th>
+										
+										<th>#</th>
+										<th>Request_Date</th>
+										<th>Email Subject</th>
+										<th>Requester</th>
+										<th>PN</th>
+										<th>Sales_Org</th>
+										<th>Status</th>
 											
 										</tr>
 									</thead>
 									<tbody>
                               
-									<?php
-									if (count($list) == 0) :
-									?>
+									<?php if (count($list) == 0) : ?>
 							    	<tr>
 										<td colspan='8'>NO Data</td>
 								    </tr>
@@ -64,14 +81,22 @@ $this->load->view ( 'left2' );
 											<td><a
 												href="<?php echo site_url('ial/pn_maintenance/edit') ?>?id=<?php echo isset($list[$i]["id"]) ?$list[$i]["id"]:0?>"><?php echo $i+1;?></a></td>
 											<td><?php if(isset($list[$i]['request_date']) && $list[$i]['request_date']!='0000-00-00') { echo isset($list[$i]['request_date']) ?$list[$i]['request_date']:'';}?></td>
-										    <td><?php if(isset($list[$i]['close_date']) && $list[$i]['close_date']!='0000-00-00') { echo isset($list[$i]['close_date']) ?$list[$i]['close_date']:'';}?></td>
-											<td><?php if(isset($list[$i]['Requester']) && $list[$i]['Requester']!='') { echo isset($list[$i]['Requester']) ?$list[$i]['Requester']:'';}?></td>
-											<td><?php if(isset($list[$i]['status']) && $list[$i]['status']!='') { echo isset($list[$i]['status']) ?$list[$i]['status']:'';}?></td>
+										    <td><?php echo isset($list[$i]['email_subject']) ?$list[$i]['email_subject']:''; ?></td>
+											<td><?php echo isset($list[$i]['Requester']) ?$list[$i]['Requester']:''; ?></td>
 																
-											<td><?php echo isset($list[$i]['Manual']) ?$list[$i]['Manual']:'';?></td>
-											<td><?php echo isset($list[$i]['summary']) ?$list[$i]['summary']:'';?></td>
+											<td><?php echo isset($list[$i]['PN']) ?$list[$i]['PN']:'';?></td>
 											<td><?php echo isset($list[$i]['sales_org']) ? str_replace("\n","<br>",$list[$i]['sales_org']):'';?></td>
-										</tr>
+											<!--  <td><?php echo isset($list[$i]['status']) ?$list[$i]['status']:'';?></td>
+										    -->
+										    
+										    <td>
+										     	 <select name="pn[status]" class="form-control" style="width: 120px" id="sta<?php echo $list[$i]["id"];?>" onchange="changestatus(<?php echo $list[$i]["id"];?>)">
+											         <option  <?php if(isset($list[$i]['status']) && $list[$i]['status']=='Open'){echo 'selected';}?> value="Open" >OPEN</option> 
+											         <option  <?php if(isset($list[$i]['status']) && $list[$i]['status']=='Close'){echo 'selected';}?> value="Close" >CLOSE</option> 
+											         <option  <?php if(isset($list[$i]['status']) && $list[$i]['status']=='Cancel'){echo 'selected';}?> value="Cancel" >CANCEL</option> 
+										         </select>
+										        </td>
+										</tr>s
 						<?php } ?>
                                     </tbody>
 								</table>
@@ -95,7 +120,7 @@ $this->load->view ( 'left2' );
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
                 responsive: true
-        });
+        }).fnDestroy();
 		
     });
     </script>

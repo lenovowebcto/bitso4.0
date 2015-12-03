@@ -111,7 +111,7 @@ $this->load->view ( 'left2' );
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
                 responsive: true
-        });
+        }).fnDestroy();
 		
     });
     </script>

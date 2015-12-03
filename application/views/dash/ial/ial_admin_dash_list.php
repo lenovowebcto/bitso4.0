@@ -24,8 +24,8 @@
              <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                          PN_maintenance  DataTables Advanced Tables
+                        <div class="panel-heading"  style="background:#EEEE00;color=:#EEEE00">
+                         <font> PN_maintenance  </font>
                         </div>
                        <input type="button" value="report" onclick='location.href="<?php echo site_url('taskreport/ial_report')?>?dec=pn"' />
                         <!-- /.panel-heading -->
@@ -81,8 +81,8 @@
              <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                          IAL&BPL  DataTables Advanced Tables
+                        <div class="panel-heading" style="background:#7CFC00;color=:#EEEE00">
+                          IAL&BPL  
                         </div>
                          <input type="button" value="report" onclick='location.href="<?php echo site_url('taskreport/ial_report')?>?dec=ial"' />
                         <!-- /.panel-heading -->
@@ -145,8 +145,8 @@
                       <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                          IAL_Task  DataTables Advanced Tables
+                        <div class="panel-heading" style="background:#2FF666;color=:#EEEE00">
+                          IAL_Task  
                         </div>
                          <input type="button" value="report" onclick='location.href="<?php echo site_url('taskreport/ial_report')?>?dec=5"' />
                         <!-- /.panel-heading -->

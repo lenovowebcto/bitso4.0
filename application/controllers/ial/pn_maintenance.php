@@ -99,7 +99,7 @@ class pn_maintenance extends CI_Controller{
 		}
 		
 		if($res){
-			redirect('ial/pn_maintenance');
+			redirect('ial/pn_maintenance/edit');
 		}else{
 			if($id>0){
 				$this->load->view('ial/pn/pn_edit?id='.$id);
@@ -123,7 +123,14 @@ class pn_maintenance extends CI_Controller{
 		$data = file_get_contents($url);
 		force_download($fname, $data);
 	}
-	
+	function editstatus(){
+		$id = $_POST['id'];
+		$sta = $_POST['sta'];
+		$res = $this->icm->updatestatus($id,$sta);
+		
+		if($res) echo 'success';
+		if(!$res) echo 'error';
+	}
 	public function update(){
 		$key = $_POST['name'];
 		$id = $_POST['id'];

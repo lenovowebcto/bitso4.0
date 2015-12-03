@@ -42,14 +42,14 @@
 								 <div class="input-prepend input-group">
 								 <label>DRR Deadline:</label>
 								  <input type="hidden" name="Drr_deadline" value="<?php echo isset($task['Drr_deadline'])?$task['Drr_deadline']:'0000-00-00'; ?>"/>
-								   <input type="text" name="task[Drr_deadline]" value="<?php echo isset($task['Drr_deadline'])?$task['Drr_deadline']:'0000-00-00'; ?>" style="width: 200px"   class="form-control" data-beatpicker="true" <?php if($type==2){?> disabled='disabled'<?php }?>/> 
+								   <input type="text" name="task[Drr_deadline]" value="<?php echo isset($task['Drr_deadline'])?$task['Drr_deadline']:'0000-00-00'; ?>" style="width: 200px"   class="form-control" <?php if($type==2){?> readonly="readonly" <?php }else{ echo 'data-beatpicker="true"';}?> />   
 								 </div>
 							</div>
 							<div class="col-lg-3">
 								 <div class="input-prepend input-group">
 								 <label>Final Deadline:</label>
 								   <input type="hidden" name="deadline" value="<?php echo isset($task['deadline'])?$task['deadline']:'0000-00-00'; ?>"/>
-								   <input type="text" name="task[deadline]" value="<?php echo isset($task['deadline'])?$task['deadline']:'0000-00-00'; ?>" style="width: 200px"   class="form-control" data-beatpicker="true" <?php if($type==2){?> disabled='disabled'<?php }?>/> 
+								   <input type="text" name="task[deadline]" value="<?php echo isset($task['deadline'])?$task['deadline']:'0000-00-00'; ?>" style="width: 200px"   class="form-control" <?php if($type==2){?> readonly="readonly" <?php }else{ echo 'data-beatpicker="true"';}?> /> 
 								 </div>
 							</div>
 							<div class="col-lg-3">
@@ -163,7 +163,7 @@
 							<div class="col-lg-3">
 								<label>Status:</label>
                            <select name="task[status]" class="form-control">
-					         <?php  foreach($status as $key){
+					         <?php  foreach($projectstatus as $key){
 					         	?>
 					         	<option value="<?php echo isset($key['stype'])?$key['stype']:''; ?>" <?php if(isset($task['status']) && $task['status']==$key['stype']){echo 'selected';}?> ><?php echo isset($key['stype'])?$key['stype']:''; ?></option> 
 					         	<?php 

@@ -95,4 +95,10 @@ class IAL_common_model extends CI_Model{
     	$sql ="SELECT i.* FROM ial_family f  JOIN ial_common_subseries i ON f.`id` = i.`f_id`  WHERE Family_name='$Family_name'";
     	return $this->db->query($sql)->result_array();
     }
+    
+    function updatestatus($id,$sta){
+    	$arr['status'] =$sta;
+    	$this->db->where('id',$id);
+    	return $this->db->update('ial_pn_main',$arr);
+    }
 }

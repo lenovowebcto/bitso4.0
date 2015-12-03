@@ -159,7 +159,7 @@ $this->load->view ( 'left2' );
 											<tr>
 												<th>ID</th>
                                                 <th>IAL number</th>
-                                                <th>BPL number</th>
+                                                <?php if($dis=='Think'){?><th>BPL number</th><?php }?>
                                                 <th>record date</th>
                                                 <th>Brand</th>
                                                 <th>Family name</th>
@@ -186,7 +186,7 @@ $this->load->view ( 'left2' );
 									<td><a href="<?php echo site_url('ial/task_create/task') ?>?id=<?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?>&pr_id=<?php echo isset($pr_id)?$pr_id:0;?>&dis=<?php echo $dis;?>"><?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?></a></td>
 
 									<td><a href="<?php echo site_url('ial/task_create/task') ?>?id=<?php echo isset($task[$i]["id"]) ?$task[$i]["id"]:""?>&pr_id=<?php echo isset($pr_id)?$pr_id:0;?>&dis=<?php echo $dis;?>"><?php echo isset($task[$i]['IAL_number']) ?$task[$i]['IAL_number']:'';?></a></td>
-                                    <td><?php echo isset($task[$i]['BPL_Number']) ?$task[$i]['BPL_Number']:'';?></td>
+                                    <?php if($dis=='Think'){?> <td><?php echo isset($task[$i]['BPL_Number']) ?$task[$i]['BPL_Number']:'';?></td> <?php }?>
                                     <td><?php if(isset($task[$i]['Record_Date']) && $task[$i]['Record_Date']!='0000-00-00') { echo isset($task[$i]['Record_Date']) ?$task[$i]['Record_Date']:'';}?></td>
                                     <td><?php echo isset($task[$i]['Brand']) ?$task[$i]['Brand']:'';?></td>
                                     <td><?php if(isset($task[$i]['Family_name']) && $task[$i]['Family_name']!='0000-00-00') { echo isset($task[$i]['Family_name']) ?$task[$i]['Family_name']:'';}?></td>
@@ -222,7 +222,7 @@ $this->load->view ( 'left2' );
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
                 responsive: true
-        });
+        }).fnDestroy();
 		
 		$("#showhistory").click(function(){
 		$("dhistory").hide();

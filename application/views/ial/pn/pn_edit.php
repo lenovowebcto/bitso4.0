@@ -35,7 +35,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">PN Maintenance List</h1>
+                <h1 class="page-header"><?php if(isset($id) && $id>0){echo 'Edit';}else{echo 'Add';} ?>   PN Maintenance</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-lg-3" style="z-index: 0">
                                 <label>sales_org:</label>
-								  <textarea type="text" style="height: 34px;"
+								  <textarea  style="height: 34px;"
 
                                             name="pn[sales_org]" class="form-control"><?php echo isset($pn['sales_org'])?$pn['sales_org']:'';?></textarea>
                             </div>
@@ -85,7 +85,6 @@
                                 <input type="text" name="pn[email_subject]"
 
                                        class="form-control"  value="<?php echo isset($pn['email_subject'])?$pn['email_subject']:''?>"/>
-
                             </div>
 
                             <div class="col-lg-3" style="z-index: 0">
@@ -151,7 +150,7 @@
                                        value="<?php echo isset($pn['PN_quantity'])?$pn['PN_quantity']:'';?>"    class="form-control" />
                             </div>
                             <div class="col-lg-3" style="z-index: 0">
-                                <label>Curr_User:</label>
+                                <label>User:</label>
                                 <select name="pn[User]" class="form-control">
                                     <?php  foreach($user as $key){ ?>
                                         <option value="<?php echo isset($key

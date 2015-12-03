@@ -69,8 +69,8 @@
 							<div class="col-lg-3" style="z-index: 0">
 								<label>Status:</label>
 								 <select name="ele[Status]" class="form-control">
-								         <?php if(count($status)>0){
-								         	foreach ($status as $key){
+								         <?php if(count($projectstatus)>0){
+								         	foreach ($projectstatus as $key){
 								         		?>
 								         		 <option  <?php if(isset($eletask['Status']) && $eletask['Status']==$key['stype']){echo 'selected';} ?>  value="<?php echo isset($key['stype'])?$key['stype']:''; ?>"><?php echo isset($key['stype'])?$key['stype']:''; ?></option>
 								         		<?php 
@@ -149,7 +149,10 @@
 						         }?>
 						      </select>     
 							</div>
-						  
+						  <div class="col-lg-12">
+							<label>CTO:</label>
+							<textarea class="form-control" rows="3" name="ele[cto]"><?php echo isset($eletask['cto'])?$eletask['cto']:''; ?></textarea>
+						</div>
                            <div class="col-lg-12" style="z-index: 0">
 							   <label>Attachments:</label>
 								<input type="file" name="file_path" size="20" /> 

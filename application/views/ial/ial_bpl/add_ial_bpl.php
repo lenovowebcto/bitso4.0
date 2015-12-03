@@ -125,14 +125,15 @@ function test(){
 								<?php }?>
 								</select>
 							</div>
-							<div class="col-lg-3" style="z-index: 0">
-								<label>warranty:</label>
-								<select name="ial[warranty]" class="form-control">
-								<?php  foreach($warranty as $key){ ?>
-								    <option value="<?php echo isset($key['warranty_type'])?$key['warranty_type']:''?>" <?php if(isset($ial['warranty']) && $ial['warranty']==$key['warranty_type']){echo 'selected';}?> ><?php echo isset($key['warranty_type'])?$key['warranty_type']:''; ?></option> 
-								<?php }?>
+							<div class="col-lg-3" style="z-index: 0;">
+								<label>samo:</label>
+								<select name="ial[somo]" class="form-control" >
+								    <option value=" " <?php if(isset($ial['somo']) && $ial['somo']==''){echo 'selected';}?> ></option> 
+								    <option value="YES" <?php if(isset($ial['somo']) && $ial['somo']=='YES'){echo 'selected';}?> >YES</option> 
+								    <option value="NO" <?php if(isset($ial['somo']) && $ial['somo']=='NO'){echo 'selected';}?> >NO</option> 
 								</select>
 							</div>
+							
 							 <div class="col-lg-12" style="z-index: 0">
                                 <label>Comments:</label>
                                 <textarea  name="ial[comment]" class="form-control"><?php echo isset($ial['comment'])?$ial['comment']:''?></textarea>
@@ -147,12 +148,12 @@ function test(){
 								    <option value="NO" <?php if(isset($ial['relayware']) && $ial['relayware']=='NO'){echo 'selected';}?> >NO</option> 
 								</select>
 							</div>
-						<div class="col-lg-3" style="z-index: 0;">
-								<label>somo:</label>
-								<select name="ial[somo]" class="form-control" >
-								    <option value=" " <?php if(isset($ial['somo']) && $ial['somo']==''){echo 'selected';}?> ></option> 
-								    <option value="YES" <?php if(isset($ial['somo']) && $ial['somo']=='YES'){echo 'selected';}?> >YES</option> 
-								    <option value="NO" <?php if(isset($ial['somo']) && $ial['somo']=='NO'){echo 'selected';}?> >NO</option> 
+						     <div class="col-lg-3" style="z-index: 0">
+								<label>warranty:</label>
+								<select name="ial[warranty]" class="form-control">
+								<?php  foreach($warranty as $key){ ?>
+								    <option value="<?php echo isset($key['warranty_type'])?$key['warranty_type']:''?>" <?php if(isset($ial['warranty']) && $ial['warranty']==$key['warranty_type']){echo 'selected';}?> ><?php echo isset($key['warranty_type'])?$key['warranty_type']:''; ?></option> 
+								<?php }?>
 								</select>
 							</div>
 							<div class="col-lg-3" style="z-index: 0;">
@@ -164,7 +165,7 @@ function test(){
 								</select>
 							</div>
 							<div class="col-lg-3" style="z-index: 0;">
-								<label>Curr_User:</label>
+								<label>User:</label>
 								<select name="ial[User]" class="form-control">
 								<?php  foreach($user as $key){ ?>
 								    <option value="<?php echo isset($key['username'])?$key['username']:''?>" <?php if(isset($key['username']) && $key['username']==$username){echo 'selected';}?> ><?php echo isset($key['username'])?$key['username']:''; ?></option> 

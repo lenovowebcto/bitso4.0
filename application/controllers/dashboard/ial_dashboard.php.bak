@@ -4,6 +4,8 @@ class ial_dashboard extends CI_Controller{
 		parent::__construct();
 		$this->load->model('ial/IAL_DashModel','ial_dash');
 		Auth::execute_auth();
+		var_dump('11111');
+		exit();
 	}
 	
 	function admin_dashboard(){		
